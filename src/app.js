@@ -15,6 +15,10 @@ import customResponses from './middlewares/customResponses.middleware.js';
 import BusinessRouter from './routes/BusinessRouter.js';
 import OrdersRouter from './routes/OrdersRouter.js';
 
+if (config.mode === 'dev') {
+    console.log('Running in development mode');
+}
+
 const app = express()
 const PORT = config.port;
 

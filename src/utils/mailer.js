@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer';
 import config from '../config/config.js';
-import { createHash, isValidPassword } from '../utils/bcrypt.js'
 
 export const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -32,32 +31,3 @@ export const sendRecoveryEmail = async (to, token) => {
     await transporter.sendMail(mailOptions);
 
 };
-
-export const resetPassword = async (req, res) => {
-
-    try {
-        const { token } = req.query
-        const { newPassword } = req.body
-
-        if (!token || !newPassword) {
-            return res.badRequest('Token and new password are required.')
-        }
-
-        const decoded = jwt.verify(token, config.jwt_secret)
-        const user = await userService.getByEmail(decoded.email)
-
-        if (!user) return res.notFound('User not found.')
-
-        const passwordAlreadyUsed = isValidPassword(user, newPassword)
-        if (passwordAlreadyUsed) return res.badRequest('Cannot use the same password.')
-
-        const newHashedPassword = createHash(newPassword)
-
-        await UserModel.findOneAndUpdate({ email: user.email }, { password: newHashedPassword })
-
-        return res.success('Password reset successfully.')
-    } catch (error) {
-        return res.internalError('Invalid or expired token.', error)
-    }
-
-}

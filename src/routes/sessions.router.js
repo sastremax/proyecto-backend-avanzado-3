@@ -6,9 +6,9 @@ import {
     registerSession,
     currentSession,
     logoutSession,
-    forgotPassword,
-    resetPassword
+    forgotPassword
 } from '../controllers/sessions.controller.js';
+import { resetPassword } from '../controllers/users.controller.js';
 
 export default class SessionsRouter extends CustomRouter {
     init() {
@@ -49,9 +49,9 @@ export default class SessionsRouter extends CustomRouter {
         );
 
         // password perdido
-        router.post('/forgot-password', forgotPassword)
+        this.post('/forgot-password', forgotPassword)
         // password reseteado
-        router.post('/reset-password', resetPassword)
+        this.post('/reset-password', resetPassword)
 
         // logout
         this.get('/logout', logoutSession);
