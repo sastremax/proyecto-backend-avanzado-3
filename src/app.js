@@ -16,6 +16,7 @@ import BusinessRouter from './routes/BusinessRouter.js';
 import OrdersRouter from './routes/OrdersRouter.js';
 import { generateUser } from './utils/generateUser.js';
 import { generateProduct } from './utils/generateProduct.js';
+import MockRouter from './routes/mock.router.js';
 
 const app = express();
 const PORT = config.port;
@@ -71,6 +72,7 @@ app.use('/api/carts', new CartsRouter().getRouter());
 app.use('/base', new BaseRouter().getRouter());
 app.use('/api/business', new BusinessRouter().getRouter());
 app.use('/api/orders', new OrdersRouter().getRouter());
+app.use('/api/mock', MockRouter);
 app.use(errorHandler);
 
 const startServer = async () => {
