@@ -1,0 +1,55 @@
+<main class="cart-container">
+    <h2>Your Shopping Cart</h2>
+
+    {{#if cart.products.length}}
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each cart.products}}
+            <tr>
+                <td>{{this.product.title}}</td>
+                <td>${{this.product.price}}</td>
+                <td>{{this.quantity}}</td>
+                <td>${{multiply this.product.price this.quantity}}</td>
+                <td>
+                    <button onclick="removeFromCart('{{../cart._id}}', '{{this.product._id}}')">Remove</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div class="cart-total-container">
+        <p><strong>Total: ${{calculateTotal cart.products}}</strong></p>
+    </div>
+    
+    {{else}}
+    <div class="empty-cart">
+        <h3>Your cart is empty</h3>
+        <p>It looks like you haven't added any products yet.</p>
+        <a href="/views/products/view" class="back-button">Browse Products</a>
+    </div>
+    {{/if}}
+</main>
+
+<script>
+    function removeFromCart(cartId, productId) {
+        fetch(`/api/carts/${cartId}/products/${productId}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Product removed:', data);
+                location.reload(); // Recargar la página para actualizar la vista
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>

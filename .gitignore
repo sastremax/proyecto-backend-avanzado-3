@@ -1,0 +1,14 @@
+node_modules/
+
+.DS_Store
+Thumbs.db
+
+.idea/
+.vscode/
+
+practica/
+profe/
+
+.env
+.env.dev
+.env.prod
