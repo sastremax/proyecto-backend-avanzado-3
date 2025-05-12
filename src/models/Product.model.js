@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 
-// defino el esquema para los productos
 const productSchema = new mongoose.Schema({
     title: { type: String, required: true, maxlength: 100 },   // valido que el título sea obligatorio y tenga un maximo de 100 caracteres
     description: { type: String, required: true, maxlength: 200 },  // valido que la descripción sea obligatoria y se limita a 100 caracteres

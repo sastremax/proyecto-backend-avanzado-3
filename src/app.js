@@ -14,13 +14,28 @@ import config from './config/config.js';
 import customResponses from './middlewares/customResponses.middleware.js';
 import BusinessRouter from './routes/BusinessRouter.js';
 import OrdersRouter from './routes/OrdersRouter.js';
+import { generateUser } from './utils/generateUser.js';
+import { generateProduct } from './utils/generateProduct.js';
+
+const app = express();
+const PORT = config.port;
+
+console.log('DEBUG: this is app.js');
+console.log('CONFIG MODE:', config.mode);
 
 if (config.mode === 'dev') {
-    console.log('Running in development mode');
-}
+    console.log('Development mode active');
+    console.log('Generated users:');
+    for (let i = 0; i < 5; i++) {
+        console.log(generateUser());
+    }
 
-const app = express()
-const PORT = config.port;
+    console.log('Generated products:');
+    for (let i = 0; i < 5; i++) {
+        console.log(generateProduct());
+    }
+    process.exit(0);
+}
 
 process.on('uncaughtException', (error) => {
     console.error('UNCAUGHT EXCEPTION:', error.message);
@@ -59,8 +74,11 @@ app.use('/api/orders', new OrdersRouter().getRouter());
 app.use(errorHandler);
 
 const startServer = async () => {
-    await connectToDB()
-    app.listen(PORT)
-}
+    const { connectToDB } = await import('./config/db.js');
+    await connectToDB();
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+};
 
 startServer();
