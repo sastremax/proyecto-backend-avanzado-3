@@ -17,6 +17,8 @@ import OrdersRouter from './routes/OrdersRouter.js';
 import { generateUser } from './utils/generateUser.js';
 import { generateProduct } from './utils/generateProduct.js';
 import MockRouter from './routes/mock.router.js';
+import compression from 'compression';
+import zlib from 'zlib';
 
 const app = express();
 const PORT = config.port;
@@ -51,6 +53,15 @@ process.on('unhandledRejection', (reason) => {
 app.use(express.json());
 app.use(customResponses);
 app.use(express.urlencoded({ extended: true }));
+
+if (config.mode === 'production') {
+    app.use(compression({
+        brotli: {
+            enabled: true,
+            zlib: zlib.createBrotliCompress
+        }
+    }));
+}
 
 app.use(cookieParser());
 
