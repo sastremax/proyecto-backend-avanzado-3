@@ -20,8 +20,11 @@ export const loginSession = (req, res, next) => {
         const token = jwt.sign(payload, config.jwt_secret, { expiresIn: '1h' });
 
         res.cookie('jwtToken', token, { httpOnly: true });
+
+        req.logger.info(`User logged in: ${dtoUser.email}`);
         res.success('Login successful', { token, user: dtoUser });
     } catch (error) {
+        req.logger.error(`Login error: ${error.message}`);
         next(error);
     }
 };
@@ -32,15 +35,18 @@ export const registerSession = async (req, res, next) => {
         const user = req.user;
 
         if (!user) {
+            req.logger.warning('User registration failed');
             return res.badRequest('User registration failed');
         }
 
         const newCart = await CartModel.create({ products: [] });
         await UserModel.findByIdAndUpdate(user._id, { cart: newCart._id });
 
+        req.logger.info(`User registered: ${user.email}`);
         res.created('User registered successfully');
 
     } catch (error) {
+        req.logger.error(`Registration error: ${error.message}`);
         next(error);
     }
 
@@ -49,11 +55,13 @@ export const registerSession = async (req, res, next) => {
 export const currentSession = (req, res) => {
 
     const dtoUser = new UsersDTO(req.user);
+    req.logger.info(`Current session retrieved for: ${dtoUser.email}`);
     res.success('Current user', dtoUser);
-    
+
 };
 
 export const logoutSession = (req, res) => {
+    req.logger.info(`User logged out: ${req.user?.email || 'unknown'}`);
     res.clearCookie('jwtToken');
     res.success('Logout successful');
 };
@@ -62,21 +70,23 @@ export const forgotPassword = async (req, res) => {
 
     try {
         const { email } = req.body;
-
+        req.logger.warning('Forgot password request missing email');
         if (!email) return res.badRequest('Email is required.');
 
         const user = await userService.getByEmail(email);
         if (!user) return res.notFound('User not found.');
-
+        req.logger.warning(`Forgot password: user not found for email ${email}`);
         const token = jwt.sign({ email }, config.jwt_secret, { expiresIn: '1h' });
 
         const recoveryLink = `http://localhost:8080/api/sessions/reset-password?token=${token}`;
 
         await sendRecoveryEmail(email, recoveryLink);
 
+        req.logger.info(`Recovery email sent to: ${email}`);
         return res.success('Recovery email sent successfully.');
     } catch (error) {
+        req.logger.error(`Forgot password error: ${error.message}`);
         return res.internalError('Error sending recovery email', error);
     }
-    
+
 };

@@ -19,38 +19,33 @@ import { generateProduct } from './utils/generateProduct.js';
 import MockRouter from './routes/mock.router.js';
 import compression from 'compression';
 import zlib from 'zlib';
+import { addLogger } from './middlewares/addLogger.js';
+import { logger } from './utils/loggerEnvironment.js';
 
 const app = express();
 const PORT = config.port;
 
-console.log('DEBUG: this is app.js');
-console.log('CONFIG MODE:', config.mode);
-
 if (config.mode === 'dev') {
-    console.log('Development mode active');
-    console.log('Generated users:');
+    logger.info('Development mode active');
     for (let i = 0; i < 5; i++) {
-        console.log(generateUser());
-    }
-
-    console.log('Generated products:');
-    for (let i = 0; i < 5; i++) {
-        console.log(generateProduct());
+        logger.debug(`Generated user: ${JSON.stringify(generateUser())}`);
+        logger.debug(`Generated product: ${JSON.stringify(generateProduct())}`);
     }
     process.exit(0);
 }
 
 process.on('uncaughtException', (error) => {
-    console.error('UNCAUGHT EXCEPTION:', error.message);
+    logger.fatal(`UNCAUGHT EXCEPTION: ${error.message}`);
     process.exit(1);
 });
 
 process.on('unhandledRejection', (reason) => {
-    console.error('UNHANDLED REJECTION:', reason);
+    logger.fatal(`UNHANDLED REJECTION: ${reason}`);
     process.exit(1);
 });
 
 app.use(express.json());
+app.use(addLogger);
 app.use(customResponses);
 app.use(express.urlencoded({ extended: true }));
 
@@ -84,13 +79,24 @@ app.use('/base', new BaseRouter().getRouter());
 app.use('/api/business', new BusinessRouter().getRouter());
 app.use('/api/orders', new OrdersRouter().getRouter());
 app.use('/api/mock', MockRouter);
+
+app.get('/loggerTest', (req, res) => {
+    req.logger.debug('DEBUG level log');
+    req.logger.http('HTTP level log');
+    req.logger.info('INFO level log');
+    req.logger.warning('WARNING level log');
+    req.logger.error('ERROR level log');
+    req.logger.fatal('FATAL level log');
+    res.send('Logs generated successfully');
+});
+
 app.use(errorHandler);
 
 const startServer = async () => {
     const { connectToDB } = await import('./config/db.js');
     await connectToDB();
     app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
+        logger.info(`Server running on port ${PORT}`);
     });
 };
 

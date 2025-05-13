@@ -1,4 +1,4 @@
 export function addTimestamp(req, res, next) {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    logger.http(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
     next();
 }
