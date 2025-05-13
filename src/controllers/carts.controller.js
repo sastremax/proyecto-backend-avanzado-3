@@ -4,6 +4,7 @@ import TicketModel from '../models/Ticket.model.js';
 import mongoose from 'mongoose';
 import { sendWhatsAppMessage } from '../utils/twilio.js';
 import config from '../config/config.js';
+import { calculateCartTotal, getUnavailableProducts } from 'cart-utils-maxi';
 
 export async function getCartById(req, res) {
     try {
@@ -202,19 +203,22 @@ export async function purchaseCart(req, res) {
             return res.notFound('Cart not found');
         }
 
-        let totalAmount = 0;
-        const productsNotPurchased = [];
+        const productsFromDB = cart.products.map(item => item.product);
+        const unavailableProducts = getUnavailableProducts(cart, productsFromDB);
+
+        if (unavailableProducts.length > 0) {
+            return res.badRequest({
+                message: 'Some products are not available for purchase',
+                code: 'UNAVAILABLE_PRODUCTS',
+                cause: unavailableProducts
+            });
+        }
+
+        let totalAmount = calculateCartTotal(cart);
         const productsPurchased = [];
 
         for (const item of cart.products) {
             const { product, quantity } = item;
-
-            if (!product?._id || product.stock < quantity) {
-                productsNotPurchased.push(item);
-                continue;
-            }
-
-            totalAmount += product.price * quantity;
             product.stock -= quantity;
             await product.save();
             productsPurchased.push(product._id.toString());
@@ -239,7 +243,7 @@ export async function purchaseCart(req, res) {
 
         res.success('Purchase completed', {
             ticket,
-            productsNotPurchased
+            productsNotPurchased: []
         });
 
     } catch (error) {
