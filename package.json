@@ -4,8 +4,9 @@
 	"description": "",
 	"main": "src/app.js",
 	"scripts": {
-		"start": "node src/app.js",
-		"dev": "nodemon src/app.js",
+		"start": "node src/app.js prod",
+		"dev": "nodemon src/app.js dev",
+		"prod": "node src/app.js prod",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],

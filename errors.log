@@ -1,0 +1,12 @@
+info: Logger funcionando {"timestamp":"2025-05-14T02:06:40.796Z"}
+warning: Logger nivel WARNING visible {"timestamp":"2025-05-14T02:06:40.797Z"}
+info: Connected to MongoDB {"timestamp":"2025-05-14T02:06:41.657Z"}
+info: Server running on port 3000 {"timestamp":"2025-05-14T02:06:41.663Z"}
+info: Logger funcionando
+warning: Logger nivel WARNING visible
+info: Connected to MongoDB
+info: Server running on port 3000
+http: GET / - 11:17:54
+http: GET /api/products/123 - 11:24:00
+http: POST /api/sessions/login - 11:25:29
+http: POST /api/sessions/login - 11:25:39

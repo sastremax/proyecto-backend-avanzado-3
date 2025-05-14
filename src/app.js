@@ -20,7 +20,7 @@ import MockRouter from './routes/mock.router.js';
 import compression from 'compression';
 import zlib from 'zlib';
 import { addLogger } from './middlewares/addLogger.js';
-import { logger } from './utils/loggerEnvironment.js';
+import { logger } from './config/loggerEnvironment.js';
 
 const app = express();
 const PORT = config.port;
@@ -31,7 +31,7 @@ if (config.mode === 'dev') {
         logger.debug(`Generated user: ${JSON.stringify(generateUser())}`);
         logger.debug(`Generated product: ${JSON.stringify(generateProduct())}`);
     }
-    process.exit(0);
+    // process.exit(0);
 }
 
 process.on('uncaughtException', (error) => {
@@ -93,11 +93,21 @@ app.get('/loggerTest', (req, res) => {
 app.use(errorHandler);
 
 const startServer = async () => {
-    const { connectToDB } = await import('./config/db.js');
-    await connectToDB();
-    app.listen(PORT, () => {
-        logger.info(`Server running on port ${PORT}`);
-    });
+    try {
+        const { connectToDB } = await import('./config/db.js');
+        await connectToDB();
+
+        app.listen(PORT, () => {
+            logger.info(`Server running on port ${PORT}`);
+        });
+    } catch (error) {
+        logger.fatal(`Error starting server: ${error.message}`);
+        process.exit(1);
+    }
 };
 
 startServer();
+
+logger.info('Logger funcionando');
+logger.warning('Logger nivel WARNING visible');
+logger.error('Logger nivel ERROR visible');

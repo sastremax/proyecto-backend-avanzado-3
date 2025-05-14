@@ -1,4 +1,4 @@
-import { logger } from '../utils/loggerEnvironment.js';
+import { logger } from '../config/loggerEnvironment.js';
 
 export const addLogger = (req, res, next) => {
 
