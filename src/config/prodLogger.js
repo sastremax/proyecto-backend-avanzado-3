@@ -1,22 +1,31 @@
 import winston from 'winston';
-import { customLevelOptions } from '../config/customLevels.js';
+import { customLevelOptions } from './customLevels.js';
 
 winston.addColors(customLevelOptions.colors);
 
 export const prodLogger = winston.createLogger({
     levels: customLevelOptions.levels,
+    level: 'debug',
     transports: [
+
         new winston.transports.Console({
-            level: 'info',
+            level: 'debug',
             format: winston.format.combine(
                 winston.format.colorize({ all: true }),
-                winston.format.simple()
+                winston.format.timestamp(),
+                winston.format.printf(({ level, message, timestamp }) => {
+                    return `${timestamp} [${level}]: ${message}`;
+                })
             )
         }),
+
         new winston.transports.File({
             filename: 'errors.log',
             level: 'warning',
-            format: winston.format.simple()
+            format: winston.format.combine(
+                winston.format.timestamp(),
+                winston.format.json()
+            )
         })
     ]
 });

@@ -10,3 +10,86 @@ http: GET / - 11:17:54
 http: GET /api/products/123 - 11:24:00
 http: POST /api/sessions/login - 11:25:29
 http: POST /api/sessions/login - 11:25:39
+http: POST /api/sessions/login - 11:30:01
+http: GET /api/products/123 - 11:32:05
+http: GET /api/products/123 - 11:35:44
+info: Logger funcionando
+warning: Logger nivel WARNING visible
+info: Connected to MongoDB
+info: Server running on port 3000
+http: GET /api/products/123 - 11:36:03
+http: GET /api/products/123 - 11:59:57
+http: POST /api/sessions/login - 12:01:30
+warning: Login failed: invalid credentials
+http: POST /api/sessions/login - 12:03:47
+warning: Login failed: invalid credentials
+info: Logger funcionando
+warning: Logger nivel WARNING visible
+info: Connected to MongoDB
+info: Server running on port 3000
+http: GET /test-logger - 10:17:15
+warning: Esto es un warning manual desde /test-logger
+info: Logger funcionando {"timestamp":"2025-05-14T13:21:08.575Z"}
+warning: Logger nivel WARNING visible {"timestamp":"2025-05-14T13:21:08.577Z"}
+info: Connected to MongoDB {"timestamp":"2025-05-14T13:21:10.030Z"}
+info: Server running on port 3000 {"timestamp":"2025-05-14T13:21:10.034Z"}
+http: GET /test-logger - 10:21:23 {"timestamp":"2025-05-14T13:21:23.205Z"}
+warning: Esto es un warning manual desde /test-logger {"timestamp":"2025-05-14T13:21:23.207Z"}
+info: Logger funcionando {"timestamp":"2025-05-14T13:37:03.947Z"}
+warning: Logger nivel WARNING visible {"timestamp":"2025-05-14T13:37:03.954Z"}
+info: Connected to MongoDB {"timestamp":"2025-05-14T13:37:05.156Z"}
+info: Server running on port 3000 {"timestamp":"2025-05-14T13:37:05.159Z"}
+http: GET /test-logger - 10:37:08 {"timestamp":"2025-05-14T13:37:08.285Z"}
+warning: Esto es un warning manual desde /test-logger {"timestamp":"2025-05-14T13:37:08.286Z"}
+info: Logger funcionando {"timestamp":"2025-05-14T14:25:28.248Z"}
+warning: Logger nivel WARNING visible {"timestamp":"2025-05-14T14:25:28.250Z"}
+info: Connected to MongoDB {"timestamp":"2025-05-14T14:25:29.614Z"}
+info: Server running on port 3000 {"timestamp":"2025-05-14T14:25:29.618Z"}
+http: GET /test-logger - 11:25:59 {"timestamp":"2025-05-14T14:25:59.851Z"}
+warning: Esto es un warning manual desde /test-logger {"timestamp":"2025-05-14T14:25:59.853Z"}
+http: GET /loggerTest - 11:26:16 {"timestamp":"2025-05-14T14:26:16.770Z"}
+debug: DEBUG level log {"timestamp":"2025-05-14T14:26:16.776Z"}
+http: HTTP level log {"timestamp":"2025-05-14T14:26:16.776Z"}
+info: INFO level log {"timestamp":"2025-05-14T14:26:16.776Z"}
+warning: WARNING level log {"timestamp":"2025-05-14T14:26:16.777Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T14:32:34.551Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T14:32:34.552Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T14:32:36.240Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-05-14T14:32:36.243Z"}
+{"level":"http","message":"GET /loggerTest - 11:32:39","timestamp":"2025-05-14T14:32:39.813Z"}
+{"level":"debug","message":"DEBUG level log","timestamp":"2025-05-14T14:32:39.816Z"}
+{"level":"http","message":"HTTP level log","timestamp":"2025-05-14T14:32:39.816Z"}
+{"level":"info","message":"INFO level log","timestamp":"2025-05-14T14:32:39.816Z"}
+{"level":"warning","message":"WARNING level log","timestamp":"2025-05-14T14:32:39.816Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T14:35:00.877Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T14:35:00.878Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T14:35:02.306Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-05-14T14:35:02.309Z"}
+{"level":"http","message":"GET /loggerTest - 11:35:02","timestamp":"2025-05-14T14:35:02.944Z"}
+{"level":"debug","message":"DEBUG level log","timestamp":"2025-05-14T14:35:02.947Z"}
+{"level":"http","message":"HTTP level log","timestamp":"2025-05-14T14:35:02.947Z"}
+{"level":"info","message":"INFO level log","timestamp":"2025-05-14T14:35:02.947Z"}
+{"level":"warning","message":"WARNING level log","timestamp":"2025-05-14T14:35:02.947Z"}
+{"level":"http","message":"GET /loggerTest - 11:41:35","timestamp":"2025-05-14T14:41:35.646Z"}
+{"level":"debug","message":"DEBUG level log","timestamp":"2025-05-14T14:41:35.647Z"}
+{"level":"http","message":"HTTP level log","timestamp":"2025-05-14T14:41:35.647Z"}
+{"level":"info","message":"INFO level log","timestamp":"2025-05-14T14:41:35.647Z"}
+{"level":"warning","message":"WARNING level log","timestamp":"2025-05-14T14:41:35.647Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T14:41:51.657Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T14:41:51.658Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T14:41:53.568Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-05-14T14:41:53.579Z"}
+{"level":"http","message":"GET /loggerTest - 11:41:54","timestamp":"2025-05-14T14:41:54.681Z"}
+{"level":"debug","message":"DEBUG level log","timestamp":"2025-05-14T14:41:54.685Z"}
+{"level":"http","message":"HTTP level log","timestamp":"2025-05-14T14:41:54.685Z"}
+{"level":"info","message":"INFO level log","timestamp":"2025-05-14T14:41:54.685Z"}
+{"level":"warning","message":"WARNING level log","timestamp":"2025-05-14T14:41:54.685Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T14:56:05.620Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T14:56:05.622Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T14:56:07.065Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-05-14T14:56:07.072Z"}
+{"level":"http","message":"GET /loggerTest - 11:56:09","timestamp":"2025-05-14T14:56:09.076Z"}
+{"level":"debug","message":"DEBUG level log","timestamp":"2025-05-14T14:56:09.079Z"}
+{"level":"http","message":"HTTP level log","timestamp":"2025-05-14T14:56:09.079Z"}
+{"level":"info","message":"INFO level log","timestamp":"2025-05-14T14:56:09.079Z"}
+{"level":"warning","message":"WARNING level log","timestamp":"2025-05-14T14:56:09.079Z"}

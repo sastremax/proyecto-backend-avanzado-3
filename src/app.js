@@ -18,7 +18,7 @@ import { generateUser } from './utils/generateUser.js';
 import { generateProduct } from './utils/generateProduct.js';
 import MockRouter from './routes/mock.router.js';
 import compression from 'compression';
-import zlib from 'zlib';
+import zlib from 'node:zlib';
 import { addLogger } from './middlewares/addLogger.js';
 import { logger } from './config/loggerEnvironment.js';
 

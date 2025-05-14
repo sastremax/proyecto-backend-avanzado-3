@@ -18,7 +18,15 @@ export default class SessionsRouter extends CustomRouter {
 
                 passport.authenticate('login', { session: false }, (err, user, info) => {
                     if (err) return next(err);
-                    if (!user) return res.unauthorized(info?.message || 'Login failed');
+                    console.log('Logger en router:', typeof req.logger);
+                    if (!user) {
+                        if (req.logger) {
+                            req.logger.warning(`Login failed: invalid credentials`);
+                        } else {
+                            console.warn('Login failed: invalid credentials');
+                        }
+                        return res.unauthorized(info?.message || 'Login failed');
+                    }                    
                     req.user = user;
                     next();
                 })(req, res, next);
