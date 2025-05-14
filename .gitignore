@@ -12,3 +12,6 @@ profe/
 .env
 .env.dev
 .env.prod
+
+artillery/report.json
+artillery/report.html

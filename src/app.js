@@ -90,6 +90,10 @@ app.get('/loggerTest', (req, res) => {
     res.send('Logs generated successfully');
 });
 
+app.get('/test/user', (req, res) => {
+    res.status(200).json({ message: 'Endpoint /test/user activo' });
+});
+
 app.use(errorHandler);
 
 const startServer = async () => {

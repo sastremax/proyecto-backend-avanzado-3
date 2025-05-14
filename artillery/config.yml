@@ -1,0 +1,32 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 10
+      arrivalRate: 5
+  plugins:
+    metrics-by-endpoint: {}
+
+scenarios:
+  - name: Registro y login de usuario
+    flow:
+      - get:
+          url: "/test/user"
+      - post:
+          url: "/api/sessions/register"
+          json:
+            first_name: "{{ first_name }}"
+            last_name: "{{ last_name }}"
+            email: "{{ email }}"
+            password: "prueba123"
+      - post:
+          url: "/api/sessions/login"
+          json:
+            email: "{{ email }}"
+            password: "prueba123"
+
+payload:
+  path: "./artillery/users.csv"
+  fields:
+    - first_name
+    - last_name
+    - email
