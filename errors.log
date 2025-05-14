@@ -93,3 +93,133 @@ warning: WARNING level log {"timestamp":"2025-05-14T14:26:16.777Z"}
 {"level":"http","message":"HTTP level log","timestamp":"2025-05-14T14:56:09.079Z"}
 {"level":"info","message":"INFO level log","timestamp":"2025-05-14T14:56:09.079Z"}
 {"level":"warning","message":"WARNING level log","timestamp":"2025-05-14T14:56:09.079Z"}
+{"level":"info","message":"Primary PID 1328 - Generando 4 workers","timestamp":"2025-05-14T16:37:06.173Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:08.203Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:08.208Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:08.205Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:08.226Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:08.212Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:08.228Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:08.476Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:08.478Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:08.833Z"}
+{"level":"warning","message":"Worker 13288 murió. Reiniciando...","timestamp":"2025-05-14T16:37:08.864Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:08.879Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:08.891Z"}
+{"level":"warning","message":"Worker 9476 murió. Reiniciando...","timestamp":"2025-05-14T16:37:08.927Z"}
+{"level":"warning","message":"Worker 17564 murió. Reiniciando...","timestamp":"2025-05-14T16:37:08.934Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:09.161Z"}
+{"level":"warning","message":"Worker 18164 murió. Reiniciando...","timestamp":"2025-05-14T16:37:09.223Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:11.303Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:11.304Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:11.305Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:11.307Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:11.305Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:11.306Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:11.851Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:11.853Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:12.469Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:12.493Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:12.494Z"}
+{"level":"warning","message":"Worker 10868 murió. Reiniciando...","timestamp":"2025-05-14T16:37:12.495Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:12.503Z"}
+{"level":"warning","message":"Worker 14456 murió. Reiniciando...","timestamp":"2025-05-14T16:37:12.534Z"}
+{"level":"warning","message":"Worker 11192 murió. Reiniciando...","timestamp":"2025-05-14T16:37:12.540Z"}
+{"level":"warning","message":"Worker 488 murió. Reiniciando...","timestamp":"2025-05-14T16:37:12.547Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:14.728Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:14.731Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:14.730Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:14.733Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:14.863Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:14.865Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:14.910Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:14.912Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:15.369Z"}
+{"level":"warning","message":"Worker 4112 murió. Reiniciando...","timestamp":"2025-05-14T16:37:15.393Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:15.402Z"}
+{"level":"warning","message":"Worker 13140 murió. Reiniciando...","timestamp":"2025-05-14T16:37:15.432Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:15.494Z"}
+{"level":"warning","message":"Worker 6736 murió. Reiniciando...","timestamp":"2025-05-14T16:37:15.546Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:15.553Z"}
+{"level":"warning","message":"Worker 12680 murió. Reiniciando...","timestamp":"2025-05-14T16:37:15.613Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:17.648Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:17.663Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:17.653Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:17.665Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:17.804Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:17.806Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:17.912Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:17.915Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:18.408Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:18.408Z"}
+{"level":"warning","message":"Worker 1364 murió. Reiniciando...","timestamp":"2025-05-14T16:37:18.470Z"}
+{"level":"warning","message":"Worker 12004 murió. Reiniciando...","timestamp":"2025-05-14T16:37:18.477Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:18.550Z"}
+{"level":"warning","message":"Worker 9964 murió. Reiniciando...","timestamp":"2025-05-14T16:37:18.600Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:18.706Z"}
+{"level":"warning","message":"Worker 6588 murió. Reiniciando...","timestamp":"2025-05-14T16:37:18.770Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:20.312Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:20.319Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:20.314Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:20.321Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:20.470Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:20.472Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:20.630Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:20.632Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:20.972Z"}
+{"level":"warning","message":"Worker 2136 murió. Reiniciando...","timestamp":"2025-05-14T16:37:20.999Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:21.062Z"}
+{"level":"warning","message":"Worker 18152 murió. Reiniciando...","timestamp":"2025-05-14T16:37:21.090Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:21.122Z"}
+{"level":"warning","message":"Worker 10440 murió. Reiniciando...","timestamp":"2025-05-14T16:37:21.170Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:21.330Z"}
+{"level":"warning","message":"Worker 3708 murió. Reiniciando...","timestamp":"2025-05-14T16:37:21.397Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:22.832Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:22.834Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:22.956Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:22.959Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:23.046Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:23.048Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:23.164Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:23.166Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:23.509Z"}
+{"level":"warning","message":"Worker 13372 murió. Reiniciando...","timestamp":"2025-05-14T16:37:23.532Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:23.618Z"}
+{"level":"warning","message":"Worker 3652 murió. Reiniciando...","timestamp":"2025-05-14T16:37:23.644Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:23.731Z"}
+{"level":"warning","message":"Worker 14808 murió. Reiniciando...","timestamp":"2025-05-14T16:37:23.755Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:23.814Z"}
+{"level":"warning","message":"Worker 10524 murió. Reiniciando...","timestamp":"2025-05-14T16:37:23.850Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:25.674Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:25.677Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:26.056Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:26.058Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:26.237Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:26.239Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:26.354Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-14T16:37:26.362Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:37:26.441Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:37:26.451Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:26.713Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-14T16:37:26.721Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:26.934Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-14T16:37:26.943Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:37:27.142Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-14T16:37:27.150Z"}
+{"level":"info","message":"Primary PID 11660 - Generando 4 workers","timestamp":"2025-05-14T16:38:07.722Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:38:09.889Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:38:09.891Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:38:09.997Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:38:09.997Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:38:09.999Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:38:09.999Z"}
+{"level":"info","message":"Logger funcionando","timestamp":"2025-05-14T16:38:10.079Z"}
+{"level":"warning","message":"Logger nivel WARNING visible","timestamp":"2025-05-14T16:38:10.083Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:38:10.634Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-14T16:38:10.652Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:38:10.751Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-14T16:38:10.779Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:38:10.785Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-14T16:38:10.787Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-14T16:38:10.799Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-14T16:38:10.799Z"}
