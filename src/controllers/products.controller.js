@@ -1,15 +1,15 @@
-import ProductModel from '../models/Product.model.js';
 import CustomError from '../utils/customError.js';
 import mongoose from 'mongoose';
+import ProductService from '../services/ProductService.js';
 
 export async function getProducts(req, res, next) {
     try {
-        const products = await ProductModel.find();
+        const products = await ProductService.getAllProducts();
         req.logger.info(`Retrieved ${products.length} products`);
         res.success('Products retrieved', products);
     } catch (error) {
         req.logger.error(`Error retrieving products: ${error.message}`);
-        throw new CustomError('Error getting products', 500, error);
+        res.internalError('Error getting products');
     }
 }
 
@@ -18,14 +18,14 @@ export async function getProductById(req, res, next) {
         const id = req.params.id;
         if (!mongoose.Types.ObjectId.isValid(id)) {
             req.logger.warning(`Invalid product ID format: ${id}`);
-            return next(new CustomError('Invalid product ID format', 400));
+            return res.badRequest('Invalid product ID format');
         }
 
-        const product = await ProductModel.findById(id);
+        const product = await ProductService.getProductById(id);
 
         if (!product) {
             req.logger.warning(`Product not found: ${id}`);
-            return next(new CustomError('Product not found', 404));
+            return res.notFound('Product not found');
         }
 
         req.logger.info(`Product retrieved: ${id}`);
@@ -33,19 +33,19 @@ export async function getProductById(req, res, next) {
 
     } catch (error) {
         req.logger.error(`Error retrieving product ${req.params.id}: ${error.message}`);
-        throw new CustomError('Error getting product', 500, error);
+        res.internalError('Error getting product');
     }
 }
 
 export async function addProduct(req, res, next) {
     try {
-        const newProduct = await ProductModel.create(req.body);
+        const newProduct = await ProductService.createProduct(req.body);
         req.logger.info(`Product created: ${newProduct._id}`);
         res.created('Product created successfully', newProduct);
 
     } catch (error) {
         req.logger.error(`Error creating product: ${error.message}`);
-        throw new CustomError('Error creating product', 500, error);
+        res.internalError('Error creating product');
     }
 }
 
@@ -54,13 +54,13 @@ export async function updateProduct(req, res, next) {
         const id = req.params.id;
         if (!mongoose.Types.ObjectId.isValid(id)) {
             req.logger.warning(`Invalid product ID format: ${id}`);
-            return next(new CustomError('Invalid product ID format', 400));
+            return res.badRequest('Invalid product ID format');
         }
 
-        const updated = await ProductModel.findByIdAndUpdate(id, req.body, { new: true });
+        const updated = await ProductService.updateProduct(id, req.body);
         if (!updated) {
             req.logger.warning(`Product not found for update: ${id}`);
-            return next(new CustomError('Product not found', 400));
+            return res.badRequest('Product not found');
         }
 
         req.logger.info(`Product updated: ${id}`);
@@ -68,7 +68,7 @@ export async function updateProduct(req, res, next) {
 
     } catch (error) {
         req.logger.error(`Error updating product ${req.params.id}: ${error.message}`)
-        throw new CustomError('Error updating product', 500, error);
+        res.internalError('Error updating product');
     }
 }
 
@@ -77,13 +77,13 @@ export async function deleteProduct(req, res, next) {
         const id = req.params.id;
         if (!mongoose.Types.ObjectId.isValid(id)) {
             req.logger.warning(`Invalid product ID format: ${id}`);
-            return next(new CustomError('Invalid product ID format', 400));
+            return res.badRequest('Invalid product ID format');
         }
 
-        const deleted = await ProductModel.findByIdAndDelete(id);
+        const deleted = await ProductService.deleteProduct(id);
         if (!deleted) {
             req.logger.warning(`Product not found for deletion: ${id}`);
-            return next(new CustomError('Product not found', 400));
+            return res.badRequest('Product not found');
         }
 
         req.logger.info(`Product deleted: ${id}`);
@@ -91,6 +91,6 @@ export async function deleteProduct(req, res, next) {
 
     } catch (error) {
         req.logger.error(`Error deleting product ${req.params.id}: ${error.message}`);
-        throw new CustomError('Error deleting product', 500, error);
+        res.internalError('Error deleting product');
     }
 }

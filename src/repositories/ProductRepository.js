@@ -1,8 +1,8 @@
-import dao from '../dao/factory.js';
+import { ProductManager } from '../dao/mongo/ProductManager.js';
 
-const { productManager } = dao;
+const productManager = new ProductManager();
 
-export class ProductRepository {
+class ProductRepository {
 
     async getAll() {
         return await productManager.getAll();
@@ -24,4 +24,6 @@ export class ProductRepository {
         return await productManager.delete(id);
     }
 
-}
+};
+
+export default new ProductRepository();

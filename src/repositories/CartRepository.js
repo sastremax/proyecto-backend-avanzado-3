@@ -1,8 +1,6 @@
-import dao from '../dao/factory.js';
+import cartManager from '../dao/mongo/CartManager.js';
 
-const { cartManager } = dao;
-
-export class CartRepository {
+class CartRepository {
 
     async create() {
         return await cartManager.create();
@@ -29,3 +27,5 @@ export class CartRepository {
     }
 
 }
+
+export default new CartRepository();

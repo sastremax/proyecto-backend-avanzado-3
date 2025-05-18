@@ -3,9 +3,7 @@ import config from '../config/config.js';
 import CartModel from '../models/Cart.model.js';
 import { UserModel } from '../models/User.model.js';
 import { UsersDTO } from '../dto/UsersDTO.js';
-import { UserService } from '../services/UserService.js';
-
-const userService = new UserService();
+import userService from '../services/UserService.js';
 
 export const loginSession = (req, res, next) => {
     try {

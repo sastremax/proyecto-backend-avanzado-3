@@ -1,6 +1,6 @@
 import TicketModel from '../../models/Ticket.model.js';
 
-export class TicketManager {
+class TicketManager {
 
     async create(data) {
         return await TicketModel.create(data);
@@ -15,3 +15,5 @@ export class TicketManager {
     }
 
 }
+
+export default new TicketManager();

@@ -7,14 +7,13 @@ import {
     updateCart,
     updateProductQuantity,
     removeProductFromCart,
-    deleteCart,
     purchaseCart
 } from '../controllers/carts.controller.js';
 import passportCall from '../middlewares/passportCall.middleware.js';
 import { authorizationRole } from '../middlewares/auth.middleware.js';
 
 export default class CartsRouter extends CustomRouter {
-    init() {        
+    init() {
 
         // rutas de carrito
         this.get('/:id', getCartById);
@@ -55,6 +54,6 @@ export default class CartsRouter extends CustomRouter {
             authorizationRole('user'),
             removeProductFromCart
         );
-        this.delete('/:id', deleteCart);
+        this.put('/:id', clearCart);
     }
 }

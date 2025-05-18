@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-const envFile = process.argv[2] === 'prod' ? '.env.prod' : '.env';
+const envFile = process.env.MODE === 'prod' ? '.env.prod' : '.env';
 dotenv.config({ path: envFile });
 
 const mode = process.argv[2] || 'prod';

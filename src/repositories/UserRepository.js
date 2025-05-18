@@ -1,8 +1,8 @@
-import dao from '../dao/factory.js';
+import { UserManager } from '../dao/mongo/UserManager.js';
 
-const { userManager } = dao;
+const userManager = new UserManager();
 
-export class UserRepository {
+class UserRepository {
 
     async getAll() {
         return await userManager.getAll();
@@ -21,3 +21,5 @@ export class UserRepository {
     }
 
 }
+
+export default new UserRepository();

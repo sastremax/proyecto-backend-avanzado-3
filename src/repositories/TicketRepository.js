@@ -1,19 +1,19 @@
-import dao from '../dao/factory.js';
+import TicketManager from '../dao/mongo/TicketManager.js';
 
-const { ticketManager } = dao;
-
-export class TicketRepository {
+class TicketRepository {
 
     async create(data) {
-        return await ticketManager.create(data);
+        return await TicketManager.create(data);
     }
 
     async getById(id) {
-        return await ticketManager.getById(id);
+        return await TicketManager.getById(id);
     }
 
     async getAll() {
-        return await ticketManager.getAll();
+        return await TicketManager.getAll();
     }
 
 }
+
+export default new TicketRepository();

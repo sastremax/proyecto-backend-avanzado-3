@@ -1,13 +1,16 @@
 import CartModel from '../../models/Cart.model.js';
 
-export class CartManager {
+class CartManager {
 
     async create() {
         return await CartModel.create({ products: [] });
     }
 
     async getById(id) {
-        return await CartModel.findById(id).populate('products.product').lean();
+        const cart = await CartModel.findById(id).populate('products.product');
+        if (!cart) return null;
+        cart.products = cart.products.filter(p => p.product !== null);
+        return cart;
     }
 
     async addProduct(cid, pid) {
@@ -42,3 +45,5 @@ export class CartManager {
     }
 
 }
+
+export default new CartManager();
