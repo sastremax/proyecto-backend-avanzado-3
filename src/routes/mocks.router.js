@@ -5,7 +5,7 @@ import { generateFakeUsersWithCarts } from '../services/mock.service.js';
 
 const router = Router();
 
-router.get('/mockingusers', (req, res) => {
+router.get('/users', (req, res) => {
     const users = [];
 
     for (let i = 0; i < 50; i++) {
@@ -44,7 +44,5 @@ router.post('/generateData', async (req, res) => {
         res.status(500).json({ status: 'error', message: 'Internal server error', error: error.message });
     }
 });
-
-console.log("Mock router cargado")
 
 export default router;

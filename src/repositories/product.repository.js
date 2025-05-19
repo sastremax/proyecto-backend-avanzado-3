@@ -1,4 +1,4 @@
-import { ProductManager } from '../dao/mongo/ProductManager.js';
+import { ProductManager } from '../dao/mongo/product.manager.js';
 
 const productManager = new ProductManager();
 

@@ -1,4 +1,4 @@
-import { UserManager } from '../dao/mongo/UserManager.js';
+import { UserManager } from '../dao/mongo/user.manager.js';
 
 const userManager = new UserManager();
 

@@ -12,6 +12,7 @@ spec:
       labels:
         app: backend
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: backend-container
           image: sastrebocalonmaxi/backend3:1.0
@@ -24,7 +25,13 @@ spec:
               value: "3000"
             - name: SECRET_KEY
               value: CoderHouse2025
-
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
 ---
 
 apiVersion: v1

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import CartService from '../services/CartService.js';
+import CartService from '../services/cart.service.js';
 
 export async function getCartById(req, res) {
 
@@ -51,7 +51,7 @@ export async function addProductToCart(req, res) {
         }
 
         if (!mongoose.Types.ObjectId.isValid(cid) || !mongoose.Types.ObjectId.isValid(pid)) {
-            req.logger.warning(`Invalid ID format`);
+            req.logger.warning('Invalid ID format');
             return res.badRequest('Invalid cart or product ID format');
         }
 

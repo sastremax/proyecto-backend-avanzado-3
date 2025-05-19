@@ -2,7 +2,7 @@ import cluster from 'node:cluster';
 import { cpus } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-import { logger } from './config/loggerEnvironment.js';
+import { logger } from './config/logger.environment.js';
 
 const numCPUs = cpus().length;
 
@@ -25,7 +25,15 @@ if (cluster.isPrimary) {
     });
 
 } else {
-    process.argv[2] = process.env.MODE;
-    const { default: runServer } = await import('./appServer.js');
-    runServer();
+    try {
+        process.argv[2] = process.env.MODE;
+        logger.info(`Worker ${process.pid} is about to import appServer.js`);
+        const { default: runServer } = await import('./appServer.js');
+        logger.info(`Worker ${process.pid} successfully imported appServer.js`);
+        runServer();
+    } catch (error) {
+        console.error('Import or execution failed:', error);
+        logger.fatal(`Worker ${process.pid} failed: ${error.message}`);
+        process.exit(1);
+    }
 }

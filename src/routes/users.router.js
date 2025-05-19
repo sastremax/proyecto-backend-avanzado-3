@@ -1,4 +1,4 @@
-import CustomRouter from './CustomRouter.js';
+import CustomRouter from './custom.router.js';
 import passport from 'passport';
 import {
     githubCallback,
@@ -8,6 +8,8 @@ import {
     validateResetToken,
     resetPassword
 } from '../controllers/users.controller.js';
+import passportCall from '../middlewares/passportCall.middleware.js';
+import { handlePolicies } from '../middlewares/handlePolicies.middleware.js';
 
 export default class UsersRouter extends CustomRouter {
     init() {

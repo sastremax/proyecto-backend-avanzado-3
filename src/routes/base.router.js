@@ -1,4 +1,4 @@
-import CustomRouter from './CustomRouter.js';
+import CustomRouter from './custom.router.js';
 
 export default class BaseRouter extends CustomRouter {
 

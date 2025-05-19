@@ -1,4 +1,4 @@
-import TicketManager from '../dao/mongo/TicketManager.js';
+import TicketManager from '../dao/mongo/ticket.manager.js';
 
 class TicketRepository {
 

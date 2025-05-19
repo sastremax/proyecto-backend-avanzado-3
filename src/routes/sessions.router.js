@@ -1,6 +1,6 @@
-import CustomRouter from './CustomRouter.js';
+import CustomRouter from './custom.router.js';
 import passport from 'passport';
-import { handlePolicies } from '../middlewares/handlePolicies.js';
+import { handlePolicies } from '../middlewares/handlePolicies.middleware.js';
 import {
     loginSession,
     registerSession,
@@ -21,12 +21,12 @@ export default class SessionsRouter extends CustomRouter {
                     console.log('Logger en router:', typeof req.logger);
                     if (!user) {
                         if (req.logger) {
-                            req.logger.warning(`Login failed: invalid credentials`);
+                            req.logger.warning('Login failed: invalid credentials');
                         } else {
                             console.warn('Login failed: invalid credentials');
                         }
                         return res.unauthorized(info?.message || 'Login failed');
-                    }                    
+                    }
                     req.user = user;
                     next();
                 })(req, res, next);

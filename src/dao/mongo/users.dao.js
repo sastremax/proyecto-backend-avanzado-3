@@ -1,7 +1,7 @@
-import { UserModel } from '../../models/User.model.js'
+import { UserModel } from './models/user.model.js';
 
 export class UsersDAO {
-    
+
     static async getAll() {
         return await UserModel.find().lean()
     }

@@ -11,6 +11,9 @@ export function attachUserFromToken(req, res, next) {
         req.user = decoded;
         next();
     } catch (error) {
+        if (req.logger) {
+            req.logger.warning(`Token verification failed: ${error.message}`);
+        }
         next();
     }
 

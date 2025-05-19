@@ -1,6 +1,6 @@
 import twilio from 'twilio';
 import config from '../config/config.js';
-import { logger } from '../config/loggerEnvironment.js'
+import { logger } from '../config/logger.environment.js'
 
 const client = twilio(config.twilio_sid, config.twilio_token);
 

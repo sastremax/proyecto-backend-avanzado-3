@@ -1,4 +1,4 @@
-import CustomRouter from './CustomRouter.js';
+import CustomRouter from './custom.router.js';
 import { createOrder, getAllOrders } from '../controllers/orders.controller.js';
 
 export default class OrdersRouter extends CustomRouter {

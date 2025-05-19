@@ -12,26 +12,20 @@ import CartsRouter from './routes/carts.router.js';
 import errorHandler from './middlewares/errorHandler.middleware.js';
 import config from './config/config.js';
 import customResponses from './middlewares/customResponses.middleware.js';
-import BusinessRouter from './routes/BusinessRouter.js';
-import OrdersRouter from './routes/OrdersRouter.js';
-import { generateUser } from './utils/generateUser.js';
-import { generateProduct } from './utils/generateProduct.js';
-import MockRouter from './routes/mock.router.js';
+import BusinessRouter from './routes/business.router.js';
+import OrdersRouter from './routes/orders.router.js';
+import MockRouter from './routes/mocks.router.js';
 import compression from 'compression';
 import zlib from 'node:zlib';
-import { addLogger } from './middlewares/addLogger.js';
-import { logger } from './config/loggerEnvironment.js';
+import { addLogger } from './middlewares/addLogger.middleware.js';
+import { logger } from './config/logger.environment.js';
+import { swaggerUi, specs } from './swagger/swagger.config.js'
 
 const app = express();
-const PORT = config.port;
 
-if (config.mode === 'dev') {
-    logger.info('Development mode active');
-    for (let i = 0; i < 5; i++) {
-        logger.debug(`Generated user: ${JSON.stringify(generateUser())}`);
-        logger.debug(`Generated product: ${JSON.stringify(generateProduct())}`);
-    }
-}
+app.use('/apidocs', swaggerUi.serve, swaggerUi.setup(specs));
+
+const PORT = config.port;
 
 process.on('uncaughtException', (error) => {
     logger.fatal(`UNCAUGHT EXCEPTION: ${error.message}`);
@@ -77,7 +71,7 @@ app.use('/api/carts', new CartsRouter().getRouter());
 app.use('/base', new BaseRouter().getRouter());
 app.use('/api/business', new BusinessRouter().getRouter());
 app.use('/api/orders', new OrdersRouter().getRouter());
-app.use('/api/mock', MockRouter);
+app.use('/api/mocks', MockRouter);
 
 app.get('/loggerTest', (req, res) => {
     req.logger.debug('DEBUG level log');
@@ -97,6 +91,7 @@ app.use(errorHandler);
 
 const startServer = async () => {
     try {
+        logger.info(`Worker PID ${process.pid} running Express on port ${PORT}`);
         const { connectToDB } = await import('./config/db.js');
         await connectToDB();
 
@@ -104,6 +99,7 @@ const startServer = async () => {
             logger.info(`Server running on port ${PORT}`);
         });
     } catch (error) {
+        console.error(error);
         logger.fatal(`Error starting server: ${error.message}`);
         process.exit(1);
     }

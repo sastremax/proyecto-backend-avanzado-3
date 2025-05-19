@@ -1,4 +1,4 @@
-import orderManager from '../dao/mongo/OrderManager.js';
+import orderManager from '../dao/mongo/order.manager.js';
 
 class OrderRepository {
 

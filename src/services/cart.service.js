@@ -1,6 +1,6 @@
-import CartRepository from '../repositories/CartRepository.js';
-import ProductRepository from '../repositories/ProductRepository.js';
-import TicketRepository from '../repositories/TicketRepository.js';
+import CartRepository from '../repositories/cart.repository.js';
+import ProductRepository from '../repositories/product.repository.js';
+import TicketRepository from '../repositories/ticket.repository.js';
 import { calculateCartTotal, getUnavailableProducts } from 'cart-utils-maxi';
 import { sendWhatsAppMessage } from '../utils/twilio.js';
 import config from '../config/config.js';

@@ -1,6 +1,5 @@
-import CustomError from '../utils/customError.js';
 import mongoose from 'mongoose';
-import ProductService from '../services/ProductService.js';
+import ProductService from '../services/product.service.js';
 
 export async function getProducts(req, res, next) {
     try {

@@ -1,5 +1,5 @@
-import { UsersDTO } from '../dto/UsersDTO.js';
-import UserRepository from '../repositories/UserRepository.js';
+import { UsersDTO } from '../dto/users.dto.js';
+import UserRepository from '../repositories/user.repository.js';
 import { hashPassword, isValidPassword } from '../utils/hash.js';
 import jwt from 'jsonwebtoken';
 import config from '../config/config.js';

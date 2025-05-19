@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import OrderRepository from '../repositories/OrderRepository.js';
-import ProductModel from '../models/Product.model.js';
+import OrderRepository from '../repositories/order.repository.js';
+import ProductModel from '../dao/mongo/models/product.model.js';
 
 const orderRepository = OrderRepository;
 

@@ -1,0 +1,185 @@
+paths:
+  /api/users:
+    get:
+      summary: Obtener todos los usuarios
+      tags:
+        - Usuarios
+      responses:
+        "200":
+          description: Lista de usuarios obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+  /api/users/{uid}:
+    get:
+      summary: Obtener un usuario por su ID
+      tags:
+        - Usuarios
+      parameters:
+        - in: path
+          name: uid
+          required: true
+          schema:
+            type: string
+          description: ID del usuario a obtener
+      responses:
+        "200":
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: Usuario no encontrado
+
+    put:
+      summary: Actualizar un usuario por su ID
+      tags:
+        - Usuarios
+      parameters:
+        - in: path
+          name: uid
+          required: true
+          schema:
+            type: string
+          description: ID del usuario a actualizar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/UpdateUser'
+      responses:
+        "200":
+          description: Usuario actualizado exitosamente
+        "400":
+          description: Datos inválidos para la actualización
+        "404":
+          description: Usuario no encontrado
+
+    delete:
+      summary: Eliminar un usuario por su ID
+      tags:
+        - Usuarios
+      parameters:
+        - in: path
+          name: uid
+          required: true
+          schema:
+            type: string
+          description: ID del usuario a eliminar
+      responses:
+        "200":
+          description: Usuario eliminado exitosamente
+        "404":
+          description: Usuario no encontrado
+
+  /api/users/register:
+    post:
+      summary: Registrar un nuevo usuario
+      tags:
+        - Usuarios
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/NewUser'
+      responses:
+        "201":
+          description: Usuario creado exitosamente
+        "400":
+          description: Error en los datos proporcionados
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID autogenerado por MongoDB
+        first_name:
+          type: string
+          description: Nombre del usuario
+        last_name:
+          type: string
+          description: Apellido del usuario
+        email:
+          type: string
+          description: Correo electrónico
+        role:
+          type: string
+          description: Rol del usuario (user o admin)
+      example:
+        _id: 60a7c6c9e1d1f2a4d8b5e3f0
+        first_name: Juan
+        last_name: Pérez
+        email: juan@example.com
+        role: user
+
+  requestBodies:
+    NewUser:
+      description: Datos necesarios para registrar un nuevo usuario
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              first_name:
+                type: string
+                description: Nombre del usuario
+              last_name:
+                type: string
+                description: Apellido del usuario
+              email:
+                type: string
+                description: Correo electrónico del usuario
+              password:
+                type: string
+                description: Contraseña del usuario
+            required:
+              - first_name
+              - last_name
+              - email
+              - password
+            example:
+              first_name: Laura
+              last_name: López
+              email: laura@example.com
+              password: 12345678
+
+    UpdateUser:
+      description: Datos para actualizar un usuario existente
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              first_name:
+                type: string
+                description: Nombre del usuario
+              last_name:
+                type: string
+                description: Apellido del usuario
+              email:
+                type: string
+                description: Correo electrónico
+              role:
+                type: string
+                description: Rol del usuario (user o admin)
+            required:
+              - first_name
+              - last_name
+              - email
+            example:
+              first_name: Mario
+              last_name: García
+              email: mario@example.com
+              role: user

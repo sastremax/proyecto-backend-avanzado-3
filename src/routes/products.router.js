@@ -1,4 +1,4 @@
-import CustomRouter from './CustomRouter.js';
+import CustomRouter from './custom.router.js';
 import {
     getProducts,
     getProductById,
@@ -6,7 +6,7 @@ import {
     updateProduct,
     deleteProduct
 } from '../controllers/products.controller.js';
-import { 
+import {
     validateProduct,
     validateProductId,
     validatePartialProduct

@@ -2,9 +2,9 @@ import passport from 'passport';
 import local from 'passport-local';
 import GitHubStrategy from 'passport-github2';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
-import { UserManager } from '../dao/mongo/UserManager.js';
+import { UserManager } from '../dao/mongo/user.manager.js';
 import { hashPassword, isValidPassword } from '../utils/hash.js';
-import Cart from '../models/Cart.model.js';
+import Cart from '../dao/mongo/models/cart.model.js';
 import config from './config.js';
 
 const userManager = new UserManager();
@@ -37,7 +37,7 @@ const initializePassport = () => {
                     return done(null, false, { message: 'Password must be at least 8 characters' });
                 }
 
-                if (isNaN(numericAge) || numericAge <= 0) {
+                if (Number.isNaN(numericAge) || numericAge <= 0) {
                     return done(null, false, { message: 'Invalid age' });
                 }
 

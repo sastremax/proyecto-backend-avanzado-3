@@ -1,10 +1,10 @@
-import { UserModel } from '../../models/User.model.js';
+import { UserModel } from './models/user.model.js';
 
 export class UserManager {
     async getByEmail(email) {
         return await UserModel.findOne({ email });
     }
-    
+
     async createUser(userData) {
         return await UserModel.create(userData);
     }

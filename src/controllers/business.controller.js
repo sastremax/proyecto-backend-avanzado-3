@@ -1,4 +1,4 @@
-import { BusinessModel } from '../models/Business.model.js';
+import { BusinessModel } from '../dao/mongo/models/business.model.js';
 
 export async function createBusiness(req, res) {
 

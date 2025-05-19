@@ -1,4 +1,4 @@
-import UserService from '../services/UserService.js';
+import UserService from '../services/user.service.js';
 import { sendRecoveryEmail } from '../utils/mailer.js';
 
 export const githubCallback = (req, res) => {

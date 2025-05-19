@@ -1,4 +1,4 @@
-import ProductRepository from '../repositories/ProductRepository.js';
+import ProductRepository from '../repositories/product.repository.js';
 
 class ProductService {
 

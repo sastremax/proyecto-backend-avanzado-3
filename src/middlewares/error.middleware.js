@@ -1,6 +1,6 @@
-import CustomError from '../utils/customError.js';
+import CustomError from '../utils/custom.error.js';
 import mongoose from 'mongoose';
-import EErrors from '../utils/EErrors.js';
+import EErrors from '../utils/e.errors.js';
 
 export function validateProduct(req, res, next) {
     const { title, description, price } = req.body;
