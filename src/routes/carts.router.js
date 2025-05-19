@@ -15,7 +15,6 @@ import { authorizationRole } from '../middlewares/auth.middleware.js';
 export default class CartsRouter extends CustomRouter {
     init() {
 
-        // rutas de carrito
         this.get('/:id', getCartById);
         this.post('/', createCart);
         this.post(
@@ -54,6 +53,5 @@ export default class CartsRouter extends CustomRouter {
             authorizationRole('user'),
             removeProductFromCart
         );
-        this.put('/:id', clearCart);
     }
 }

@@ -11,7 +11,7 @@ import {
 
 export default class UsersRouter extends CustomRouter {
     init() {
-        
+
         this.get('/github', passport.authenticate('github', { scope: ['user:email'] }));
 
         this.get('/githubcallback',
@@ -29,6 +29,9 @@ export default class UsersRouter extends CustomRouter {
 
         this.post('/reset-password', [], resetPassword);
 
-        this.get('/:email', getUserByEmail);
+        this.get('/:email',
+            passportCall('current'),
+            handlePolicies(['ADMIN']),
+            getUserByEmail);
     }
 }

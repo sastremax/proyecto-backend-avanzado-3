@@ -26,6 +26,12 @@ export const debugSession = (req, res) => {
 
 export const getUserByEmail = async (req, res) => {
     const { email } = req.params;
+
+    if (req.user?.role !== 'admin') {
+        req.logger.warning(`Unauthorized access attempt by ${req.user?.email || 'unknown'}`);
+        return res.forbidden('Only administrators can access this resource.');
+    }
+
     try {
         const userDTO = await UserService.getUserByEmail(email);
         if (!userDTO) {
