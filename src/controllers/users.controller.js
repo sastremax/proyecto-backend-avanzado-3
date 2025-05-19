@@ -17,7 +17,6 @@ export const githubCallback = (req, res) => {
 export const debugSession = (req, res) => {
     req.logger.debug(`Session data requested by ${req.user?.email || 'unknown'}`);
     res.success('Session data', {
-        session: req.session,
         user: req.user
     });
 };

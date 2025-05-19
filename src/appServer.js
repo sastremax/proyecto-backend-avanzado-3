@@ -1,7 +1,6 @@
 import express from 'express';
 import { connectToDB } from './config/db.js';
 import cookieParser from 'cookie-parser';
-import session from 'express-session';
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import SessionsRouter from './routes/sessions.router.js';
@@ -53,17 +52,8 @@ if (config.mode === 'production') {
 
 app.use(cookieParser());
 
-app.use(session({
-    secret: config.secret_key,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false }
-}));
-
 initializePassport();
 app.use(passport.initialize());
-app.use(passport.session());
-
 app.use('/api/users', new UsersRouter().getRouter());
 app.use('/api/sessions', new SessionsRouter().getRouter());
 app.use('/api/products', new ProductsRouter().getRouter());
