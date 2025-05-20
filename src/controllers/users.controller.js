@@ -1,6 +1,19 @@
 import UserService from '../services/user.service.js';
 import { sendRecoveryEmail } from '../utils/mailer.js';
 
+export const getAllUsers = async (req, res, next) => {
+    try {
+        const users = await UserService.getAllUsers()
+        res.status(200).json({
+            status: 'success',
+            message: 'Usuarios obtenidos correctamente',
+            data: users
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
 export const githubCallback = (req, res) => {
     const user = req.user;
     try {

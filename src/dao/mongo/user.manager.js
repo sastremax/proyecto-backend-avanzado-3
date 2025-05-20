@@ -12,4 +12,8 @@ export class UserManager {
     async getById(id) {
         return await UserModel.findById(id);
     }
+
+    async getAllUsers() {
+        return await UserModel.find({}, { password: 0 })
+    }
 }

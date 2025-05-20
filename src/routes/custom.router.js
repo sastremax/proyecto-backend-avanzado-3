@@ -11,24 +11,49 @@ export default class CustomRouter {
         return this.router;
     }
 
-    get(path, ...middlewares) {
-        this.router.get(path, (req, res, next) => this.#generateCustomResponses(req, res, next), ...middlewares);
+    get(path, policies, ...callbacks) {
+        this.router.get(
+            path,
+            this.#generateCustomResponses,
+            this.#handlePolicies(policies),
+            ...callbacks
+        );
     }
 
-    post(path, ...middlewares) {
-        this.router.post(path, (req, res, next) => this.#generateCustomResponses(req, res, next), ...middlewares);
+    post(path, policies, ...callbacks) {
+        this.router.post(
+            path,
+            (req, res, next) => this.#generateCustomResponses(req, res, next),
+            this.#handlePolicies(policies),
+            ...callbacks
+        );
     }
 
-    put(path, ...middlewares) {
-        this.router.put(path, (req, res, next) => this.#generateCustomResponses(req, res, next), ...middlewares);
+    put(path, policies, ...callbacks) {
+        this.router.put(
+            path,
+            (req, res, next) => this.#generateCustomResponses(req, res, next),
+            this.#handlePolicies(policies),
+            ...callbacks
+        );
     }
 
-    delete(path, ...middlewares) {
-        this.router.delete(path, (req, res, next) => this.#generateCustomResponses(req, res, next), ...middlewares);
+    delete(path, policies, ...callbacks) {
+        this.router.delete(
+            path,
+            (req, res, next) => this.#generateCustomResponses(req, res, next),
+            this.#handlePolicies(policies),
+            ...callbacks
+        );
     }
 
-    patch(path, ...middlewares) {
-        this.router.patch(path, (req, res, next) => this.#generateCustomResponses(req, res, next), ...middlewares);
+    patch(path, policies, ...callbacks) {
+        this.router.patch(
+            path,
+            (req, res, next) => this.#generateCustomResponses(req, res, next),
+            this.#handlePolicies(policies),
+            ...callbacks
+        );
     }
 
     init() {
@@ -69,6 +94,24 @@ export default class CustomRouter {
         };
 
         next();
+    }
+
+    #handlePolicies(policies) {
+        return (req, res, next) => {
+            if (policies.includes('PUBLIC')) return next()
+
+            const user = req.user
+
+            if (!user) {
+                return res.unauthorized('No autorizado: se requiere autenticación.')
+            }
+
+            if (!policies.includes(user.role)) {
+                return res.forbidden('No tenés permisos para acceder a este recurso.')
+            }
+
+            next()
+        }
     }
 
 }

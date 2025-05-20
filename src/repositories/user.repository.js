@@ -4,8 +4,8 @@ const userManager = new UserManager();
 
 class UserRepository {
 
-    async getAll() {
-        return await userManager.getAll();
+    async getAllUsers() {
+        return await userManager.getAllUsers();
     }
 
     async getBy(filter) {

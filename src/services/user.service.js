@@ -6,6 +6,10 @@ import config from '../config/config.js';
 
 class UserService {
 
+    async getAllUsers() {
+        return await UserRepository.getAllUsers()
+    }
+
     async getUserByEmail(email) {
         const user = await UserRepository.getBy({ email });
         if (!user) return null;

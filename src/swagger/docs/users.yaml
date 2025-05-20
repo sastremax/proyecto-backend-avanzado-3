@@ -13,6 +13,50 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+              example:
+                - _id: "682b9e814501d9f87aecb514"
+                  first_name: "Laura"
+                  last_name: "Urbina Castañeda"
+                  email: "Cristian_SeguraMena@yahoo.com"
+                  age: 39
+                  cart: "682b9e814501d9f87aecb512"
+                  role: "user"
+                  __v: 0
+        "400":
+          description: Solicitud mal formada
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Solicitud incorrecta"
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "No autorizado"
+        "403":
+          description: Prohibido - Sin permisos
+          content:
+            application/json:
+              example:
+                status: error
+                error: "No tenés permisos para acceder a este recurso"
+        "404":
+          description: Usuarios no encontrados
+          content:
+            application/json:
+              example:
+                status: error
+                error: "No se encontraron usuarios"
+        "500":
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Error inesperado en el servidor"
 
   /api/users/{uid}:
     get:
@@ -33,8 +77,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+              example:
+                _id: "682b9e814501d9f87aecb514"
+                first_name: "Laura"
+                last_name: "Urbina Castañeda"
+                email: "Cristian_SeguraMena@yahoo.com"
+                age: 39
+                cart: "682b9e814501d9f87aecb512"
+                role: "user"
+                __v: 0
         "404":
           description: Usuario no encontrado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Usuario no encontrado"
 
     put:
       summary: Actualizar un usuario por su ID
@@ -56,10 +114,25 @@ paths:
       responses:
         "200":
           description: Usuario actualizado exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: "Usuario actualizado correctamente"
         "400":
           description: Datos inválidos para la actualización
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Datos inválidos"
         "404":
           description: Usuario no encontrado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Usuario no encontrado"
 
     delete:
       summary: Eliminar un usuario por su ID
@@ -75,8 +148,18 @@ paths:
       responses:
         "200":
           description: Usuario eliminado exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: "Usuario eliminado correctamente"
         "404":
           description: Usuario no encontrado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Usuario no encontrado"
 
   /api/users/register:
     post:
@@ -92,8 +175,18 @@ paths:
       responses:
         "201":
           description: Usuario creado exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: "Usuario registrado correctamente"
         "400":
           description: Error en los datos proporcionados
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Faltan datos obligatorios"
 
 components:
   schemas:
@@ -105,22 +198,27 @@ components:
           description: ID autogenerado por MongoDB
         first_name:
           type: string
-          description: Nombre del usuario
         last_name:
           type: string
-          description: Apellido del usuario
         email:
           type: string
-          description: Correo electrónico
+        age:
+          type: integer
+        cart:
+          type: string
         role:
           type: string
-          description: Rol del usuario (user o admin)
+        __v:
+          type: integer
       example:
-        _id: 60a7c6c9e1d1f2a4d8b5e3f0
-        first_name: Juan
-        last_name: Pérez
-        email: juan@example.com
-        role: user
+        _id: "682b9e814501d9f87aecb514"
+        first_name: "Laura"
+        last_name: "Urbina Castañeda"
+        email: "Cristian_SeguraMena@yahoo.com"
+        age: 39
+        cart: "682b9e814501d9f87aecb512"
+        role: "user"
+        __v: 0
 
   requestBodies:
     NewUser:
@@ -139,10 +237,10 @@ components:
                 description: Apellido del usuario
               email:
                 type: string
-                description: Correo electrónico del usuario
+                description: Correo electrónico
               password:
                 type: string
-                description: Contraseña del usuario
+                description: Contraseña
             required:
               - first_name
               - last_name
