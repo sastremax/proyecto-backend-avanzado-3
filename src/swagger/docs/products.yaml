@@ -210,7 +210,37 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/requestBodies/NewProduct'
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                code:
+                  type: string
+                stock:
+                  type: number
+                category:
+                  type: string
+                status:
+                  type: string
+                  enum: [available, unavailable]
+                thumbnails:
+                  type: array
+                  items:
+                    type: string
+              example:
+                title: "Monitor Gamer Curvo"
+                description: "Monitor de 27 pulgadas, 165Hz"
+                price: 199999
+                code: "MON001"
+                stock: 25
+                category: "monitores"
+                status: available
+                thumbnails:
+                  - "https://ejemplo.com/monitor.webp"
       responses:
         "200":
           description: Producto actualizado exitosamente
@@ -345,4 +375,39 @@ components:
               thumbnails:
                 - https://ejemplo.com/zapas.jpg
 
-  
+    UpdateProduct:
+      description: Datos permitidos para actualizar un producto existente
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              price:
+                type: number
+              code:
+                type: string
+              stock:
+                type: number
+              category:
+                type: string
+              status:
+                type: string
+                enum: [available, unavailable]
+              thumbnails:
+                type: array
+                items:
+                  type: string
+            example:
+              title: ""
+              description: ""
+              price: 0
+              code: ""
+              stock: 0
+              category: ""
+              status: available
+              thumbnails: []
