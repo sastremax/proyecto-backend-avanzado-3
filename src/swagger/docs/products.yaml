@@ -87,6 +87,88 @@ paths:
                 status: error
                 error: "Ocurrió un error inesperado en el servidor"
 
+    post:
+      summary: Crear un nuevo producto
+      tags:
+        - Productos
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                code:
+                  type: string
+                stock:
+                  type: number
+                category:
+                  type: string
+                status:
+                  type: string
+                  enum: [available, unavailable]
+                thumbnails:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - title
+                - description
+                - price
+                - code
+                - stock
+                - category
+              example:
+                title: Monitor Gamer Curvo
+                description: Monitor curvo 27'' 165Hz
+                price: 249999
+                code: MONG165
+                stock: 30
+                category: monitores
+                status: available
+                thumbnails:
+                  - https://ejemplo.com/monitor.jpg
+      responses:
+        "201":
+          description: Producto creado exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Producto creado correctamente
+                data:
+                  _id: "682c5bbba6fd54811edcd141"
+                  title: "Monitor Gamer Curvo"                  
+        "400":
+          description: Datos inválidos
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Faltan campos obligatorios"
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "No autorizado: se requiere autenticación."
+        "403":
+          description: Acceso denegado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Acceso restringido al rol admin"
+
   /api/products/{pid}:
     get:
       summary: Obtener un producto por su ID

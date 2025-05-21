@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import EErrors from '../utils/e.errors.js';
 
 export function validateProduct(req, res, next) {
-    const { title, description, price } = req.body;
+    const { title, description, price, code, stock, category } = req.body;
 
     if (!title || typeof title !== 'string' || title.trim() === '') {
         return next(new CustomError({
@@ -32,6 +32,33 @@ export function validateProduct(req, res, next) {
         }));
     }
 
+    if (!code || typeof code !== 'string' || code.trim() === '') {
+        return next(new CustomError({
+            message: 'Invalid or missing code',
+            statusCode: 400,
+            code: EErrors.INCOMPLETE_DATA,
+            cause: 'Code must be a non-empty string'
+        }));
+    }
+
+    if (stock === undefined || typeof stock !== 'number' || stock < 0) {
+        return next(new CustomError({
+            message: 'Invalid or missing stock',
+            statusCode: 400,
+            code: EErrors.INCOMPLETE_DATA,
+            cause: 'Stock must be a number >= 0'
+        }));
+    }
+
+    if (!category || typeof category !== 'string' || category.trim() === '') {
+        return next(new CustomError({
+            message: 'Invalid or missing category',
+            statusCode: 400,
+            code: EErrors.INCOMPLETE_DATA,
+            cause: 'Category must be a non-empty string'
+        }));
+    }
+
     next();
 }
 
@@ -52,7 +79,7 @@ export function validateProductId(req, res, next) {
 }
 
 export function validatePartialProduct(req, res, next) {
-    
+
     const { title, description, price } = req.body;
 
     if (title !== undefined && (typeof title !== 'string' || title.trim() === '')) {
