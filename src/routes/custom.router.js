@@ -98,15 +98,21 @@ export default class CustomRouter {
 
     #handlePolicies(policies) {
         return (req, res, next) => {
-            if (policies.includes('PUBLIC')) return next()
+            if (!Array.isArray(policies)) {
+                req.logger?.error(`[POLICY ERROR] Expected an array, but received: ${typeof policies}`)
+                return res.internalError("El parámetro 'policies' debe ser un array.")
+            }
+            if (policies.includes('public')) return next()
 
             const user = req.user
 
             if (!user) {
+                req.logger?.warning('[AUTH] Unauthorized access attempt (no user in request)')
                 return res.unauthorized('No autorizado: se requiere autenticación.')
             }
 
             if (!policies.includes(user.role)) {
+                req.logger?.warning(`[AUTH] Forbidden: user role "${user.role}" does not match required policies ${JSON.stringify(policies)}`)
                 return res.forbidden('No tenés permisos para acceder a este recurso.')
             }
 

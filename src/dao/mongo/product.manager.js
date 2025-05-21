@@ -22,4 +22,8 @@ export class ProductManager {
         return await ProductModel.findByIdAndDelete(id).lean();
     }
 
+    async findByIdWithSession(id, session) {
+        return await ProductModel.findById(id).session(session);
+    }
+
 }

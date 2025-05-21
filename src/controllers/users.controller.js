@@ -6,13 +6,58 @@ export const getAllUsers = async (req, res, next) => {
         const users = await UserService.getAllUsers()
         res.status(200).json({
             status: 'success',
-            message: 'Usuarios obtenidos correctamente',
+            message: 'Users retrieved successfully',
             data: users
         })
     } catch (error) {
+        req.logger?.error(`Failed to get users: ${error.message}`);
         next(error)
     }
 }
+
+export const getUserById = async (req, res, next) => {
+    try {
+        const { uid } = req.params;
+        const user = await UserService.getUserById(uid);
+        if (!user) {
+            req.logger?.warning(`User not found: ${uid}`);
+            return res.notFound('User not found');
+        }
+
+        req.logger?.info(`User retrieved by ID: ${uid}`);
+        res.success('User found', user);
+    } catch (error) {
+        req.logger?.error(`Error retrieving user by ID: ${error.message}`);
+        next(error);
+    }
+};
+
+export const updateUser = async (req, res, next) => {
+    try {
+        const { uid } = req.params;
+        const updateData = req.body;
+        const updatedUser = await UserService.updateUserById(uid, updateData);
+
+        req.logger?.info(`User updated: ${uid}`);
+        res.success('User updated successfully', updatedUser);
+    } catch (error) {
+        req.logger?.error(`Error updating user: ${error.message}`);
+        next(error);
+    }
+};
+
+export const deleteUser = async (req, res, next) => {
+    try {
+        const { uid } = req.params;
+        const deletedUser = await UserService.deleteUserById(uid);
+
+        req.logger?.info(`User deleted: ${uid}`);
+        res.success('User deleted successfully', deletedUser);
+    } catch (error) {
+        req.logger?.error(`Error deleting user: ${error.message}`);
+        next(error);
+    }
+};
 
 export const githubCallback = (req, res) => {
     const user = req.user;

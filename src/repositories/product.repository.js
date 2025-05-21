@@ -24,6 +24,10 @@ class ProductRepository {
         return await productManager.delete(id);
     }
 
+    async findByIdWithSession(id, session) {
+        return await productManager.findByIdWithSession(id, session);
+    }
+
 };
 
 export default new ProductRepository();

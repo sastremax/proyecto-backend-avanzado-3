@@ -42,7 +42,7 @@ export const registerSession = async (req, res, next) => {
         }
 
         const newCart = await CartModel.create({ products: [] });
-        await UserModel.findByIdAndUpdate(user._id, { cart: newCart._id });
+        await userService.assignCartToUser(user._id, newCart._id);
 
         req.logger.info(`User registered: ${user.email}`);
         res.created('User registered successfully');

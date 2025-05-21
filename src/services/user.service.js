@@ -10,6 +10,12 @@ class UserService {
         return await UserRepository.getAllUsers()
     }
 
+    async getUserById(id) {
+        const user = await UserRepository.getById(id)
+        if (!user) return null;
+        return new UsersDTO(user);
+    }
+
     async getUserByEmail(email) {
         const user = await UserRepository.getBy({ email });
         if (!user) return null;
@@ -18,6 +24,18 @@ class UserService {
 
     async getRawUserByEmail(email) {
         return await UserRepository.getBy({ email }); // para resetPassword
+    }
+
+    async updateUserById(id, data) {
+        const updatedUser = await UserRepository.updateById(id, data);
+        if (!updatedUser) throw new Error('User not found');
+        return new UsersDTO(updatedUser);
+    }
+
+    async deleteUserById(id) {
+        const deletedUser = await UserRepository.deleteById(id);
+        if (!deletedUser) throw new Error('User not found');
+        return deletedUser;
     }
 
     isSamePassword(newPassword, oldHashedPassword) {
@@ -50,6 +68,20 @@ class UserService {
             role: user.role,
             cart: user.cart
         };
+    }
+
+    async create(userData) {
+        const hashedPassword = await hashPassword(userData.password);
+        const newUser = {
+            ...userData,
+            password: hashedPassword
+        };
+        const createdUser = await UserRepository.create(newUser);
+        return new UsersDTO(createdUser);
+    }
+
+    async assignCartToUser(userId, cartId) {
+        return await UserRepository.updateById(userId, { cart: cartId });
     }
 
 }

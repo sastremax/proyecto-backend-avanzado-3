@@ -3,9 +3,10 @@ import local from 'passport-local';
 import GitHubStrategy from 'passport-github2';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { UserManager } from '../dao/mongo/user.manager.js';
-import { hashPassword, isValidPassword } from '../utils/hash.js';
 import Cart from '../dao/mongo/models/cart.model.js';
 import config from './config.js';
+import userService from '../services/user.service.js';
+import { isValidPassword } from '../utils/hash.js';
 
 const userManager = new UserManager();
 
@@ -15,9 +16,8 @@ const cookieExtractor = (req) => {
     return req?.cookies?.jwtToken;
 };
 
-// inicializo todas las estrategias
 const initializePassport = () => {
-    // estretegia para registrar usuarios
+
     passport.use('register', new LocalStrategy(
         { passReqToCallback: true, usernameField: 'email' },
         async (req, email, password, done) => {
@@ -49,19 +49,19 @@ const initializePassport = () => {
                 if (exists) {
                     return done(null, false, { message: 'User already exists. Change your email, please' });
                 }
-                const hashedPassword = hashPassword(password);
 
                 const cart = await Cart.create({ products: [] });
 
-                const user = await userManager.createUser({
+                const user = await userService.create({
                     first_name,
                     last_name,
                     email,
-                    password: hashedPassword,
+                    password,
                     age,
                     cart: cart._id,
                     role: email === 'adminCoder@coder.com' ? 'admin' : 'user'
-                })
+                });
+
                 return done(null, user);
             } catch (error) {
                 return done(error)
@@ -69,7 +69,6 @@ const initializePassport = () => {
         }
     ));
 
-    // estrategia para login
     passport.use('login', new LocalStrategy(
         { usernameField: 'email' },
         async (email, password, done) => {
@@ -78,7 +77,10 @@ const initializePassport = () => {
                 if (!user) {
                     return done(null, false, { message: 'User not found' });
                 }
-                const valid = isValidPassword(password, user.password);
+                console.log('Entered password:', password);
+                console.log('Stored hash:', user.password);
+                const valid = await isValidPassword(password, user.password);
+                console.log('Password match:', valid);
                 if (!valid) {
                     return done(null, false, { message: 'Incorrect password' });
                 }
@@ -89,7 +91,6 @@ const initializePassport = () => {
         }
     ));
 
-    // estrategia GitHub
     passport.use('github', new GitHubStrategy({
         clientID: config.github_client_id,
         clientSecret: config.github_client_secret,
@@ -113,7 +114,6 @@ const initializePassport = () => {
         }
     }));
 
-    // estrategia JWT para extraer usuario desde cookie
     passport.use('current', new JwtStrategy(
         {
             jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
@@ -121,7 +121,9 @@ const initializePassport = () => {
         },
         async (jwtPayload, done) => {
             try {
+                console.log('JWT Payload ID:', jwtPayload.id);
                 const user = await userManager.getById(jwtPayload.id);
+                console.log('User from DB:', user);
                 if (!user) return done(null, false, { message: 'User not found' });
                 return done(null, {
                     id: user._id,

@@ -22,41 +22,13 @@ paths:
                   cart: "682b9e814501d9f87aecb512"
                   role: "user"
                   __v: 0
-        "400":
-          description: Solicitud mal formada
-          content:
-            application/json:
-              example:
-                status: error
-                error: "Solicitud incorrecta"
-        "401":
-          description: No autorizado
-          content:
-            application/json:
-              example:
-                status: error
-                error: "No autorizado"
-        "403":
-          description: Prohibido - Sin permisos
-          content:
-            application/json:
-              example:
-                status: error
-                error: "No tenés permisos para acceder a este recurso"
-        "404":
-          description: Usuarios no encontrados
-          content:
-            application/json:
-              example:
-                status: error
-                error: "No se encontraron usuarios"
         "500":
           description: Error interno del servidor
           content:
             application/json:
               example:
                 status: error
-                error: "Error inesperado en el servidor"
+                error: "Ocurrió un error inesperado en el servidor"
 
   /api/users/{uid}:
     get:
@@ -93,6 +65,13 @@ paths:
               example:
                 status: error
                 error: "Usuario no encontrado"
+        "500":
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Ocurrió un error inesperado en el servidor"
 
     put:
       summary: Actualizar un usuario por su ID
@@ -106,19 +85,33 @@ paths:
             type: string
           description: ID del usuario a actualizar
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/requestBodies/UpdateUser'
+        $ref: '#/components/requestBodies/UpdateUser'
       responses:
         "200":
           description: Usuario actualizado exitosamente
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    $ref: '#/components/schemas/User'
               example:
                 status: success
-                message: "Usuario actualizado correctamente"
+                message: Usuario actualizado correctamente
+                data:
+                  _id: "682b9e814501d9f87aecb514"
+                  first_name: "Mario"
+                  last_name: "García"
+                  email: "mario@example.com"
+                  age: 42
+                  cart: "682b9e814501d9f87aecb512"
+                  role: "user"
+                  __v: 0
         "400":
           description: Datos inválidos para la actualización
           content:
@@ -133,6 +126,20 @@ paths:
               example:
                 status: error
                 error: "Usuario no encontrado"
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "No autorizado: se requiere autenticación."
+        "500":
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Error inesperado en el servidor"
 
     delete:
       summary: Eliminar un usuario por su ID
@@ -269,6 +276,9 @@ components:
               email:
                 type: string
                 description: Correo electrónico
+              age:
+                type: integer
+                description: Edad del usuario
               role:
                 type: string
                 description: Rol del usuario (user o admin)
@@ -280,4 +290,5 @@ components:
               first_name: Mario
               last_name: García
               email: mario@example.com
+              age: 42
               role: user

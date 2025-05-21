@@ -1,8 +1,11 @@
 import OrderService from '../services/order.service.js';
 
 export async function createOrder(req, res) {
-
-    const result = await OrderService.createOrder(req.body);
+    const orderData = {
+        ...req.body,
+        user: req.user.id
+    };
+    const result = await OrderService.createOrder(orderData);
 
     if (result.error) {
         req.logger.warning(`Order creation error: ${result.error}`);
@@ -25,6 +28,21 @@ export async function getAllOrders(req, res) {
 
     } catch (error) {
         req.logger.error(`Error retrieving orders: ${error.message}`);
+        res.internalError('Error retrieving orders', error);
+    }
+
+}
+
+export async function getUserOrders(req, res) {
+    
+    try {
+        const userId = req.user.id;
+        const orders = await OrderService.getOrdersByUser(userId);
+
+        req.logger.info(`Orders retrieved for user ${userId} (${orders.length})`);
+        res.success('Orders retrieved', orders);
+    } catch (error) {
+        req.logger.error(`Error retrieving user orders: ${error.message}`);
         res.internalError('Error retrieving orders', error);
     }
 

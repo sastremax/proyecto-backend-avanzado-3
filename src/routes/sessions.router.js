@@ -9,13 +9,12 @@ import {
     forgotPassword
 } from '../controllers/sessions.controller.js';
 import { resetPassword } from '../controllers/users.controller.js';
+import { passportWithPolicy } from '../middlewares/authPolicy.middleware.js';
 
 export default class SessionsRouter extends CustomRouter {
     init() {
-        // login con passport y generación de JWT
-        this.post('/login',
+        this.post('/login', ['public'],
             (req, res, next) => {
-
                 passport.authenticate('login', { session: false }, (err, user, info) => {
                     if (err) return next(err);
                     console.log('Logger en router:', typeof req.logger);
@@ -33,11 +32,8 @@ export default class SessionsRouter extends CustomRouter {
             },
             loginSession
         );
-
-        // registro con passport
-        this.post('/register',
+        this.post('/register', ['public'],
             (req, res, next) => {
-
                 passport.authenticate('register', { session: false }, (err, user, info) => {
                     if (err) return next(err);
                     if (!user) return res.unauthorized(info?.message || 'Registration failed');
@@ -48,20 +44,16 @@ export default class SessionsRouter extends CustomRouter {
             },
             registerSession
         );
-
-        // current
         this.get('/current',
             passport.authenticate('current', { session: false }),
-            handlePolicies(['USER', 'ADMIN']),
+            handlePolicies(['user', 'admin']),
             currentSession
         );
-
-        // password perdido
-        this.post('/forgot-password', forgotPassword)
-        // password reseteado
-        this.post('/reset-password', resetPassword)
-
-        // logout
-        this.get('/logout', logoutSession);
+        this.post('/forgot-password', ['public'], forgotPassword)
+        this.post('/reset-password', ['public'], resetPassword)
+        this.get('/logout',
+            ['public'],
+            ...passportWithPolicy(['user', 'admin']),
+            logoutSession);
     }
 }

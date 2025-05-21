@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import OrderRepository from '../repositories/order.repository.js';
-import ProductModel from '../dao/mongo/models/product.model.js';
+import ProductRepository from '../repositories/product.repository.js';
 
 const orderRepository = OrderRepository;
 
@@ -20,7 +20,7 @@ class OrderService {
                 const updatedProducts = [];
 
                 for (const item of products) {
-                    const dbProduct = await ProductModel.findById(item.product).session(session);
+                    const dbProduct = await ProductRepository.findByIdWithSession(item.product, session);
 
                     if (!dbProduct) {
                         throw new Error('Product not found');
@@ -62,6 +62,11 @@ class OrderService {
 
     async getAllOrders() {
         return await orderRepository.getAll();
+    }
+
+    async getOrdersByUser(userId) {
+        const orders = await OrderModel.find({ user: userId });
+        return orders;
     }
 
 }

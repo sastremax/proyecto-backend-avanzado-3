@@ -12,8 +12,16 @@ class UserRepository {
         return await userManager.getBy(filter);
     }
 
+    async getById(id) {
+        return await userManager.getById(id);
+    }
+
     async create(data) {
-        return await userManager.create(data);
+        return await userManager.createUser(data);
+    }
+
+    async updateById(id, data) {
+        return await userManager.updateUserById(id, data);
     }
 
     async deleteById(id) {
