@@ -2,9 +2,9 @@ import ProductRepository from '../repositories/product.repository.js';
 
 class ProductService {
 
-    async getAllProducts() {
+    async getAllProducts(filters) {
 
-        return await ProductRepository.getAll();
+        return await ProductRepository.getAll(filters);
     }
 
     async getProductById(id) {

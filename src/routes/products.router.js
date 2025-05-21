@@ -16,8 +16,8 @@ export default class ProductsRouter extends CustomRouter {
 
     init() {
 
-        this.get('/', getProducts);
-        this.get('/:id', validateProductId, getProductById);
+        this.get('/', ['public'], getProducts);
+        this.get('/:id', ['public'], validateProductId, getProductById);
         this.post('/', ['admin'], validateProduct, addProduct);
         this.put('/:id', ['admin'], validateProductId, validatePartialProduct, updateProduct);
         this.delete('/:id', ['admin'], validateProductId, deleteProduct);

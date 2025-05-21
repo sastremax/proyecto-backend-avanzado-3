@@ -87,85 +87,6 @@ paths:
                 status: error
                 error: "Ocurrió un error inesperado en el servidor"
 
-components:
-  schemas:
-    Product:
-      type: object
-      properties:
-        _id:
-          type: string
-          description: ID autogenerado por MongoDB
-        title:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        price:
-          type: number
-          minimum: 0
-        code:
-          type: string
-        stock:
-          type: number
-          minimum: 0
-        category:
-          type: string
-          maxLength: 100
-        status:
-          type: string
-          enum: [available, unavailable]
-        thumbnails:
-          type: array
-          items:
-            type: string
-
-  requestBodies:
-    NewProduct:
-      description: Datos necesarios para crear un producto
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              title:
-                type: string
-              description:
-                type: string
-              price:
-                type: number
-              code:
-                type: string
-              stock:
-                type: number
-              category:
-                type: string
-              status:
-                type: string
-                enum: [available, unavailable]
-              thumbnails:
-                type: array
-                items:
-                  type: string
-            required:
-              - title
-              - description
-              - price
-              - code
-              - stock
-              - category
-            example:
-              title: Zapatillas Running
-              description: Zapatillas deportivas livianas
-              price: 25990
-              code: RUN001
-              stock: 45
-              category: Calzado
-              status: available
-              thumbnails:
-                - https://ejemplo.com/zapas.jpg
-
   /api/products/{pid}:
     get:
       summary: Obtener un producto por su ID
@@ -344,3 +265,84 @@ components:
               example:
                 status: error
                 error: "Error al actualizar el producto"
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID autogenerado por MongoDB
+        title:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        price:
+          type: number
+          minimum: 0
+        code:
+          type: string
+        stock:
+          type: number
+          minimum: 0
+        category:
+          type: string
+          maxLength: 100
+        status:
+          type: string
+          enum: [available, unavailable]
+        thumbnails:
+          type: array
+          items:
+            type: string
+
+  requestBodies:
+    NewProduct:
+      description: Datos necesarios para crear un producto
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              price:
+                type: number
+              code:
+                type: string
+              stock:
+                type: number
+              category:
+                type: string
+              status:
+                type: string
+                enum: [available, unavailable]
+              thumbnails:
+                type: array
+                items:
+                  type: string
+            required:
+              - title
+              - description
+              - price
+              - code
+              - stock
+              - category
+            example:
+              title: Zapatillas Running
+              description: Zapatillas deportivas livianas
+              price: 25990
+              code: RUN001
+              stock: 45
+              category: Calzado
+              status: available
+              thumbnails:
+                - https://ejemplo.com/zapas.jpg
+
+  

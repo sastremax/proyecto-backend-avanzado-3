@@ -13109,3 +13109,385 @@ warning: WARNING level log {"timestamp":"2025-05-14T14:26:16.777Z"}
 {"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T03:50:53.430Z"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T03:50:53.578Z"}
 {"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T03:50:53.588Z"}
+{"level":"info","message":"Entering app.js - PID 15116","timestamp":"2025-05-21T14:01:59.161Z"}
+{"level":"info","message":"Primary PID 15116 - Mode: prod","timestamp":"2025-05-21T14:01:59.163Z"}
+{"level":"info","message":"Entering app.js - PID 3724","timestamp":"2025-05-21T14:01:59.931Z"}
+{"level":"info","message":"Worker 3724 is about to import appServer.js","timestamp":"2025-05-21T14:01:59.933Z"}
+{"level":"info","message":"Entering app.js - PID 19540","timestamp":"2025-05-21T14:01:59.961Z"}
+{"level":"info","message":"Worker 19540 is about to import appServer.js","timestamp":"2025-05-21T14:01:59.963Z"}
+{"level":"info","message":"Entering app.js - PID 11844","timestamp":"2025-05-21T14:01:59.961Z"}
+{"level":"info","message":"Worker 11844 is about to import appServer.js","timestamp":"2025-05-21T14:01:59.964Z"}
+{"level":"info","message":"Entering app.js - PID 7868","timestamp":"2025-05-21T14:02:00.273Z"}
+{"level":"info","message":"Worker 7868 is about to import appServer.js","timestamp":"2025-05-21T14:02:00.276Z"}
+{"level":"info","message":"Worker 19540 successfully imported appServer.js","timestamp":"2025-05-21T14:02:01.892Z"}
+{"level":"info","message":"Worker PID 19540 running Express on port 8080","timestamp":"2025-05-21T14:02:01.892Z"}
+{"level":"info","message":"Worker 11844 successfully imported appServer.js","timestamp":"2025-05-21T14:02:02.007Z"}
+{"level":"info","message":"Worker PID 11844 running Express on port 8080","timestamp":"2025-05-21T14:02:02.007Z"}
+{"level":"info","message":"Worker 3724 successfully imported appServer.js","timestamp":"2025-05-21T14:02:02.135Z"}
+{"level":"info","message":"Worker PID 3724 running Express on port 8080","timestamp":"2025-05-21T14:02:02.136Z"}
+{"level":"info","message":"Worker 7868 successfully imported appServer.js","timestamp":"2025-05-21T14:02:02.528Z"}
+{"level":"info","message":"Worker PID 7868 running Express on port 8080","timestamp":"2025-05-21T14:02:02.529Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:02:03.170Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:02:03.176Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:02:03.179Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:02:03.184Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:02:03.183Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:02:03.193Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:02:03.211Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:02:03.221Z"}
+{"level":"http","message":"POST /api/sessions/login - 11:03:39","timestamp":"2025-05-21T14:03:40.000Z"}
+{"level":"info","message":"User logged in: sastrebocalonxxx@gmail.com","timestamp":"2025-05-21T14:03:40.137Z"}
+{"level":"http","message":"GET /api/sessions/current - 11:03:52","timestamp":"2025-05-21T14:03:52.241Z"}
+{"level":"http","message":"POST /api/sessions/login - 11:04:23","timestamp":"2025-05-21T14:04:23.870Z"}
+{"level":"info","message":"User logged in: sastrebocalonxxx@gmail.com","timestamp":"2025-05-21T14:04:23.984Z"}
+{"level":"http","message":"GET /api/sessions/current - 11:04:51","timestamp":"2025-05-21T14:04:51.804Z"}
+{"level":"info","message":"Current session retrieved for: sastrebocalonxxx@gmail.com","timestamp":"2025-05-21T14:04:51.845Z"}
+{"level":"info","message":"Entering app.js - PID 8628","timestamp":"2025-05-21T14:12:37.478Z"}
+{"level":"info","message":"Primary PID 8628 - Mode: prod","timestamp":"2025-05-21T14:12:37.480Z"}
+{"level":"info","message":"Entering app.js - PID 17412","timestamp":"2025-05-21T14:12:37.739Z"}
+{"level":"info","message":"Worker 17412 is about to import appServer.js","timestamp":"2025-05-21T14:12:37.740Z"}
+{"level":"info","message":"Entering app.js - PID 12324","timestamp":"2025-05-21T14:12:37.785Z"}
+{"level":"info","message":"Worker 12324 is about to import appServer.js","timestamp":"2025-05-21T14:12:37.787Z"}
+{"level":"info","message":"Entering app.js - PID 6756","timestamp":"2025-05-21T14:12:37.770Z"}
+{"level":"info","message":"Worker 6756 is about to import appServer.js","timestamp":"2025-05-21T14:12:37.772Z"}
+{"level":"info","message":"Entering app.js - PID 9820","timestamp":"2025-05-21T14:12:37.817Z"}
+{"level":"info","message":"Worker 9820 is about to import appServer.js","timestamp":"2025-05-21T14:12:37.819Z"}
+{"level":"info","message":"Worker 9820 successfully imported appServer.js","timestamp":"2025-05-21T14:12:39.361Z"}
+{"level":"info","message":"Worker 12324 successfully imported appServer.js","timestamp":"2025-05-21T14:12:39.390Z"}
+{"level":"info","message":"Worker PID 9820 running Express on port 8080","timestamp":"2025-05-21T14:12:39.361Z"}
+{"level":"info","message":"Worker PID 12324 running Express on port 8080","timestamp":"2025-05-21T14:12:39.390Z"}
+{"level":"info","message":"Worker 6756 successfully imported appServer.js","timestamp":"2025-05-21T14:12:39.432Z"}
+{"level":"info","message":"Worker PID 6756 running Express on port 8080","timestamp":"2025-05-21T14:12:39.432Z"}
+{"level":"info","message":"Worker 17412 successfully imported appServer.js","timestamp":"2025-05-21T14:12:39.457Z"}
+{"level":"info","message":"Worker PID 17412 running Express on port 8080","timestamp":"2025-05-21T14:12:39.457Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:12:40.919Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:12:40.916Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:12:40.927Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:12:40.924Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:12:40.938Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:12:40.935Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:12:40.944Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:12:40.947Z"}
+{"level":"http","message":"GET /api/products - 11:12:52","timestamp":"2025-05-21T14:12:52.952Z"}
+{"level":"info","message":"Entering app.js - PID 3968","timestamp":"2025-05-21T14:14:38.730Z"}
+{"level":"info","message":"Primary PID 3968 - Mode: prod","timestamp":"2025-05-21T14:14:38.731Z"}
+{"level":"info","message":"Entering app.js - PID 12980","timestamp":"2025-05-21T14:14:38.981Z"}
+{"level":"info","message":"Worker 12980 is about to import appServer.js","timestamp":"2025-05-21T14:14:38.982Z"}
+{"level":"info","message":"Entering app.js - PID 12496","timestamp":"2025-05-21T14:14:38.981Z"}
+{"level":"info","message":"Worker 12496 is about to import appServer.js","timestamp":"2025-05-21T14:14:38.989Z"}
+{"level":"info","message":"Entering app.js - PID 8044","timestamp":"2025-05-21T14:14:38.997Z"}
+{"level":"info","message":"Worker 8044 is about to import appServer.js","timestamp":"2025-05-21T14:14:38.998Z"}
+{"level":"info","message":"Entering app.js - PID 5844","timestamp":"2025-05-21T14:14:38.997Z"}
+{"level":"info","message":"Worker 5844 is about to import appServer.js","timestamp":"2025-05-21T14:14:38.998Z"}
+{"level":"info","message":"Worker 12980 successfully imported appServer.js","timestamp":"2025-05-21T14:14:40.721Z"}
+{"level":"info","message":"Worker 8044 successfully imported appServer.js","timestamp":"2025-05-21T14:14:40.723Z"}
+{"level":"info","message":"Worker PID 12980 running Express on port 8080","timestamp":"2025-05-21T14:14:40.722Z"}
+{"level":"info","message":"Worker PID 8044 running Express on port 8080","timestamp":"2025-05-21T14:14:40.723Z"}
+{"level":"info","message":"Worker 12496 successfully imported appServer.js","timestamp":"2025-05-21T14:14:40.831Z"}
+{"level":"info","message":"Worker PID 12496 running Express on port 8080","timestamp":"2025-05-21T14:14:40.832Z"}
+{"level":"info","message":"Worker 5844 successfully imported appServer.js","timestamp":"2025-05-21T14:14:40.956Z"}
+{"level":"info","message":"Worker PID 5844 running Express on port 8080","timestamp":"2025-05-21T14:14:40.956Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:14:42.211Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:14:42.210Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:14:42.237Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:14:42.235Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:14:42.247Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:14:42.246Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:14:42.257Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:14:42.257Z"}
+{"level":"info","message":"Entering app.js - PID 2972","timestamp":"2025-05-21T14:15:10.914Z"}
+{"level":"info","message":"Primary PID 2972 - Mode: prod","timestamp":"2025-05-21T14:15:10.916Z"}
+{"level":"info","message":"Entering app.js - PID 14240","timestamp":"2025-05-21T14:15:11.147Z"}
+{"level":"info","message":"Entering app.js - PID 15584","timestamp":"2025-05-21T14:15:11.163Z"}
+{"level":"info","message":"Worker 14240 is about to import appServer.js","timestamp":"2025-05-21T14:15:11.148Z"}
+{"level":"info","message":"Worker 15584 is about to import appServer.js","timestamp":"2025-05-21T14:15:11.165Z"}
+{"level":"info","message":"Entering app.js - PID 10832","timestamp":"2025-05-21T14:15:11.163Z"}
+{"level":"info","message":"Worker 10832 is about to import appServer.js","timestamp":"2025-05-21T14:15:11.165Z"}
+{"level":"info","message":"Entering app.js - PID 10476","timestamp":"2025-05-21T14:15:11.163Z"}
+{"level":"info","message":"Worker 10476 is about to import appServer.js","timestamp":"2025-05-21T14:15:11.165Z"}
+{"level":"info","message":"Worker 15584 successfully imported appServer.js","timestamp":"2025-05-21T14:15:12.745Z"}
+{"level":"info","message":"Worker PID 15584 running Express on port 8080","timestamp":"2025-05-21T14:15:12.745Z"}
+{"level":"info","message":"Worker 14240 successfully imported appServer.js","timestamp":"2025-05-21T14:15:12.791Z"}
+{"level":"info","message":"Worker PID 14240 running Express on port 8080","timestamp":"2025-05-21T14:15:12.791Z"}
+{"level":"info","message":"Worker 10832 successfully imported appServer.js","timestamp":"2025-05-21T14:15:12.832Z"}
+{"level":"info","message":"Worker PID 10832 running Express on port 8080","timestamp":"2025-05-21T14:15:12.833Z"}
+{"level":"info","message":"Worker 10476 successfully imported appServer.js","timestamp":"2025-05-21T14:15:12.849Z"}
+{"level":"info","message":"Worker PID 10476 running Express on port 8080","timestamp":"2025-05-21T14:15:12.850Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:15:13.459Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:15:13.478Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:15:13.575Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:15:13.580Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:15:13.590Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:15:13.609Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:15:13.598Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:15:13.608Z"}
+{"level":"http","message":"GET /api/products - 11:15:18","timestamp":"2025-05-21T14:15:18.747Z"}
+{"level":"info","message":"Retrieved 48 products","timestamp":"2025-05-21T14:15:18.803Z"}
+{"level":"http","message":"GET /api/products?sort=asc - 11:16:20","timestamp":"2025-05-21T14:16:20.987Z"}
+{"level":"info","message":"Retrieved 48 products","timestamp":"2025-05-21T14:16:21.027Z"}
+{"level":"http","message":"GET /api/products?sort=asc - 11:16:40","timestamp":"2025-05-21T14:16:40.481Z"}
+{"level":"info","message":"Retrieved 48 products","timestamp":"2025-05-21T14:16:40.525Z"}
+{"level":"http","message":"GET /api/products?status=unavailable - 11:18:11","timestamp":"2025-05-21T14:18:11.811Z"}
+{"level":"info","message":"Retrieved 48 products","timestamp":"2025-05-21T14:18:11.850Z"}
+{"level":"info","message":"Entering app.js - PID 5016","timestamp":"2025-05-21T14:25:18.239Z"}
+{"level":"info","message":"Primary PID 5016 - Mode: prod","timestamp":"2025-05-21T14:25:18.241Z"}
+{"level":"info","message":"Entering app.js - PID 11076","timestamp":"2025-05-21T14:25:18.815Z"}
+{"level":"info","message":"Worker 11076 is about to import appServer.js","timestamp":"2025-05-21T14:25:18.818Z"}
+{"level":"info","message":"Entering app.js - PID 20096","timestamp":"2025-05-21T14:25:18.815Z"}
+{"level":"info","message":"Worker 20096 is about to import appServer.js","timestamp":"2025-05-21T14:25:18.820Z"}
+{"level":"info","message":"Entering app.js - PID 7748","timestamp":"2025-05-21T14:25:18.834Z"}
+{"level":"info","message":"Worker 7748 is about to import appServer.js","timestamp":"2025-05-21T14:25:18.836Z"}
+{"level":"info","message":"Entering app.js - PID 17224","timestamp":"2025-05-21T14:25:19.484Z"}
+{"level":"info","message":"Worker 17224 is about to import appServer.js","timestamp":"2025-05-21T14:25:19.485Z"}
+{"level":"info","message":"Worker 7748 successfully imported appServer.js","timestamp":"2025-05-21T14:25:21.220Z"}
+{"level":"info","message":"Worker PID 7748 running Express on port 8080","timestamp":"2025-05-21T14:25:21.221Z"}
+{"level":"info","message":"Worker 11076 successfully imported appServer.js","timestamp":"2025-05-21T14:25:21.270Z"}
+{"level":"info","message":"Worker PID 11076 running Express on port 8080","timestamp":"2025-05-21T14:25:21.270Z"}
+{"level":"info","message":"Worker 20096 successfully imported appServer.js","timestamp":"2025-05-21T14:25:21.315Z"}
+{"level":"info","message":"Worker PID 20096 running Express on port 8080","timestamp":"2025-05-21T14:25:21.315Z"}
+{"level":"info","message":"Worker 17224 successfully imported appServer.js","timestamp":"2025-05-21T14:25:21.475Z"}
+{"level":"info","message":"Worker PID 17224 running Express on port 8080","timestamp":"2025-05-21T14:25:21.475Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:25:22.514Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:25:22.523Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:25:22.514Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:25:22.523Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:25:22.535Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:25:22.542Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:25:22.544Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:25:22.553Z"}
+{"level":"warning","message":"Worker 17224 died. Restarting...","timestamp":"2025-05-21T14:35:44.779Z"}
+{"level":"warning","message":"Worker 7748 died. Restarting...","timestamp":"2025-05-21T14:35:44.828Z"}
+{"level":"warning","message":"Worker 11076 died. Restarting...","timestamp":"2025-05-21T14:35:44.876Z"}
+{"level":"info","message":"Entering app.js - PID 2708","timestamp":"2025-05-21T14:35:46.058Z"}
+{"level":"info","message":"Primary PID 2708 - Mode: prod","timestamp":"2025-05-21T14:35:46.060Z"}
+{"level":"info","message":"Entering app.js - PID 13628","timestamp":"2025-05-21T14:35:46.394Z"}
+{"level":"info","message":"Worker 13628 is about to import appServer.js","timestamp":"2025-05-21T14:35:46.396Z"}
+{"level":"info","message":"Entering app.js - PID 6896","timestamp":"2025-05-21T14:35:46.486Z"}
+{"level":"info","message":"Worker 6896 is about to import appServer.js","timestamp":"2025-05-21T14:35:46.488Z"}
+{"level":"info","message":"Entering app.js - PID 640","timestamp":"2025-05-21T14:35:46.493Z"}
+{"level":"info","message":"Worker 640 is about to import appServer.js","timestamp":"2025-05-21T14:35:46.495Z"}
+{"level":"info","message":"Entering app.js - PID 4456","timestamp":"2025-05-21T14:35:46.539Z"}
+{"level":"info","message":"Worker 4456 is about to import appServer.js","timestamp":"2025-05-21T14:35:46.541Z"}
+{"level":"warning","message":"Worker 640 died. Restarting...","timestamp":"2025-05-21T14:35:47.376Z"}
+{"level":"warning","message":"Worker 13628 died. Restarting...","timestamp":"2025-05-21T14:35:47.382Z"}
+{"level":"info","message":"Entering app.js - PID 1892","timestamp":"2025-05-21T14:35:47.637Z"}
+{"level":"info","message":"Primary PID 1892 - Mode: prod","timestamp":"2025-05-21T14:35:47.640Z"}
+{"level":"info","message":"Entering app.js - PID 7084","timestamp":"2025-05-21T14:35:48.101Z"}
+{"level":"info","message":"Worker 7084 is about to import appServer.js","timestamp":"2025-05-21T14:35:48.104Z"}
+{"level":"info","message":"Entering app.js - PID 19448","timestamp":"2025-05-21T14:35:48.177Z"}
+{"level":"info","message":"Worker 19448 is about to import appServer.js","timestamp":"2025-05-21T14:35:48.179Z"}
+{"level":"info","message":"Entering app.js - PID 16272","timestamp":"2025-05-21T14:35:48.213Z"}
+{"level":"info","message":"Worker 16272 is about to import appServer.js","timestamp":"2025-05-21T14:35:48.215Z"}
+{"level":"info","message":"Entering app.js - PID 18184","timestamp":"2025-05-21T14:35:48.254Z"}
+{"level":"info","message":"Worker 18184 is about to import appServer.js","timestamp":"2025-05-21T14:35:48.256Z"}
+{"level":"info","message":"Worker 7084 successfully imported appServer.js","timestamp":"2025-05-21T14:35:49.939Z"}
+{"level":"info","message":"Worker PID 7084 running Express on port 8080","timestamp":"2025-05-21T14:35:49.940Z"}
+{"level":"info","message":"Worker 16272 successfully imported appServer.js","timestamp":"2025-05-21T14:35:49.986Z"}
+{"level":"info","message":"Worker PID 16272 running Express on port 8080","timestamp":"2025-05-21T14:35:49.986Z"}
+{"level":"info","message":"Worker 19448 successfully imported appServer.js","timestamp":"2025-05-21T14:35:50.030Z"}
+{"level":"info","message":"Worker PID 19448 running Express on port 8080","timestamp":"2025-05-21T14:35:50.030Z"}
+{"level":"info","message":"Worker 18184 successfully imported appServer.js","timestamp":"2025-05-21T14:35:50.077Z"}
+{"level":"info","message":"Worker PID 18184 running Express on port 8080","timestamp":"2025-05-21T14:35:50.077Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:35:51.312Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:35:51.318Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:35:51.320Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:35:51.325Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:35:51.334Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:35:51.342Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:35:51.344Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:35:51.352Z"}
+{"level":"warning","message":"Worker 19448 died. Restarting...","timestamp":"2025-05-21T14:36:10.293Z"}
+{"level":"warning","message":"Worker 16272 died. Restarting...","timestamp":"2025-05-21T14:36:10.299Z"}
+{"level":"warning","message":"Worker 7084 died. Restarting...","timestamp":"2025-05-21T14:36:10.306Z"}
+{"level":"warning","message":"Worker 18184 died. Restarting...","timestamp":"2025-05-21T14:36:10.347Z"}
+{"level":"info","message":"Entering app.js - PID 15468","timestamp":"2025-05-21T14:36:10.720Z"}
+{"level":"info","message":"Primary PID 15468 - Mode: prod","timestamp":"2025-05-21T14:36:10.725Z"}
+{"level":"info","message":"Entering app.js - PID 12512","timestamp":"2025-05-21T14:36:11.584Z"}
+{"level":"info","message":"Worker 12512 is about to import appServer.js","timestamp":"2025-05-21T14:36:11.586Z"}
+{"level":"info","message":"Entering app.js - PID 13620","timestamp":"2025-05-21T14:36:11.618Z"}
+{"level":"info","message":"Worker 13620 is about to import appServer.js","timestamp":"2025-05-21T14:36:11.620Z"}
+{"level":"info","message":"Entering app.js - PID 17772","timestamp":"2025-05-21T14:36:11.669Z"}
+{"level":"info","message":"Worker 17772 is about to import appServer.js","timestamp":"2025-05-21T14:36:11.671Z"}
+{"level":"info","message":"Entering app.js - PID 8716","timestamp":"2025-05-21T14:36:11.668Z"}
+{"level":"info","message":"Worker 8716 is about to import appServer.js","timestamp":"2025-05-21T14:36:11.725Z"}
+{"level":"warning","message":"Worker 12512 died. Restarting...","timestamp":"2025-05-21T14:36:12.128Z"}
+{"level":"info","message":"Entering app.js - PID 20396","timestamp":"2025-05-21T14:36:12.470Z"}
+{"level":"info","message":"Primary PID 20396 - Mode: prod","timestamp":"2025-05-21T14:36:12.472Z"}
+{"level":"info","message":"Entering app.js - PID 9480","timestamp":"2025-05-21T14:36:12.878Z"}
+{"level":"info","message":"Worker 9480 is about to import appServer.js","timestamp":"2025-05-21T14:36:12.880Z"}
+{"level":"info","message":"Entering app.js - PID 6004","timestamp":"2025-05-21T14:36:12.894Z"}
+{"level":"info","message":"Worker 6004 is about to import appServer.js","timestamp":"2025-05-21T14:36:12.896Z"}
+{"level":"info","message":"Entering app.js - PID 7628","timestamp":"2025-05-21T14:36:12.909Z"}
+{"level":"info","message":"Worker 7628 is about to import appServer.js","timestamp":"2025-05-21T14:36:12.912Z"}
+{"level":"info","message":"Entering app.js - PID 32","timestamp":"2025-05-21T14:36:12.909Z"}
+{"level":"info","message":"Worker 32 is about to import appServer.js","timestamp":"2025-05-21T14:36:12.911Z"}
+{"level":"info","message":"Worker 9480 successfully imported appServer.js","timestamp":"2025-05-21T14:36:14.907Z"}
+{"level":"info","message":"Worker PID 9480 running Express on port 8080","timestamp":"2025-05-21T14:36:14.907Z"}
+{"level":"info","message":"Worker 6004 successfully imported appServer.js","timestamp":"2025-05-21T14:36:14.942Z"}
+{"level":"info","message":"Worker PID 6004 running Express on port 8080","timestamp":"2025-05-21T14:36:14.942Z"}
+{"level":"info","message":"Worker 32 successfully imported appServer.js","timestamp":"2025-05-21T14:36:14.991Z"}
+{"level":"info","message":"Worker PID 32 running Express on port 8080","timestamp":"2025-05-21T14:36:14.991Z"}
+{"level":"info","message":"Worker 7628 successfully imported appServer.js","timestamp":"2025-05-21T14:36:15.155Z"}
+{"level":"info","message":"Worker PID 7628 running Express on port 8080","timestamp":"2025-05-21T14:36:15.156Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:36:15.567Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:36:15.577Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:36:15.702Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:36:15.711Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:36:15.737Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:36:15.746Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:36:15.852Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:36:15.861Z"}
+{"level":"warning","message":"Worker 9480 died. Restarting...","timestamp":"2025-05-21T14:36:46.522Z"}
+{"level":"warning","message":"Worker 32 died. Restarting...","timestamp":"2025-05-21T14:36:46.529Z"}
+{"level":"warning","message":"Worker 6004 died. Restarting...","timestamp":"2025-05-21T14:36:46.541Z"}
+{"level":"info","message":"Entering app.js - PID 5844","timestamp":"2025-05-21T14:36:46.866Z"}
+{"level":"info","message":"Primary PID 5844 - Mode: prod","timestamp":"2025-05-21T14:36:46.868Z"}
+{"level":"info","message":"Entering app.js - PID 11508","timestamp":"2025-05-21T14:36:47.141Z"}
+{"level":"info","message":"Worker 11508 is about to import appServer.js","timestamp":"2025-05-21T14:36:47.143Z"}
+{"level":"info","message":"Entering app.js - PID 3120","timestamp":"2025-05-21T14:36:47.144Z"}
+{"level":"info","message":"Worker 3120 is about to import appServer.js","timestamp":"2025-05-21T14:36:47.146Z"}
+{"level":"info","message":"Entering app.js - PID 4116","timestamp":"2025-05-21T14:36:47.181Z"}
+{"level":"info","message":"Worker 4116 is about to import appServer.js","timestamp":"2025-05-21T14:36:47.185Z"}
+{"level":"info","message":"Entering app.js - PID 1404","timestamp":"2025-05-21T14:36:47.185Z"}
+{"level":"info","message":"Worker 1404 is about to import appServer.js","timestamp":"2025-05-21T14:36:47.187Z"}
+{"level":"info","message":"Worker 3120 successfully imported appServer.js","timestamp":"2025-05-21T14:36:48.617Z"}
+{"level":"info","message":"Worker PID 3120 running Express on port 8080","timestamp":"2025-05-21T14:36:48.617Z"}
+{"level":"info","message":"Worker 1404 successfully imported appServer.js","timestamp":"2025-05-21T14:36:48.709Z"}
+{"level":"info","message":"Worker PID 1404 running Express on port 8080","timestamp":"2025-05-21T14:36:48.709Z"}
+{"level":"info","message":"Worker 11508 successfully imported appServer.js","timestamp":"2025-05-21T14:36:48.766Z"}
+{"level":"info","message":"Worker 4116 successfully imported appServer.js","timestamp":"2025-05-21T14:36:48.769Z"}
+{"level":"info","message":"Worker PID 11508 running Express on port 8080","timestamp":"2025-05-21T14:36:48.767Z"}
+{"level":"info","message":"Worker PID 4116 running Express on port 8080","timestamp":"2025-05-21T14:36:48.770Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:36:49.644Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:36:49.679Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:36:49.841Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:36:49.850Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:36:49.852Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:36:49.854Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:36:49.861Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:36:49.862Z"}
+{"level":"info","message":"Entering app.js - PID 14936","timestamp":"2025-05-21T14:36:56.301Z"}
+{"level":"info","message":"Primary PID 14936 - Mode: prod","timestamp":"2025-05-21T14:36:56.303Z"}
+{"level":"info","message":"Entering app.js - PID 14932","timestamp":"2025-05-21T14:36:56.834Z"}
+{"level":"info","message":"Worker 14932 is about to import appServer.js","timestamp":"2025-05-21T14:36:56.837Z"}
+{"level":"info","message":"Entering app.js - PID 17620","timestamp":"2025-05-21T14:36:56.850Z"}
+{"level":"info","message":"Worker 17620 is about to import appServer.js","timestamp":"2025-05-21T14:36:56.854Z"}
+{"level":"info","message":"Entering app.js - PID 9376","timestamp":"2025-05-21T14:36:57.100Z"}
+{"level":"info","message":"Worker 9376 is about to import appServer.js","timestamp":"2025-05-21T14:36:57.101Z"}
+{"level":"info","message":"Entering app.js - PID 3416","timestamp":"2025-05-21T14:36:57.300Z"}
+{"level":"info","message":"Worker 3416 is about to import appServer.js","timestamp":"2025-05-21T14:36:57.302Z"}
+{"level":"info","message":"Worker 14932 successfully imported appServer.js","timestamp":"2025-05-21T14:36:59.908Z"}
+{"level":"info","message":"Worker PID 14932 running Express on port 8080","timestamp":"2025-05-21T14:36:59.909Z"}
+{"level":"info","message":"Worker 17620 successfully imported appServer.js","timestamp":"2025-05-21T14:36:59.950Z"}
+{"level":"info","message":"Worker PID 17620 running Express on port 8080","timestamp":"2025-05-21T14:36:59.950Z"}
+{"level":"info","message":"Worker 9376 successfully imported appServer.js","timestamp":"2025-05-21T14:37:00.227Z"}
+{"level":"info","message":"Worker PID 9376 running Express on port 8080","timestamp":"2025-05-21T14:37:00.228Z"}
+{"level":"info","message":"Worker 3416 successfully imported appServer.js","timestamp":"2025-05-21T14:37:00.314Z"}
+{"level":"info","message":"Worker PID 3416 running Express on port 8080","timestamp":"2025-05-21T14:37:00.314Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:37:01.409Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:37:01.427Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:37:01.429Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:37:01.426Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:37:01.440Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:37:01.438Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:37:01.475Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:37:01.483Z"}
+{"level":"warning","message":"Worker 17620 died. Restarting...","timestamp":"2025-05-21T14:37:04.136Z"}
+{"level":"warning","message":"Worker 3416 died. Restarting...","timestamp":"2025-05-21T14:37:04.161Z"}
+{"level":"info","message":"Entering app.js - PID 17512","timestamp":"2025-05-21T14:37:04.468Z"}
+{"level":"info","message":"Primary PID 17512 - Mode: prod","timestamp":"2025-05-21T14:37:04.469Z"}
+{"level":"info","message":"Entering app.js - PID 5116","timestamp":"2025-05-21T14:37:04.915Z"}
+{"level":"info","message":"Worker 5116 is about to import appServer.js","timestamp":"2025-05-21T14:37:04.918Z"}
+{"level":"info","message":"Entering app.js - PID 11524","timestamp":"2025-05-21T14:37:04.950Z"}
+{"level":"info","message":"Worker 11524 is about to import appServer.js","timestamp":"2025-05-21T14:37:04.952Z"}
+{"level":"info","message":"Entering app.js - PID 6844","timestamp":"2025-05-21T14:37:04.967Z"}
+{"level":"info","message":"Worker 6844 is about to import appServer.js","timestamp":"2025-05-21T14:37:04.968Z"}
+{"level":"info","message":"Entering app.js - PID 16916","timestamp":"2025-05-21T14:37:05.467Z"}
+{"level":"info","message":"Worker 16916 is about to import appServer.js","timestamp":"2025-05-21T14:37:05.469Z"}
+{"level":"info","message":"Worker 5116 successfully imported appServer.js","timestamp":"2025-05-21T14:37:07.378Z"}
+{"level":"info","message":"Worker PID 5116 running Express on port 8080","timestamp":"2025-05-21T14:37:07.378Z"}
+{"level":"info","message":"Worker 11524 successfully imported appServer.js","timestamp":"2025-05-21T14:37:07.447Z"}
+{"level":"info","message":"Worker 6844 successfully imported appServer.js","timestamp":"2025-05-21T14:37:07.482Z"}
+{"level":"info","message":"Worker PID 11524 running Express on port 8080","timestamp":"2025-05-21T14:37:07.447Z"}
+{"level":"info","message":"Worker PID 6844 running Express on port 8080","timestamp":"2025-05-21T14:37:07.482Z"}
+{"level":"info","message":"Worker 16916 successfully imported appServer.js","timestamp":"2025-05-21T14:37:07.686Z"}
+{"level":"info","message":"Worker PID 16916 running Express on port 8080","timestamp":"2025-05-21T14:37:07.687Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:37:08.000Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:37:08.009Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:37:08.121Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:37:08.130Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:37:08.134Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:37:08.144Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:37:08.346Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:37:08.354Z"}
+{"level":"warning","message":"Worker 6844 died. Restarting...","timestamp":"2025-05-21T14:38:00.935Z"}
+{"level":"warning","message":"Worker 16916 died. Restarting...","timestamp":"2025-05-21T14:38:00.977Z"}
+{"level":"warning","message":"Worker 5116 died. Restarting...","timestamp":"2025-05-21T14:38:00.983Z"}
+{"level":"info","message":"Entering app.js - PID 19384","timestamp":"2025-05-21T14:38:01.257Z"}
+{"level":"info","message":"Primary PID 19384 - Mode: prod","timestamp":"2025-05-21T14:38:01.260Z"}
+{"level":"info","message":"Entering app.js - PID 14932","timestamp":"2025-05-21T14:38:01.734Z"}
+{"level":"info","message":"Worker 14932 is about to import appServer.js","timestamp":"2025-05-21T14:38:01.736Z"}
+{"level":"info","message":"Entering app.js - PID 6000","timestamp":"2025-05-21T14:38:01.767Z"}
+{"level":"info","message":"Worker 6000 is about to import appServer.js","timestamp":"2025-05-21T14:38:01.769Z"}
+{"level":"info","message":"Entering app.js - PID 3216","timestamp":"2025-05-21T14:38:01.885Z"}
+{"level":"info","message":"Worker 3216 is about to import appServer.js","timestamp":"2025-05-21T14:38:01.886Z"}
+{"level":"info","message":"Entering app.js - PID 7260","timestamp":"2025-05-21T14:38:01.885Z"}
+{"level":"info","message":"Worker 7260 is about to import appServer.js","timestamp":"2025-05-21T14:38:01.887Z"}
+{"level":"info","message":"Worker 6000 successfully imported appServer.js","timestamp":"2025-05-21T14:38:04.430Z"}
+{"level":"info","message":"Worker PID 6000 running Express on port 8080","timestamp":"2025-05-21T14:38:04.430Z"}
+{"level":"info","message":"Worker 7260 successfully imported appServer.js","timestamp":"2025-05-21T14:38:04.561Z"}
+{"level":"info","message":"Worker PID 7260 running Express on port 8080","timestamp":"2025-05-21T14:38:04.562Z"}
+{"level":"info","message":"Worker 3216 successfully imported appServer.js","timestamp":"2025-05-21T14:38:04.598Z"}
+{"level":"info","message":"Worker 14932 successfully imported appServer.js","timestamp":"2025-05-21T14:38:04.621Z"}
+{"level":"info","message":"Worker PID 3216 running Express on port 8080","timestamp":"2025-05-21T14:38:04.599Z"}
+{"level":"info","message":"Worker PID 14932 running Express on port 8080","timestamp":"2025-05-21T14:38:04.622Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:38:05.796Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:38:05.800Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:38:05.805Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:38:05.811Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:38:05.815Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:38:05.822Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:38:05.827Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:38:05.836Z"}
+{"level":"info","message":"Entering app.js - PID 8828","timestamp":"2025-05-21T14:38:06.967Z"}
+{"level":"info","message":"Primary PID 8828 - Mode: prod","timestamp":"2025-05-21T14:38:06.970Z"}
+{"level":"info","message":"Entering app.js - PID 17356","timestamp":"2025-05-21T14:38:07.576Z"}
+{"level":"info","message":"Worker 17356 is about to import appServer.js","timestamp":"2025-05-21T14:38:07.578Z"}
+{"level":"info","message":"Entering app.js - PID 10032","timestamp":"2025-05-21T14:38:07.576Z"}
+{"level":"info","message":"Worker 10032 is about to import appServer.js","timestamp":"2025-05-21T14:38:07.578Z"}
+{"level":"info","message":"Entering app.js - PID 6240","timestamp":"2025-05-21T14:38:07.698Z"}
+{"level":"info","message":"Worker 6240 is about to import appServer.js","timestamp":"2025-05-21T14:38:07.700Z"}
+{"level":"info","message":"Entering app.js - PID 9364","timestamp":"2025-05-21T14:38:07.861Z"}
+{"level":"info","message":"Worker 9364 is about to import appServer.js","timestamp":"2025-05-21T14:38:07.863Z"}
+{"level":"info","message":"Worker 6240 successfully imported appServer.js","timestamp":"2025-05-21T14:38:09.624Z"}
+{"level":"info","message":"Worker 10032 successfully imported appServer.js","timestamp":"2025-05-21T14:38:09.633Z"}
+{"level":"info","message":"Worker PID 10032 running Express on port 8080","timestamp":"2025-05-21T14:38:09.634Z"}
+{"level":"info","message":"Worker PID 6240 running Express on port 8080","timestamp":"2025-05-21T14:38:09.625Z"}
+{"level":"info","message":"Worker 17356 successfully imported appServer.js","timestamp":"2025-05-21T14:38:09.687Z"}
+{"level":"info","message":"Worker PID 17356 running Express on port 8080","timestamp":"2025-05-21T14:38:09.687Z"}
+{"level":"info","message":"Worker 9364 successfully imported appServer.js","timestamp":"2025-05-21T14:38:09.792Z"}
+{"level":"info","message":"Worker PID 9364 running Express on port 8080","timestamp":"2025-05-21T14:38:09.793Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:38:10.247Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:38:10.255Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:38:10.365Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:38:10.373Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:38:10.400Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:38:10.410Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-05-21T14:38:10.447Z"}
+{"level":"info","message":"Server running on port 8080","timestamp":"2025-05-21T14:38:10.457Z"}
+{"level":"http","message":"GET /api/products?status=unavailable - 11:38:23","timestamp":"2025-05-21T14:38:23.570Z"}
+{"level":"info","message":"Retrieved undefined products","timestamp":"2025-05-21T14:38:23.616Z"}
+{"level":"http","message":"GET /api/products?sort=asc&status=available - 11:39:17","timestamp":"2025-05-21T14:39:17.321Z"}
+{"level":"info","message":"Retrieved undefined products","timestamp":"2025-05-21T14:39:17.364Z"}
+{"level":"http","message":"GET /api/products?sort=asc&category=tv&status=available - 11:39:32","timestamp":"2025-05-21T14:39:32.039Z"}
+{"level":"info","message":"Retrieved undefined products","timestamp":"2025-05-21T14:39:32.089Z"}
+{"level":"http","message":"GET /api/products?sort=desc&category=tv&status=available - 11:39:57","timestamp":"2025-05-21T14:39:57.070Z"}
+{"level":"info","message":"Retrieved undefined products","timestamp":"2025-05-21T14:39:57.106Z"}
+{"level":"http","message":"GET /api/products?sort=desc&status=available - 11:41:15","timestamp":"2025-05-21T14:41:15.214Z"}
+{"level":"info","message":"Retrieved undefined products","timestamp":"2025-05-21T14:41:15.253Z"}
+{"level":"http","message":"GET /api/products - 11:41:34","timestamp":"2025-05-21T14:41:34.503Z"}
+{"level":"info","message":"Retrieved undefined products","timestamp":"2025-05-21T14:41:34.549Z"}
+{"level":"http","message":"GET /api/products?page=4 - 11:42:10","timestamp":"2025-05-21T14:42:10.952Z"}
+{"level":"info","message":"Retrieved undefined products","timestamp":"2025-05-21T14:42:10.988Z"}
+{"level":"http","message":"GET /api/products/67d77e338c466c5eaf16ed32 - 11:42:31","timestamp":"2025-05-21T14:42:31.027Z"}
+{"level":"info","message":"Product retrieved: 67d77e338c466c5eaf16ed32","timestamp":"2025-05-21T14:42:31.067Z"}

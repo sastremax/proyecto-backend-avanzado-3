@@ -4,8 +4,8 @@ const productManager = new ProductManager();
 
 class ProductRepository {
 
-    async getAll() {
-        return await productManager.getAll();
+    async getAll(filters) {
+        return await productManager.getAll(filters);
     }
 
     async getById(id) {

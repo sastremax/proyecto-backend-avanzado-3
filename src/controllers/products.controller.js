@@ -3,7 +3,15 @@ import ProductService from '../services/product.service.js';
 
 export async function getProducts(req, res, next) {
     try {
-        const products = await ProductService.getAllProducts();
+        const filters = {
+            limit: Number.parseInt(req.query.limit) || 10,
+            page: Number.parseInt(req.query.page) || 1,
+            sort: req.query.sort,
+            category: req.query.category,
+            status: req.query.status
+        };
+        const products = await ProductService.getAllProducts(filters);
+
         req.logger.info(`Retrieved ${products.length} products`);
         res.success('Products retrieved', products);
     } catch (error) {
