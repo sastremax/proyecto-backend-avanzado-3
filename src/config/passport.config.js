@@ -137,6 +137,29 @@ const initializePassport = () => {
             }
         }
     ));
+
+    passport.use('jwt-bearer', new JwtStrategy(
+        {
+            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            secretOrKey: config.jwt_secret
+        },
+        async (jwtPayload, done) => {
+            try {
+                const user = await userManager.getById(jwtPayload.id);
+                if (!user) return done(null, false, { message: 'User not found' });
+                return done(null, {
+                    id: user._id,
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    email: user.email,
+                    role: user.role
+                });
+            } catch (error) {
+                return done(error);
+            }
+        }
+    ));
+
 };
 
 export default initializePassport

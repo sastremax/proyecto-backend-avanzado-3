@@ -8,6 +8,20 @@ const swaggerOptions = {
             title: 'Documentación del proyecto Backend III',
             description: 'API con endpoints de usuarios, productos, carritos y más.',
         },
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+        },
+        security: [
+            {
+                bearerAuth: [],
+            },
+        ],
     },
     apis: ['./src/swagger/docs/**/*.yaml'],
 }

@@ -1,6 +1,5 @@
 import CustomRouter from './custom.router.js';
 import passport from 'passport';
-import { handlePolicies } from '../middlewares/handlePolicies.middleware.js';
 import {
     loginSession,
     registerSession,
@@ -44,11 +43,7 @@ export default class SessionsRouter extends CustomRouter {
             },
             registerSession
         );
-        this.get('/current',
-            passport.authenticate('current', { session: false }),
-            handlePolicies(['user', 'admin']),
-            currentSession
-        );
+        this.get('/current', ['user', 'admin'], currentSession);
         this.post('/forgot-password', ['public'], forgotPassword)
         this.post('/reset-password', ['public'], resetPassword)
         this.get('/logout',

@@ -11,8 +11,6 @@ import {
     validateProductId,
     validatePartialProduct
 } from '../middlewares/error.middleware.js';
-import passportCall from '../middlewares/passportCall.middleware.js';
-import { authorizationRole } from '../middlewares/auth.middleware.js';
 
 export default class ProductsRouter extends CustomRouter {
 
@@ -20,9 +18,9 @@ export default class ProductsRouter extends CustomRouter {
 
         this.get('/', getProducts);
         this.get('/:id', validateProductId, getProductById);
-        this.post('/', passportCall('current'), authorizationRole('admin'), validateProduct, addProduct);
-        this.put('/:id', passportCall('current'), authorizationRole('admin'), validateProductId, validatePartialProduct, updateProduct);
-        this.delete('/:id', passportCall('current'), authorizationRole('admin'), validateProductId, deleteProduct);
+        this.post('/', ['admin'], validateProduct, addProduct);
+        this.put('/:id', ['admin'], validateProductId, validatePartialProduct, updateProduct);
+        this.delete('/:id', ['admin'], validateProductId, deleteProduct);
 
     }
 

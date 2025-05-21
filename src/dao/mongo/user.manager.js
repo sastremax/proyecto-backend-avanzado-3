@@ -21,7 +21,7 @@ export class UserManager {
         return await UserModel.findByIdAndUpdate(uid, data, { new: true });
     }
 
-    async deleteUserById(uid) {
+    async deleteById(uid) {
         return await UserModel.findByIdAndDelete(uid);
     }
 }

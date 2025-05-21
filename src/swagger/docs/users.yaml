@@ -77,6 +77,8 @@ paths:
       summary: Actualizar un usuario por su ID
       tags:
         - Usuarios
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: uid
@@ -145,6 +147,8 @@ paths:
       summary: Eliminar un usuario por su ID
       tags:
         - Usuarios
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: uid
@@ -167,33 +171,6 @@ paths:
               example:
                 status: error
                 error: "Usuario no encontrado"
-
-  /api/users/register:
-    post:
-      summary: Registrar un nuevo usuario
-      tags:
-        - Usuarios
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/requestBodies/NewUser'
-      responses:
-        "201":
-          description: Usuario creado exitosamente
-          content:
-            application/json:
-              example:
-                status: success
-                message: "Usuario registrado correctamente"
-        "400":
-          description: Error en los datos proporcionados
-          content:
-            application/json:
-              example:
-                status: error
-                error: "Faltan datos obligatorios"
 
 components:
   schemas:

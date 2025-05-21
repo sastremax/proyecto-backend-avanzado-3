@@ -1,0 +1,346 @@
+paths:
+  /api/products:
+    get:
+      summary: Obtener todos los productos
+      tags:
+        - Productos
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Cantidad máxima de productos por página
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Página actual de la paginación
+        - in: query
+          name: sort
+          schema:
+            type: string
+            enum: [asc, desc]
+          description: Ordenar por precio ascendente o descendente
+        - in: query
+          name: category
+          schema:
+            type: string
+          description: Filtrar productos por categoría
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [available, unavailable]
+          description: Filtrar por estado del producto
+      responses:
+        "200":
+          description: Lista de productos obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Productos obtenidos correctamente
+                  data:
+                    type: object
+                    properties:
+                      totalDocs:
+                        type: integer
+                      totalPages:
+                        type: integer
+                      page:
+                        type: integer
+                      docs:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Product'
+              example:
+                status: success
+                message: Productos obtenidos correctamente
+                data:
+                  totalDocs: 2
+                  totalPages: 1
+                  page: 1
+                  docs:
+                    - _id: "682c5bbba6fd54811edcd141"
+                      title: "Zapatillas Running"
+                      description: "Zapatillas deportivas livianas"
+                      price: 25990
+                      code: "RUN001"
+                      stock: 45
+                      category: "Calzado"
+                      status: "available"
+                      thumbnails:
+                        - "https://ejemplo.com/zapas.jpg"
+        "500":
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Ocurrió un error inesperado en el servidor"
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID autogenerado por MongoDB
+        title:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        price:
+          type: number
+          minimum: 0
+        code:
+          type: string
+        stock:
+          type: number
+          minimum: 0
+        category:
+          type: string
+          maxLength: 100
+        status:
+          type: string
+          enum: [available, unavailable]
+        thumbnails:
+          type: array
+          items:
+            type: string
+
+  requestBodies:
+    NewProduct:
+      description: Datos necesarios para crear un producto
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              price:
+                type: number
+              code:
+                type: string
+              stock:
+                type: number
+              category:
+                type: string
+              status:
+                type: string
+                enum: [available, unavailable]
+              thumbnails:
+                type: array
+                items:
+                  type: string
+            required:
+              - title
+              - description
+              - price
+              - code
+              - stock
+              - category
+            example:
+              title: Zapatillas Running
+              description: Zapatillas deportivas livianas
+              price: 25990
+              code: RUN001
+              stock: 45
+              category: Calzado
+              status: available
+              thumbnails:
+                - https://ejemplo.com/zapas.jpg
+
+  /api/products/{pid}:
+    get:
+      summary: Obtener un producto por su ID
+      tags:
+        - Productos
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: ID del producto a obtener
+      responses:
+        "200":
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    $ref: '#/components/schemas/Product'
+              example:
+                status: success
+                message: Producto encontrado
+                data:
+                  _id: "682c5bbba6fd54811edcd141"
+                  title: "Zapatillas Running"
+                  description: "Zapatillas deportivas livianas"
+                  price: 25990
+                  code: "RUN001"
+                  stock: 45
+                  category: "Calzado"
+                  status: "available"
+                  thumbnails:
+                    - "https://ejemplo.com/zapas.jpg"
+        "404":
+          description: Producto no encontrado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Producto no encontrado"
+        "500":
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Ocurrió un error inesperado en el servidor"
+
+    delete:
+      summary: Eliminar un producto por su ID
+      tags:
+        - Productos
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: ID del producto a eliminar
+      responses:
+        "200":
+          description: Producto eliminado exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Producto eliminado correctamente
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "No autorizado: se requiere autenticación."
+        "403":
+          description: Acceso denegado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Acceso restringido al rol admin"
+        "404":
+          description: Producto no encontrado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Producto no encontrado"
+        "500":
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Ocurrió un error inesperado en el servidor"
+
+    put:
+      summary: Actualizar un producto por su ID
+      tags:
+        - Productos
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: ID del producto a actualizar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/NewProduct'
+      responses:
+        "200":
+          description: Producto actualizado exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Producto actualizado correctamente
+                data:
+                  _id: "682c5bbba6fd54811edcd141"
+                  title: "Zapatillas Running"
+                  description: "Zapatillas deportivas livianas"
+                  price: 25990
+                  code: "RUN001"
+                  stock: 45
+                  category: "Calzado"
+                  status: "available"
+                  thumbnails:
+                    - "https://ejemplo.com/zapas.jpg"
+        "400":
+          description: Datos inválidos
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Datos inválidos para actualizar el producto"
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "No autorizado: se requiere autenticación."
+        "403":
+          description: Acceso denegado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Acceso restringido al rol admin"
+        "404":
+          description: Producto no encontrado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Producto no encontrado"
+        "500":
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Error al actualizar el producto"
