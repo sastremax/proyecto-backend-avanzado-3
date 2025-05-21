@@ -15,3 +15,8 @@ profe/
 
 artillery/report.json
 artillery/report.html
+
+*.log
+*.json
+*.csv
+*.test.db
