@@ -75,7 +75,4 @@ describe('Testing Users DAO', function () {
         assert.strictEqual(updated.first_name, 'NombreActualizado')
     })
 
-    after(async function () {
-        await mongoose.connection.close()
-    })
 })

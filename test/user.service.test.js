@@ -40,7 +40,4 @@ describe('Testing UserService', () => {
         assert.strictEqual(String(updated.cart), String(dummyCartId))
     })
 
-    after(async () => {
-        await mongoose.connection.close()
-    })
 })
