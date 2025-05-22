@@ -12,6 +12,10 @@ class UserRepository {
         return await userManager.getById(id);
     }
 
+    async getByEmail(email) {
+        return await userManager.getByEmail(email);
+    }
+
     async create(data) {
         return await userManager.createUser(data);
     }
