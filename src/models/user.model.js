@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-// defino Schema:
 const userSchema = new mongoose.Schema({
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
@@ -11,4 +10,5 @@ const userSchema = new mongoose.Schema({
     role: { type: String, default: 'user' }
 })
 
-export const UserModel = mongoose.model('User', userSchema);
+const UserModel = mongoose.model('User', userSchema);
+export default UserModel;

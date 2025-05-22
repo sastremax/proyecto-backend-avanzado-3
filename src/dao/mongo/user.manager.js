@@ -1,4 +1,4 @@
-import { UserModel } from './models/user.model.js';
+import UserModel from '../../models/user.model';
 
 export class UserManager {
     async getByEmail(email) {

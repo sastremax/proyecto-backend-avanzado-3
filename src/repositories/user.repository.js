@@ -8,10 +8,6 @@ class UserRepository {
         return await userManager.getAllUsers();
     }
 
-    async getBy(filter) {
-        return await userManager.getBy(filter);
-    }
-
     async getById(id) {
         return await userManager.getById(id);
     }

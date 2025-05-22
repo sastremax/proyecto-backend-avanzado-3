@@ -3,7 +3,7 @@ import local from 'passport-local';
 import GitHubStrategy from 'passport-github2';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { UserManager } from '../dao/mongo/user.manager.js';
-import Cart from '../dao/mongo/models/cart.model.js';
+import Cart from '../models/cart.model.js';
 import config from './config.js';
 import userService from '../services/user.service.js';
 import { isValidPassword } from '../utils/hash.js';

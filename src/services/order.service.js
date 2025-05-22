@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import OrderRepository from '../repositories/order.repository.js';
 import ProductRepository from '../repositories/product.repository.js';
+import OrderModel from '../models/order.model.js';
 
 const orderRepository = OrderRepository;
 

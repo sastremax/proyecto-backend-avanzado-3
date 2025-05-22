@@ -1,6 +1,6 @@
 import { generateUser } from '../utils/generateUser.js';
-import CartModel from '../dao/mongo/models/cart.model.js';
-import { UserModel } from '../dao/mongo/models/user.model.js';
+import CartModel from '../models/cart.model.js';
+import UserModel from '../models/user.model.js';
 
 export const generateFakeUsersWithCarts = async (quantity) => {
     const insertedUsers = [];

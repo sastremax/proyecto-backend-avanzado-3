@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import config from '../config/config.js';
-import CartModel from '../dao/mongo/models/cart.model.js';
+import CartModel from '../models/cart.model.js'
 import { UsersDTO } from '../dto/users.dto.js';
 import userService from '../services/user.service.js';
 

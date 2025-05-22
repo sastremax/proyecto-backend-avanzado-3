@@ -48,6 +48,7 @@ describe('Testing Users DAO', function () {
     })
 
     it('El usuario recuperado debe coincidir con el creado', async function () {
+        await this.userDAO.createUser(this.mockUser)
         const found = await this.userDAO.getByEmail(this.mockUser.email)
 
         assert.deepStrictEqual(

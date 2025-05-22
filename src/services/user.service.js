@@ -17,7 +17,7 @@ class UserService {
     }
 
     async getUserByEmail(email) {
-        const user = await UserRepository.getBy({ email });
+        const user = await UserRepository.getByEmail(email);
         if (!user) return null;
         return new UsersDTO(user);
     }

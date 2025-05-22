@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-// defino el esquema para los carritos con validaciones mejoradas
 const cartSchema = new mongoose.Schema({
     products: [
         {
@@ -21,6 +20,6 @@ const cartSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Cart = mongoose.model('Cart', cartSchema);
+const CartModel = mongoose.model('Cart', cartSchema);
 
-export default Cart;
+export default CartModel;
