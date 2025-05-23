@@ -3,7 +3,7 @@ import local from 'passport-local';
 import GitHubStrategy from 'passport-github2';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { UserManager } from '../dao/mongo/user.manager.js';
-import Cart from '../models/cart.model.js';
+import CartModel from '../models/cart.model.js';
 import config from './config.js';
 import userService from '../services/user.service.js';
 import { isValidPassword } from '../utils/hash.js';
@@ -50,7 +50,7 @@ const initializePassport = () => {
                     return done(null, false, { message: 'User already exists. Change your email, please' });
                 }
 
-                const cart = await Cart.create({ products: [] });
+                const cart = await CartModel.create({ products: [] });
 
                 const user = await userService.create({
                     first_name,

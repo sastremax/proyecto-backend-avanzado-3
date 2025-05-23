@@ -5,16 +5,21 @@ import { UserManager } from '../src/dao/mongo/user.manager.js'
 import { mockUser } from '../src/mocks/mock.user.js'
 
 const assert = Assert.strict
-mongoose.connect(config.mongo_uri)
 
 describe('Testing Users DAO', function () {
-    before(function () {
+    
+    before(async function () {
+        await mongoose.connect(config.mongo_uri)
         this.userDAO = new UserManager()
         this.mockUser = { ...mockUser }
     })
 
     beforeEach(async function () {
         await mongoose.connection.collection('users').deleteMany({})
+    })
+
+    after(async function () {
+        await mongoose.connection.close()
     })
 
     it('getAllUsers debe devolver un arreglo', async function () {
