@@ -12,9 +12,12 @@ class CartService {
 
     async getCartById(id) {
         try {
-            return await CartRepository.getById(id);
+            console.log('[CartService] getCartById - ID recibido:', id);
+            const cart = await CartRepository.getById(id);
+            console.log('[CartService] getCartById - Resultado:', cart);
+            return cart;
         } catch (error) {
-            console.error('Error in CartService.getCartById:', error.message);
+            console.error('Error en CartService.getCartById:', error.message);
             throw error;
         }
     }
@@ -32,9 +35,9 @@ class CartService {
         if (existingProduct) {
             existingProduct.quantity += quantity;
         } else {
-            cart.products.push({ product, quantity });
+            cart.products.push({ product: product._id, quantity });
         }
-
+        await cart.save();
         return cart;
     }
 

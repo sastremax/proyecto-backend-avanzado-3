@@ -20,3 +20,5 @@ artillery/report.html
 *.json
 *.csv
 *.test.db
+
+proyecto-nuevo/

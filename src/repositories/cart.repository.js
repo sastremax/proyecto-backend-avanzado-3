@@ -10,8 +10,8 @@ class CartRepository {
         return await cartManager.getById(id);
     }
 
-    async addProduct(cid, pid) {
-        return await cartManager.addProduct(cid, pid);
+    async addProduct(cid, pid, quantity = 1) {
+        return await cartManager.addProduct(cid, pid, quantity);
     }
 
     async updateProductQuantity(cid, pid, quantity) {

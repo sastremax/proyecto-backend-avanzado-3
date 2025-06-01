@@ -7,18 +7,35 @@ class CartManager {
     }
 
     async getById(id) {
-        const cart = await CartModel.findById(id).populate('products.product');
-        if (!cart) return null;
-        cart.products = cart.products.filter(p => p.product !== null);
-        return cart;
+        try {
+            console.log('[CartManager] getById - ID recibido:', id);
+            const cart = await CartModel.findById(id).populate({
+                path: 'products.product',
+                match: {},
+            });
+            console.log('[CartManager] Resultado antes de filtrar:', cart);
+            if (!cart) return null;
+            cart.products = cart.products.filter(p => p.product !== null);
+            return cart;
+        } catch (error) {
+            console.error('Error in cartManager.getById:', error.message);
+            throw error;
+        }
     }
 
-    async addProduct(cid, pid) {
-        return await CartModel.findByIdAndUpdate(
-            cid,
-            { $push: { products: { product: pid, quantity: 1 } } },
-            { new: true }
-        ).lean();
+    async addProduct(cid, pid, quantity = 1) {
+        const cart = await CartModel.findById(cid);
+        if (!cart) return null;
+
+        const existingProduct = cart.products.find(p => p.product.toString() === pid);
+
+        if (existingProduct) {
+            existingProduct.quantity += quantity;
+        } else {
+            cart.products.push({ product: new mongoose.Types.ObjectId(pid), quantity });
+        }
+
+        return await cart.save();
     }
 
     async updateProductQuantity(cid, pid, quantity) {

@@ -13,7 +13,7 @@ import {
 export default class CartsRouter extends CustomRouter {
     init() {
 
-        this.get('/:id', getCartById);
+        this.get('/:id', ['user'], getCartById);
         this.post('/', createCart);
         this.post('/:cid/product/:pid', ['user'], addProductToCart);
         this.post('/:id/purchase', ['user'], purchaseCart);
