@@ -18,7 +18,8 @@ import compression from 'compression';
 import zlib from 'node:zlib';
 import { addLogger } from './middlewares/addLogger.middleware.js';
 import { logger } from './config/logger.environment.js';
-import { swaggerUi, specs } from './swagger/swagger.config.js'
+import { swaggerUi, specs } from './swagger/swagger.config.js';
+import TicketsRouter from './routes/tickets.router.js';
 
 const app = express();
 
@@ -62,6 +63,7 @@ app.use('/base', new BaseRouter().getRouter());
 app.use('/api/business', new BusinessRouter().getRouter());
 app.use('/api/orders', new OrdersRouter().getRouter());
 app.use('/api/mocks', MockRouter);
+app.use('/api/tickets', new TicketsRouter().getRouter());
 
 app.get('/loggerTest', (req, res) => {
     req.logger.debug('DEBUG level log');

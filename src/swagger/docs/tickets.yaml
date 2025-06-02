@@ -1,0 +1,75 @@
+paths:
+  /api/tickets:
+    post:
+      tags:
+        - Tickets
+      summary: Crear un nuevo ticket
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                purchaser:
+                  type: string
+                  example: "user@example.com"
+                amount:
+                  type: number
+                  example: 1500
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      product:
+                        type: string
+                        example: "664b3b43123cdef12a5a6c11"
+                      quantity:
+                        type: integer
+                        example: 2
+      responses:
+        '201':
+          description: Ticket creado exitosamente
+        '400':
+          description: Error en la solicitud
+        '500':
+          description: Error interno del servidor
+
+    get:
+      tags:
+        - Tickets
+      summary: Obtener todos los tickets (solo admin)
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: Lista de tickets
+        '403':
+          description: Acceso denegado
+        '500':
+          description: Error interno del servidor
+
+  /api/tickets/{id}:
+    get:
+      tags:
+        - Tickets
+      summary: Obtener un ticket por ID
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID del ticket a buscar
+      responses:
+        '200':
+          description: Ticket encontrado
+        '404':
+          description: Ticket no encontrado
+        '500':
+          description: Error interno del servidor
