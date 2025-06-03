@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'test'
 import { expect } from 'chai'
 import { hashPassword, isValidPassword } from '../src/utils/hash.js'
 

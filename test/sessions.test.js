@@ -1,7 +1,11 @@
+process.env.NODE_ENV = 'test'
 import { expect } from 'chai'
 import supertest from 'supertest'
+import mongoose from 'mongoose'
+import config from '../src/config/config.js'
+import { app } from '../src/appServer.js'
 
-const requester = supertest('http://localhost:8080')
+const requester = supertest(app)
 
 describe('User Auth Flow - register → login → current', function () {
     let token = null
@@ -13,6 +17,11 @@ describe('User Auth Flow - register → login → current', function () {
         email: `test${Date.now()}@example.com`,
         password: '12345678'
     }
+
+    before(async function () {
+        this.timeout(10000)
+        await mongoose.connect(config.mongo_uri)
+    })
 
     it('Debe registrar un nuevo usuario', async function () {
         const res = await requester.post('/api/sessions/register').send(mockUser)
@@ -50,4 +59,9 @@ describe('User Auth Flow - register → login → current', function () {
         expect(res._body).to.have.property('data')
         expect(res._body.data).to.have.property('email', mockUser.email)
     })
+
+    after(async function () {
+        await mongoose.disconnect()
+    })
+    
 })

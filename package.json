@@ -5,7 +5,7 @@
 	"main": "src/app.js",
 	"scripts": {
 		"start": "nodemon src/app.js prod",
-		"dev": "node src/app.js dev",
+		"dev": "set NODE_ENV=dev && node src/app.js",
 		"prod": "node src/app.js prod",
 		"test": "mocha test/",
 		"test:testdb": "cross-env NODE_ENV=test mocha test/"

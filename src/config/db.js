@@ -3,6 +3,12 @@ import config from './config.js';
 import { logger } from './logger.environment.js';
 
 export const connectToDB = async () => {
+
+    if (process.env.NODE_ENV === 'test') {
+        logger.info('[connectToDB] Skipping MongoDB connection in test mode');
+        return;
+    }
+    
     try {
         await mongoose.connect(config.mongo_uri);
         logger.info('Connected to MongoDB');
