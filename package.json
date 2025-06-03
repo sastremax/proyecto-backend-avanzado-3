@@ -7,7 +7,8 @@
 		"start": "nodemon src/app.js prod",
 		"dev": "node src/app.js dev",
 		"prod": "node src/app.js prod",
-		"test": "mocha test/"
+		"test": "mocha test/",
+		"test:testdb": "cross-env NODE_ENV=test mocha test/"
 	},
 	"keywords": [],
 	"author": "",
@@ -39,6 +40,7 @@
 	},
 	"devDependencies": {
 		"chai": "^5.2.0",
+		"cross-env": "^7.0.3",
 		"mocha": "^11.4.0",
 		"nodemon": "^3.1.9",
 		"supertest": "^7.1.1"

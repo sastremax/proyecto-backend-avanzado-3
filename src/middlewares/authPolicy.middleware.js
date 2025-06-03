@@ -2,7 +2,7 @@ import passport from 'passport';
 
 export const passportWithPolicy = (roles = []) => {
     return [
-        passport.authenticate('current', { session: false }),
+        passport.authenticate('jwt-bearer', { session: false }),
         (req, res, next) => {
             if (!req.user) {
                 return res.status(401).json({ status: 'error', error: 'Not authenticated' });

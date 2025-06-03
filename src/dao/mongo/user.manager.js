@@ -10,7 +10,7 @@ export class UserManager {
     }
 
     async getById(id) {
-        return await UserModel.findById(id, { password: 0 });
+        return await UserModel.findById(id, { password: 0 }).lean()
     }
 
     async getAllUsers() {

@@ -23,7 +23,7 @@ class UserService {
     }
 
     async getRawUserByEmail(email) {
-        return await UserRepository.getBy({ email }); // para resetPassword
+        return await UserRepository.getByEmail(email);
     }
 
     async updateUserById(id, data) {

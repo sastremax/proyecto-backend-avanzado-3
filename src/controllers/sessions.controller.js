@@ -16,12 +16,6 @@ export const loginSession = (req, res, next) => {
         };
         const token = jwt.sign(payload, config.jwt_secret, { expiresIn: '1h' });
 
-        res.cookie('jwtToken', token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict'
-        });
-
         req.logger.info(`User logged in: ${dtoUser.email}`);
         res.success('Login successful', { token, user: dtoUser });
     } catch (error) {
@@ -44,7 +38,7 @@ export const registerSession = async (req, res, next) => {
         await userService.assignCartToUser(user._id, newCart._id);
 
         req.logger.info(`User registered: ${user.email}`);
-        res.created('User registered successfully');
+        res.created('User registered successfully', user);
 
     } catch (error) {
         req.logger.error(`Registration error: ${error.message}`);
@@ -63,7 +57,6 @@ export const currentSession = (req, res) => {
 
 export const logoutSession = (req, res) => {
     req.logger.info(`User logged out: ${req.user?.email || 'unknown'}`);
-    res.clearCookie('jwtToken');
     res.success('Logout successful');
 };
 

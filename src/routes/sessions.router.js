@@ -43,12 +43,26 @@ export default class SessionsRouter extends CustomRouter {
             },
             registerSession
         );
-        this.get('/current', ['user', 'admin'], currentSession);
+        this.get(
+            '/current',
+            ['user', 'admin'],
+            passport.authenticate('jwt-bearer', { session: false }),
+            (req, res, next) => {
+                if (!req.user) return res.status(401).json({ status: 'error', error: 'Not authenticated' });
+                if (!['user', 'admin'].includes(req.user.role)) return res.status(403).json({ status: 'error', error: 'Access denied' });
+                next();
+            },
+            currentSession
+        );
         this.post('/forgot-password', ['public'], forgotPassword)
         this.post('/reset-password', ['public'], resetPassword)
         this.get('/logout',
-            ['public'],
-            ...passportWithPolicy(['user', 'admin']),
+            ['user', 'admin'],
+            passport.authenticate('jwt-bearer', { session: false }),
+            (req, res, next) => {
+                if (!req.user) return res.status(401).json({ error: 'Not authenticated' });
+                next();
+            },
             logoutSession);
     }
 }

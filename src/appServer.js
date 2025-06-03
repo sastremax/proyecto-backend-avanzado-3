@@ -97,4 +97,5 @@ const startServer = async () => {
     }
 };
 
-export default startServer;
+export default config.mode === 'test' ? app : startServer;
+export { app };

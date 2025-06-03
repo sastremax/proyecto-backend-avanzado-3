@@ -91,28 +91,30 @@ const initializePassport = () => {
         }
     ));
 
-    passport.use('github', new GitHubStrategy({
-        clientID: config.github_client_id,
-        clientSecret: config.github_client_secret,
-        callbackURL: 'http://localhost:8080/api/users/githubcallback'
-    }, async (accessToken, refreshToken, profile, done) => {
-        try {
-            const email = profile._json.email || `${profile.username}@github.com`
-            let user = await userManager.getByEmail(email);
-            if (!user) {
-                user = await userManager.createUser({
-                    first_name: profile.username,
-                    last_name: 'GitHubUser',
-                    email,
-                    password: '',
-                    role: profile.username === 'sastremax' ? 'admin' : 'user'
-                });
+    if (config.mode !== 'test') {
+        passport.use('github', new GitHubStrategy({
+            clientID: config.github_client_id,
+            clientSecret: config.github_client_secret,
+            callbackURL: 'http://localhost:8080/api/users/githubcallback'
+        }, async (accessToken, refreshToken, profile, done) => {
+            try {
+                const email = profile._json.email || `${profile.username}@github.com`
+                let user = await userManager.getByEmail(email);
+                if (!user) {
+                    user = await userManager.createUser({
+                        first_name: profile.username,
+                        last_name: 'GitHubUser',
+                        email,
+                        password: '',
+                        role: profile.username === 'sastremax' ? 'admin' : 'user'
+                    });
+                }
+                return done(null, user)
+            } catch (error) {
+                return done(error)
             }
-            return done(null, user)
-        } catch (error) {
-            return done(error)
-        }
-    }));
+        }));
+    }
 
     passport.use('current', new JwtStrategy(
         {
@@ -122,7 +124,7 @@ const initializePassport = () => {
         async (jwtPayload, done) => {
             try {
                 console.log('JWT Payload ID:', jwtPayload.id);
-                const user = await userManager.getById(jwtPayload.id);
+                const user = await userService.getUserById(jwtPayload.id);
                 console.log('User from DB:', user);
                 if (!user) return done(null, false, { message: 'User not found' });
                 return done(null, {
