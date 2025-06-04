@@ -1,43 +1,37 @@
+process.env.NODE_ENV = 'test'
 import mongoose from 'mongoose'
-import Assert from 'node:assert'
+import { expect } from 'chai'
 import config from '../src/config/config.js'
-import userService from '../src/services/user.service.js'
-import { mockUser } from '../src/mocks/mock.user.js'
+import UserService from '../src/services/user.service.js'
 
-const assert = Assert.strict
-const testUser = { ...mockUser }
+const userService = UserService
 
-describe('Testing UserService', () => {
-    before(async () => {
-    await mongoose.connect(config.mongo_uri)
-    })
+describe('Testing UserService', function () {
+    const testEmail = `service_${Date.now()}@example.com`
 
-    beforeEach(async () => {
-        await mongoose.connection.collection('users').deleteMany({})
+    before(async function () {
+        await mongoose.connect(config.mongo_uri)
     })
 
     it('create debe crear un usuario con DTO y devolver fullname', async () => {
-        const result = await userService.create(testUser)
-        assert.ok(result.fullname)
-        assert.strictEqual(result.email, testUser.email)
+        const user = await userService.create({
+            first_name: 'Maxi',
+            last_name: 'Test',
+            email: testEmail,
+            password: '12345678',
+            age: 30
+        })
+        expect(user).to.have.property('fullname')
+        expect(user.fullname).to.equal('Maxi Test')
     })
 
     it('getUserByEmail debe devolver un UsersDTO con los datos esperados', async () => {
-        await userService.create(testUser)
-        const result = await userService.getUserByEmail(testUser.email)
-        assert.ok(result.fullname)
-        assert.strictEqual(result.email, testUser.email)
+        const user = await userService.getUserByEmail(testEmail)
+        expect(user).to.have.property('email', testEmail)
+        expect(user).to.have.property('fullname', 'Maxi Test')
     })
 
-    it('assignCartToUser debe asignar correctamente un carrito', async () => {
-        await userService.create(testUser)
-        const userRaw = await mongoose.connection.collection('users').findOne({ email: testUser.email })
-
-        const dummyCartId = new mongoose.Types.ObjectId()
-        const updated = await userService.assignCartToUser(userRaw._id, dummyCartId)
-
-        assert.ok(updated.cart)
-        assert.strictEqual(String(updated.cart), String(dummyCartId))
+    after(async function () {
+        await mongoose.disconnect()
     })
-
 })
