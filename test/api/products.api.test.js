@@ -2,8 +2,8 @@ process.env.NODE_ENV = 'test'
 import { expect } from 'chai'
 import supertest from 'supertest'
 import mongoose from 'mongoose'
-import config from '../src/config/config.js'
-import { app } from '../src/appServer.js'
+import config from '../../src/config/config.js'
+import { app } from '../../src/appServer.js'
 
 const requester = supertest(app)
 

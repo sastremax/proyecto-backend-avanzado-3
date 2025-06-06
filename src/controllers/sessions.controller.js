@@ -27,20 +27,27 @@ export const loginSession = (req, res, next) => {
 export const registerSession = async (req, res, next) => {
 
     try {
+        console.log('ENTERED registerSession');
+        console.log('req.user:', req.user);
         const user = req.user;
 
         if (!user) {
+            console.warn('User is missing');
             req.logger.warning('User registration failed');
             return res.badRequest('User registration failed');
         }
 
         const newCart = await CartModel.create({ products: [] });
+        console.log('Cart created with ID:', newCart._id);
+
         await userService.assignCartToUser(user._id, newCart._id);
+        console.log('Cart assigned to user');
 
         req.logger.info(`User registered: ${user.email}`);
-        res.created('User registered successfully', user);
+        res.created('User registered successfully', userService.formatUser(user));
 
     } catch (error) {
+        console.error('ERROR in registerSession:', error.message);
         req.logger.error(`Registration error: ${error.message}`);
         next(error);
     }
@@ -49,9 +56,9 @@ export const registerSession = async (req, res, next) => {
 
 export const currentSession = (req, res) => {
 
-    const dtoUser = new UsersDTO(req.user);
-    req.logger.info(`Current session retrieved for: ${dtoUser.email}`);
-    res.success('Current user', dtoUser);
+    const { first_name, last_name, email, age, role, cart } = req.user
+    req.logger.info(`Current session retrieved for: ${email}`);
+    res.success('Current user', { first_name, last_name, email, age, role, cart });
 
 };
 

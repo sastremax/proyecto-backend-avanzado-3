@@ -1,9 +1,9 @@
 process.env.NODE_ENV = 'test'
 import mongoose from 'mongoose'
 import Assert from 'node:assert'
-import config from '../src/config/config.js'
-import { UserManager } from '../src/dao/mongo/user.manager.js'
-import { mockUser } from '../src/mocks/mock.user.js'
+import config from '../../src/config/config.js'
+import { UserManager } from '../../src/dao/mongo/user.manager.js'
+import { mockUser } from '../../src/mocks/mock.user.js'
 
 const assert = Assert.strict
 

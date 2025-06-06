@@ -1,8 +1,8 @@
 process.env.NODE_ENV = 'test'
 import mongoose from 'mongoose'
 import Assert from 'node:assert'
-import config from '../src/config/config.js'
-import TicketRepository from '../src/repositories/ticket.repository.js'
+import config from '../../src/config/config.js'
+import TicketRepository from '../../src/repositories/ticket.repository.js'
 
 const assert = Assert.strict
 

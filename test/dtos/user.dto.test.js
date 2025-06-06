@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'test'
 import { expect } from 'chai'
-import { hashPassword, isValidPassword } from '../src/utils/hash.js'
+import { hashPassword, isValidPassword } from '../../src/utils/hash.js'
 
 describe('Testing de utilidades y DTO de usuario', () => {
     describe('Testing de contraseñas', () => {

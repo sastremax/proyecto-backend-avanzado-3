@@ -1,8 +1,8 @@
 process.env.NODE_ENV = 'test'
 import mongoose from 'mongoose'
 import { expect } from 'chai'
-import config from '../src/config/config.js'
-import UserService from '../src/services/user.service.js'
+import config from '../../src/config/config.js'
+import UserService from '../../src/services/user.service.js'
 
 const userService = UserService
 

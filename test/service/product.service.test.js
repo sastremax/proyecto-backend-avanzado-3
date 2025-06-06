@@ -1,8 +1,8 @@
 process.env.NODE_ENV = 'test'
 import mongoose from 'mongoose'
 import Assert from 'node:assert'
-import config from '../src/config/config.js'
-import productService from '../src/services/product.service.js'
+import config from '../../src/config/config.js'
+import productService from '../../src/services/product.service.js'
 
 const assert = Assert.strict
 
