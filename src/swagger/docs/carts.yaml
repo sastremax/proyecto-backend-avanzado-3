@@ -1,0 +1,232 @@
+paths:
+  /api/carts/{cid}:
+    get:
+      summary: Obtener un carrito por su ID
+      tags:
+        - Carts
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: ID del carrito a obtener
+      responses:
+        "200":
+          description: Carrito obtenido exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Carrito obtenido
+                data: { /* ejemplo de carrito */ }
+        "404":
+          description: Carrito no encontrado
+          content:
+            application/json:
+              example:
+                status: error
+                error: Carrito no encontrado
+
+    put:
+      summary: Vaciar un carrito
+      tags:
+        - Carts
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: ID del carrito a vaciar
+      responses:
+        "200":
+          description: Carrito vaciado exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Carrito vaciado
+
+  /api/carts:
+    post:
+      summary: Crear un nuevo carrito
+      tags:
+        - Carts
+      responses:
+        "201":
+          description: Carrito creado exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Carrito creado
+                data: { /* ejemplo de carrito */ }
+
+  /api/carts/{cid}/product/{pid}:
+    post:
+      summary: Agregar producto al carrito
+      tags:
+        - Carts
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: ID del carrito
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: ID del producto
+      responses:
+        "200":
+          description: Producto agregado al carrito
+          content:
+            application/json:
+              example:
+                status: success
+                message: Producto agregado al carrito
+
+  /api/carts/{cid}/products:
+    put:
+      summary: Reemplazar todos los productos de un carrito
+      tags:
+        - Carts
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: ID del carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      productId:
+                        type: string
+                      quantity:
+                        type: integer
+              example:
+                products:
+                  - productId: "ABC123"
+                    quantity: 2
+                  - productId: "DEF456"
+                    quantity: 1
+      responses:
+        "200":
+          description: Productos reemplazados exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Productos reemplazados
+
+  /api/carts/{cid}/products/{productId}:
+    put:
+      summary: Actualizar cantidad de un producto en el carrito
+      tags:
+        - Carts
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: ID del carrito
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: string
+          description: ID del producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+              example:
+                quantity: 3
+      responses:
+        "200":
+          description: Cantidad de producto actualizada
+          content:
+            application/json:
+              example:
+                status: success
+                message: Cantidad actualizada
+
+    delete:
+      summary: Eliminar producto del carrito
+      tags:
+        - Carts
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: ID del carrito
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: string
+          description: ID del producto
+      responses:
+        "200":
+          description: Producto eliminado del carrito
+          content:
+            application/json:
+              example:
+                status: success
+                message: Producto eliminado
+
+  /api/carts/{cid}/purchase:
+    post:
+      summary: Finalizar compra del carrito
+      tags:
+        - Carts
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: ID del carrito
+      responses:
+        "200":
+          description: Compra realizada exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Compra realizada
+                data: { /* ejemplo de ticket */ }
