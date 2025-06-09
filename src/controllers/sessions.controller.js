@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken';
 import config from '../config/config.js';
-import CartModel from '../models/cart.model.js'
-import { UsersDTO } from '../dto/users.dto.js';
 import userService from '../services/user.service.js';
+import { sendRecoveryEmail } from '../utils/mailer.js';
 
 export const loginSession = (req, res, next) => {
     try {
@@ -37,12 +36,6 @@ export const registerSession = async (req, res, next) => {
             return res.badRequest('User registration failed');
         }
 
-        const newCart = await CartModel.create({ products: [] });
-        console.log('Cart created with ID:', newCart._id);
-
-        await userService.assignCartToUser(user._id, newCart._id);
-        console.log('Cart assigned to user');
-
         req.logger.info(`User registered: ${user.email}`);
         res.created('User registered successfully', userService.formatUser(user));
 
@@ -71,17 +64,22 @@ export const forgotPassword = async (req, res) => {
 
     try {
         const { email } = req.body;
-        req.logger.warning('Forgot password request missing email');
-        if (!email) return res.badRequest('Email is required.');
+
+        if (!email) {
+            req.logger.warning('Forgot password request missing email');
+            return res.badRequest('Email is required.');
+        }
 
         const user = await userService.getByEmail(email);
-        if (!user) return res.notFound('User not found.');
-        req.logger.warning(`Forgot password: user not found for email ${email}`);
+
+        if (!user) {
+            req.logger.warning(`Forgot password: user not found for email ${email}`);
+            return res.notFound('User not found.');
+        }
+
         const token = jwt.sign({ email }, config.jwt_secret, { expiresIn: '1h' });
 
-        const recoveryLink = `http://localhost:8080/api/sessions/reset-password?token=${token}`;
-
-        await sendRecoveryEmail(email, recoveryLink);
+        await sendRecoveryEmail(email, token);
 
         req.logger.info(`Recovery email sent to: ${email}`);
         return res.success('Recovery email sent successfully.');
