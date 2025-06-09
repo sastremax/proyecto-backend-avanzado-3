@@ -1,0 +1,104 @@
+paths:
+  /api/orders:
+    get:
+      summary: Obtener todas las órdenes
+      tags:
+        - Orders
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Órdenes obtenidas exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Órdenes obtenidas
+                data:
+                  - _id: "ORD12345"
+                    user: "user@example.com"
+                    amount: 10000
+                    products:
+                      - productId: "ABC123"
+                        quantity: 2
+                    purchase_datetime: "2024-06-05T12:00:00Z"
+                    code: "TICKET001"
+        "403":
+          description: Acceso restringido (admin)
+          content:
+            application/json:
+              example:
+                status: error
+                error: "Acceso restringido al rol admin"
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "No autorizado: se requiere autenticación."
+
+    post:
+      summary: Crear nueva orden
+      tags:
+        - Orders
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cartId:
+                  type: string
+              required:
+                - cartId
+              example:
+                cartId: "CART12345"
+      responses:
+        "201":
+          description: Orden creada exitosamente
+          content:
+            application/json:
+              example:
+                status: success
+                message: Orden creada
+                data:
+                  _id: "ORD12345"
+                  amount: 10000
+                  code: "TICKET001"
+                  purchase_datetime: "2024-06-05T12:00:00Z"
+
+  /api/orders/my-orders:
+    get:
+      summary: Obtener mis órdenes
+      tags:
+        - Orders
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Órdenes del usuario obtenidas
+          content:
+            application/json:
+              example:
+                status: success
+                message: Órdenes obtenidas
+                data:
+                  - _id: "ORD12345"
+                    user: "user@example.com"
+                    amount: 10000
+                    products:
+                      - productId: "ABC123"
+                        quantity: 2
+                    purchase_datetime: "2024-06-05T12:00:00Z"
+                    code: "TICKET001"
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              example:
+                status: error
+                error: "No autorizado: se requiere autenticación."
