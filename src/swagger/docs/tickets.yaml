@@ -73,3 +73,25 @@ paths:
           description: Ticket no encontrado
         '500':
           description: Error interno del servidor
+
+components:
+  schemas:
+    Ticket:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID del ticket
+        code:
+          type: string
+          description: Código del ticket generado
+        amount:
+          type: number
+          description: Monto total del ticket
+        purchase_datetime:
+          type: string
+          format: date-time
+          description: Fecha y hora de la compra
+        purchaser:
+          type: string
+          description: Email del comprador
