@@ -11,7 +11,7 @@ describe('Testing TicketService', () => {
         await mongoose.connect(config.mongo_uri)
     })
 
-    it('create debe generar un ticket con _id y code único', async () => {
+    it('create should generate a ticket with _id and unique code', async () => {
         const ticketData = {
             code: `T-${Date.now()}-1`,
             amount: 1000,
@@ -22,7 +22,7 @@ describe('Testing TicketService', () => {
         assert.strictEqual(result.code, ticketData.code)
     })
 
-    it('getAll debe devolver una lista de tickets existentes', async () => {
+    it('getAll should return a list of existing tickets', async () => {
         const ticketData = {
             code: `T-${Date.now()}-2`,
             amount: 1000,
@@ -34,7 +34,7 @@ describe('Testing TicketService', () => {
         assert.ok(result.length >= 1)
     })
 
-    it('getById debe devolver el ticket correcto', async () => {
+    it('getById should return the correct ticket by id', async () => {
         const ticketData = {
             code: `T-${Date.now()}-3`,
             amount: 1000,

@@ -30,28 +30,28 @@ describe('Testing Users DAO', function () {
         await mongoose.connection.close()
     })
 
-    it('getAllUsers debe devolver un arreglo', async function () {
+    it('getAllUsers should return an array of users', async function () {
         const result = await userDAO.getAllUsers()
         assert.strictEqual(Array.isArray(result), true)
     })
 
-    it('createUser debe crear un usuario con _id', async function () {
+    it('createUser should create a user with _id', async function () {
         const result = await userDAO.createUser(uniqueUser)
         assert.ok(result._id)
     })
 
-    it('getByEmail debe encontrar al usuario creado', async function () {
+    it('getByEmail should find the created user by email', async function () {
         await userDAO.createUser(uniqueUser)
         const result = await userDAO.getByEmail(uniqueUser.email)
         assert.strictEqual(result.email, uniqueUser.email)
     })
 
-    it('El email del usuario no debe ser distinto al esperado', async function () {
+    it('should not return a different email than expected', async function () {
         const result = await userDAO.createUser(uniqueUser)
         assert.notStrictEqual(result.email, 'another@gmail.com')
     })
 
-    it('El DAO debe eliminar un usuario correctamente de la base de datos', async function () {
+    it('should delete a user from the database', async function () {
         const created = await userDAO.createUser(uniqueUser)
         const deleted = await userDAO.deleteById(created._id)
         assert.ok(deleted._id)
@@ -60,7 +60,7 @@ describe('Testing Users DAO', function () {
         assert.strictEqual(check, null)
     })
 
-    it('El usuario recuperado debe coincidir con el creado', async function () {
+    it('should match the retrieved user with the created one', async function () {
         await userDAO.createUser(uniqueUser)
         const found = await userDAO.getByEmail(uniqueUser.email)
 
@@ -78,7 +78,7 @@ describe('Testing Users DAO', function () {
         )
     })
 
-    it('updateUserById debe actualizar el nombre correctamente', async function () {
+    it('updateUserById should update the user name correctly', async function () {
         const created = await userDAO.createUser(uniqueUser)
 
         const updated = await userDAO.updateUserById(created._id, {

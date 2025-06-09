@@ -28,7 +28,7 @@ describe('Carts API - flujo funcional completo', function () {
         await mongoose.disconnect();
     });
 
-    it('Paso 1 → should register a new user and obtain cartId', async function () {
+    it('Step 1 → should register a new user and obtain cartId', async function () {
         try {
             console.log('TEST INICIADO: Carts API - Register');
             const res = await requester.post('/api/sessions/register').send(mockUser);
@@ -50,7 +50,7 @@ describe('Carts API - flujo funcional completo', function () {
         }
     });
 
-    it('Paso 2 → should login and obtain token', async function () {
+    it('Step 2 → should login and obtain token', async function () {
         try {
             const res = await requester.post('/api/sessions/login').send({
                 email: mockUser.email,
@@ -71,7 +71,7 @@ describe('Carts API - flujo funcional completo', function () {
         }
     });
 
-    it('Paso 3 → should retrieve the cart (GET /api/carts/:cartId)', async function () {
+    it('Step 3 → should retrieve the cart (GET /api/carts/:cartId)', async function () {
         try {
             const res = await requester
                 .get(`/api/carts/${cartId}`)
@@ -89,8 +89,8 @@ describe('Carts API - flujo funcional completo', function () {
             assert.fail('Test failed with exception: ' + error.message);
         }
     });
-    
-    it('Paso 4 → should add a product to the cart (POST /api/carts/:cartId/product/:productId)', async function () {
+
+    it('Step 4 → should add a product to the cart (POST /api/carts/:cartId/product/:productId)', async function () {
         try {
             const productId = '6842093cd752f8ca394712a2';
 
@@ -118,8 +118,8 @@ describe('Carts API - flujo funcional completo', function () {
             assert.fail('Test failed with exception: ' + error.message);
         }
     });
-    
-    it('Paso 5 → should update product quantity in cart (PUT /api/carts/:cartId/products/:productId)', async function () {
+
+    it('Step 5 → should update product quantity in cart (PUT /api/carts/:cartId/products/:productId)', async function () {
         try {
             const productId = '6842093cd752f8ca394712a2';
 
@@ -157,8 +157,8 @@ describe('Carts API - flujo funcional completo', function () {
             assert.fail('Test failed with exception: ' + error.message);
         }
     });
-    
-    it('Paso 6 → should remove product from cart (DELETE /api/carts/:cartId/products/:productId)', async function () {
+
+    it('Step 6 → should remove product from cart (DELETE /api/carts/:cartId/products/:productId)', async function () {
         try {
             const productId = '6842093cd752f8ca394712a2';
 
@@ -182,5 +182,5 @@ describe('Carts API - flujo funcional completo', function () {
             assert.fail('Test failed with exception: ' + error.message);
         }
     });
-    
+
 });

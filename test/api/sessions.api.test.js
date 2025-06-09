@@ -23,7 +23,7 @@ describe('User Auth Flow - register → login → current', function () {
         await mongoose.connect(config.mongo_uri)
     })
 
-    it('Debe registrar un nuevo usuario', async function () {
+    it('should register a new user', async function () {
         const res = await requester.post('/api/sessions/register').send(mockUser)
 
         console.log('REGISTER STATUS:', res.status)
@@ -34,7 +34,7 @@ describe('User Auth Flow - register → login → current', function () {
         expect(res._body.message).to.equal('User registered successfully')
     })
 
-    it('Debe hacer login y devolver un token válido', async function () {
+    it('should login and return a valid token', async function () {
         const res = await requester.post('/api/sessions/login').send({
             email: mockUser.email,
             password: mockUser.password
@@ -47,7 +47,7 @@ describe('User Auth Flow - register → login → current', function () {
         expect(token).to.exist
     })
 
-    it('Debe acceder a /current y devolver el usuario logueado', async function () {
+    it('should access /current and return the logged user', async function () {
         const res = await requester
             .get('/api/sessions/current')
             .set('Authorization', `Bearer ${token}`)
@@ -63,5 +63,5 @@ describe('User Auth Flow - register → login → current', function () {
     after(async function () {
         await mongoose.disconnect()
     })
-    
+
 })

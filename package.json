@@ -7,7 +7,7 @@
 		"start": "nodemon src/app.js prod",
 		"dev": "set NODE_ENV=dev && node src/app.js",
 		"prod": "node src/app.js prod",
-		"test": "cross-env NODE_ENV=test mocha --timeout 10000",
+		"test": "cross-env NODE_ENV=test mocha test/**/*.test.js --timeout 10000",
 		"test:api": "cross-env NODE_ENV=test mocha test/api/**/*.test.js --timeout 5000",
 		"test:unit": "cross-env NODE_ENV=test mocha test/unit/**/*.test.js --timeout 5000",
 		"test:carts": "cross-env NODE_ENV=test mocha test/api/carts.api.test.js --timeout 5000",

@@ -4,14 +4,14 @@ import { hashPassword, isValidPassword } from '../../src/utils/hash.js'
 
 describe('Testing de utilidades y DTO de usuario', () => {
     describe('Testing de contraseñas', () => {
-        it('Debe generar un hash distinto de la contraseña original', () => {
+        it('should generate a hash different from the original password', () => {
             const password = 'PasswordDificil!'
             const hashedPassword = hashPassword(password)
 
             expect(hashedPassword).to.not.equal(password)
         })
 
-        it('Debe validar correctamente la contraseña con el hash', () => {
+        it('should validate the password correctly with the hash', () => {
             const password = 'PasswordDificil!'
             const hashedPassword = hashPassword(password)
 
@@ -19,7 +19,7 @@ describe('Testing de utilidades y DTO de usuario', () => {
             expect(result).to.be.true
         })
 
-        it('Debe fallar si la contraseña es incorrecta', () => {
+        it('should fail if the password is incorrect', () => {
             const password = 'PasswordDificil!'
             const wrongPassword = 'ContraseñaIncorrecta'
             const hashedPassword = hashPassword(password)

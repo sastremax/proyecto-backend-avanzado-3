@@ -11,7 +11,7 @@ describe('Testing ProductService', () => {
         await mongoose.connect(config.mongo_uri)
     })
 
-    it('createProduct debe crear un producto y devolver un _id', async () => {
+    it('createProduct should create a product and return _id', async () => {
         const mockProduct = {
             title: 'Producto Test',
             description: 'Descripción de prueba',
@@ -24,7 +24,7 @@ describe('Testing ProductService', () => {
         assert.ok(result._id)
     })
 
-    it('getAllProducts debe devolver al menos un producto creado', async () => {
+    it('getAllProducts should return at least one created product', async () => {
         const mockProduct = {
             title: 'Producto Test',
             description: 'Descripción de prueba',
@@ -39,7 +39,7 @@ describe('Testing ProductService', () => {
         assert.ok(result.docs.length > 0)
     })
 
-    it('getProductById debe devolver el producto correcto', async () => {
+    it('getProductById should return the correct product by id', async () => {
         const mockProduct = {
             title: 'Producto Test',
             description: 'Descripción de prueba',
@@ -53,7 +53,7 @@ describe('Testing ProductService', () => {
         assert.strictEqual(result.title, mockProduct.title)
     })
 
-    it('updateProduct debe modificar el título del producto', async () => {
+    it('updateProduct should update the product title', async () => {
         const mockProduct = {
             title: 'Producto Test',
             description: 'Descripción de prueba',
@@ -67,7 +67,7 @@ describe('Testing ProductService', () => {
         assert.strictEqual(updated.title, 'Actualizado')
     })
 
-    it('deleteProduct debe eliminar el producto correctamente', async () => {
+    it('deleteProduct should delete the product successfully', async () => {
         const mockProduct = {
             title: 'Producto Test',
             description: 'Descripción de prueba',
