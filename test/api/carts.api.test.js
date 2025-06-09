@@ -7,7 +7,7 @@ process.env.NODE_ENV = 'test';
 
 const requester = supertest(app);
 
-describe('Carts API - flujo funcional completo', function () {
+describe('Carts API - funtional complete', function () {
     this.timeout(10000);
 
     let cartId = null;
@@ -30,7 +30,7 @@ describe('Carts API - flujo funcional completo', function () {
 
     it('Step 1 → should register a new user and obtain cartId', async function () {
         try {
-            console.log('TEST INICIADO: Carts API - Register');
+            console.log('TEST INIT: Carts API - Register');
             const res = await requester.post('/api/sessions/register').send(mockUser);
 
             console.log('REGISTER STATUS:', res.status);
@@ -41,7 +41,7 @@ describe('Carts API - flujo funcional completo', function () {
             expect(res.body.data).to.have.property('cart');
 
             cartId = res.body.data.cart;
-            console.log('cartId obtenido:', cartId);
+            console.log('cartId:', cartId);
             expect(cartId).to.exist;
 
         } catch (error) {
@@ -62,7 +62,7 @@ describe('Carts API - flujo funcional completo', function () {
 
             expect(res.status).to.equal(200);
             token = res.body?.data?.token;
-            console.log('TOKEN obtenido:', token);
+            console.log('TOKEN:', token);
             expect(token).to.exist;
 
         } catch (error) {

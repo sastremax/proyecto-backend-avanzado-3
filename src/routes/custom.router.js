@@ -104,7 +104,7 @@ export default class CustomRouter {
         return (req, res, next) => {
             if (!Array.isArray(policies)) {
                 req.logger?.error(`[POLICY ERROR] Expected an array, but received: ${typeof policies}`);
-                return res.internalError("El parámetro 'policies' debe ser un array.");
+                return res.internalError("The 'policies' parameter must be an array.");
             }
             if (policies.includes('public')) return next();
 
@@ -112,12 +112,12 @@ export default class CustomRouter {
 
             if (!user) {
                 req.logger?.warning('[AUTH] Unauthorized access attempt (no user in request)');
-                return res.unauthorized('No autorizado: se requiere autenticación.');
+                return res.unauthorized('Unauthorized: authentication is required.');
             }
 
             if (!policies.includes(user.role)) {
                 req.logger?.warning(`[AUTH] Forbidden: user role "${user.role}" does not match required policies ${JSON.stringify(policies)}`);
-                return res.forbidden('No tenés permisos para acceder a este recurso.');
+                return res.forbidden('Forbidden: you do not have permission to access this resource.');
             }
 
             next();

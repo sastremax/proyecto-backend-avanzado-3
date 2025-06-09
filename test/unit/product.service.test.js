@@ -13,8 +13,8 @@ describe('Testing ProductService', () => {
 
     it('createProduct should create a product and return _id', async () => {
         const mockProduct = {
-            title: 'Producto Test',
-            description: 'Descripción de prueba',
+            title: 'Product Test',
+            description: 'Test description',
             code: `test-${Date.now()}`,
             price: 150,
             stock: 10,
@@ -26,8 +26,8 @@ describe('Testing ProductService', () => {
 
     it('getAllProducts should return at least one created product', async () => {
         const mockProduct = {
-            title: 'Producto Test',
-            description: 'Descripción de prueba',
+            title: 'Product Test',
+            description: 'Test description',
             code: `test-${Date.now()}`,
             price: 150,
             stock: 10,
@@ -41,8 +41,8 @@ describe('Testing ProductService', () => {
 
     it('getProductById should return the correct product by id', async () => {
         const mockProduct = {
-            title: 'Producto Test',
-            description: 'Descripción de prueba',
+            title: 'Product Test',
+            description: 'Test description',
             code: `test-${Date.now()}`,
             price: 150,
             stock: 10,
@@ -55,22 +55,22 @@ describe('Testing ProductService', () => {
 
     it('updateProduct should update the product title', async () => {
         const mockProduct = {
-            title: 'Producto Test',
-            description: 'Descripción de prueba',
+            title: 'Product Test',
+            description: 'Test description',
             code: `test-${Date.now()}`,
             price: 150,
             stock: 10,
             category: 'testing'
         }
         const created = await productService.createProduct(mockProduct)
-        const updated = await productService.updateProduct(created._id, { title: 'Actualizado' })
-        assert.strictEqual(updated.title, 'Actualizado')
+        const updated = await productService.updateProduct(created._id, { title: 'Update' })
+        assert.strictEqual(updated.title, 'Update')
     })
 
     it('deleteProduct should delete the product successfully', async () => {
         const mockProduct = {
-            title: 'Producto Test',
-            description: 'Descripción de prueba',
+            title: 'Product Test',
+            description: 'Test description',
             code: `test-${Date.now()}`,
             price: 150,
             stock: 10,

@@ -34,8 +34,8 @@ describe('API /api/products', function () {
 
     it('should create a new product', async function () {
         const productData = {
-            title: 'Producto API Test',
-            description: 'Descripción del producto API',
+            title: 'Product API Test',
+            description: 'Description of API product',
             price: 1000,
             code: uniqueCode,
             stock: 50,
@@ -67,10 +67,10 @@ describe('API /api/products', function () {
         const res = await requester
             .put(`/api/products/${createdProductId}`)
             .set('Authorization', `Bearer ${token}`)
-            .send({ title: 'Título Actualizado API' })
+            .send({ title: 'Tittle update API' })
 
         expect(res.status).to.equal(200)
-        expect(res.body.data.title).to.equal('Título Actualizado API')
+        expect(res.body.data.title).to.equal('Tittle update API')
     })
 
     it('should delete the product', async function () {

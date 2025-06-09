@@ -82,9 +82,9 @@ describe('Testing Users DAO', function () {
         const created = await userDAO.createUser(uniqueUser)
 
         const updated = await userDAO.updateUserById(created._id, {
-            first_name: 'NombreActualizado'
+            first_name: 'NameUpdate'
         })
 
-        assert.strictEqual(updated.first_name, 'NombreActualizado')
+        assert.strictEqual(updated.first_name, 'NameUpdate')
     })
 })

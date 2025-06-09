@@ -43,7 +43,7 @@ describe('User Auth Flow - register → login → current', function () {
         expect(res.status).to.equal(200)
 
         token = res._body?.data?.token
-        console.log('TOKEN OBTENIDO:', token)
+        console.log('TOKEN:', token)
         expect(token).to.exist
     })
 
