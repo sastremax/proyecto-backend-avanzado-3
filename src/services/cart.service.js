@@ -88,6 +88,16 @@ class CartService {
                 purchaser: user.email
             });
 
+            await OrderService.createOrder({
+                business: elBusinessId,
+                user: user.id,
+                products: cart.products.map(item => ({
+                    product: item.product._id,
+                    quantity: item.quantity
+                })),
+                totalAmount
+            });
+            
             try {
                 await sendWhatsAppMessage(
                     config.whatsapp_dest,
