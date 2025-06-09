@@ -1,8 +1,8 @@
 process.env.NODE_ENV = 'test'
 import mongoose from 'mongoose'
 import { expect } from 'chai'
-import config from '../src/config/config.js'
-import UserModel from '../src/models/user.model.js'
+import config from '../../src/config/config.js'
+import UserModel from '../../src/models/user.model.js'
 
 describe('Basic MongoDB insert test', () => {
     const testEmail = `testuser_${Date.now()}@example.com`

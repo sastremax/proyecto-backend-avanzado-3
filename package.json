@@ -4,13 +4,14 @@
 	"description": "",
 	"main": "src/app.js",
 	"scripts": {
-  		"start": "nodemon src/app.js prod",
-  		"dev": "set NODE_ENV=dev && node src/app.js",
-  		"prod": "node src/app.js prod",
-  		"test": "cross-env NODE_ENV=test mocha --timeout 10000",
-  		"test:testdb": "cross-env NODE_ENV=test mocha test/",
-  		"test:carts": "cross-env NODE_ENV=test mocha test/carts/carts.test.js --timeout 5000",
-  		"test:users": "cross-env NODE_ENV=test mocha test/users/*.test.js --timeout 5000"
+		"start": "nodemon src/app.js prod",
+		"dev": "set NODE_ENV=dev && node src/app.js",
+		"prod": "node src/app.js prod",
+		"test": "cross-env NODE_ENV=test mocha --timeout 10000",
+		"test:api": "cross-env NODE_ENV=test mocha test/api/**/*.test.js --timeout 5000",
+		"test:unit": "cross-env NODE_ENV=test mocha test/unit/**/*.test.js --timeout 5000",
+		"test:carts": "cross-env NODE_ENV=test mocha test/api/carts.api.test.js --timeout 5000",
+		"test:tickets": "cross-env NODE_ENV=test mocha test/api/tickets.api.test.js --timeout 5000"
 	},
 	"keywords": [],
 	"author": "",
