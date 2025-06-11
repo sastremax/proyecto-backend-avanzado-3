@@ -13,7 +13,6 @@ import config from './config/config.js';
 import customResponses from './middlewares/customResponses.middleware.js';
 import BusinessRouter from './routes/business.router.js';
 import OrdersRouter from './routes/orders.router.js';
-// import MockRouter from './routes/mocks.router.js';
 import compression from 'compression';
 import zlib from 'node:zlib';
 import { addLogger } from './middlewares/addLogger.middleware.js';
@@ -48,7 +47,6 @@ app.use('/api/tickets', new TicketsRouter().getRouter());
 app.use('/base', new BaseRouter().getRouter());
 app.use('/api/business', new BusinessRouter().getRouter());
 app.use('/api/orders', new OrdersRouter().getRouter());
-//app.use('/api/mocks', new MockRouter().getRouter());
 app.use('/apidocs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use(errorHandler);
 

@@ -1,6 +1,5 @@
 import passport from 'passport';
 import local from 'passport-local';
-import GitHubStrategy from 'passport-github2';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { UserManager } from '../dao/mongo/user.manager.js';
 import CartModel from '../models/cart.model.js';
@@ -91,31 +90,6 @@ const initializePassport = () => {
             }
         }
     ));
-
-    //if (config.mode !== 'test') {
-    //    passport.use('github', new GitHubStrategy({
-    //        clientID: config.github_client_id,
-    //        clientSecret: config.github_client_secret,
-    //        callbackURL: 'http://localhost:8080/api/users/githubcallback'
-    //    }, async (accessToken, refreshToken, profile, done) => {
-    //        try {
-    //            const email = profile._json.email || `${profile.username}@github.com`
-    //            let user = await userManager.getByEmail(email);
-    //            if (!user) {
-    //                user = await userManager.createUser({
-    //                    first_name: profile.username,
-    //                    last_name: 'GitHubUser',
-    //                    email,
-    //                    password: '',
-    //                    role: profile.username === 'sastremax' ? 'admin' : 'user'
-    //                });
-    //            }
-    //            return done(null, user)
-    //        } catch (error) {
-    //            return done(error)
-    //        }
-    //    }));
-    //}
 
     passport.use('current', new JwtStrategy(
         {

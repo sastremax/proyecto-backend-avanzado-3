@@ -8,7 +8,6 @@ import {
     forgotPassword
 } from '../controllers/sessions.controller.js';
 import { resetPassword } from '../controllers/users.controller.js';
-import { passportWithPolicy } from '../middlewares/authPolicy.middleware.js';
 
 export default class SessionsRouter extends CustomRouter {
     init() {
