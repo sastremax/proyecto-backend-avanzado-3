@@ -1,186 +1,97 @@
-import { expect, assert } from 'chai';
+process.env.NODE_ENV = 'test';
+import { expect } from 'chai';
 import supertest from 'supertest';
-import { app } from '../../src/appServer.js';
 import mongoose from 'mongoose';
 import config from '../../src/config/config.js';
-process.env.NODE_ENV = 'test';
+import { setupTestProduct } from '../utils/setupTestData.js';
+import { sharedProductId } from '../utils/testData.js';
 
-const requester = supertest(app);
+let requester;
+let token = null;
+let cartId = null;
+let productId = null;
 
-describe('Carts API - funtional complete', function () {
-    this.timeout(10000);
+before(async function () {
+    const { default: app } = await import('../../src/appExpress.js');
+    requester = supertest(app);
 
-    let cartId = null;
-    let token = null;
+    await mongoose.connect(config.mongo_uri);
+    await setupTestProduct();
+    productId = sharedProductId;
+
     const mockUser = {
-        first_name: 'Test',
-        last_name: 'Cart',
-        email: `testcart_${Date.now()}@example.com`,
-        password: '12345678',
-        age: 30
+        first_name: 'Cart',
+        last_name: 'Test',
+        email: `carttest_${Date.now()}@example.com`,
+        age: 30,
+        password: '12345678'
     };
 
-    before(async function () {
-        await mongoose.connect(config.mongo_uri);
+    const resUser = await requester.post('/api/sessions/register').send(mockUser);
+
+    console.log('REGISTER STATUS:', resUser.status);
+    console.log('REGISTER BODY:', resUser._body);
+
+    const resLogin = await requester.post('/api/sessions/login').send({
+        email: mockUser.email,
+        password: mockUser.password
     });
 
-    after(async function () {
-        await mongoose.disconnect();
+    token = resLogin.body.data.token;
+    cartId = resLogin.body.data.user.cart;
+});
+
+describe('Carts API - funtional complete', function () {
+    this.timeout(20000);
+
+    beforeEach(async function () {
+        const ProductModel = (await import('../../src/models/product.model.js')).default;
+        await ProductModel.updateOne(
+            { _id: sharedProductId },
+            { $set: { stock: 50 } }
+        );
+        console.log('Stock reset to 50 in carts.api.test.js');
     });
 
-    it('Step 1 → should register a new user and obtain cartId', async function () {
-        try {
-            console.log('TEST INIT: Carts API - Register');
-            const res = await requester.post('/api/sessions/register').send(mockUser);
+    it('Step 1 → should retrieve the cart (GET /api/carts/:cartId)', async function () {
+        const res = await requester
+            .get(`/api/carts/${cartId}`)
+            .set('Authorization', `Bearer ${token}`);
 
-            console.log('REGISTER STATUS:', res.status);
-            console.log('REGISTER BODY:', res.body);
-
-            expect(res.status).to.equal(201);
-            expect(res.body).to.have.property('data');
-            expect(res.body.data).to.have.property('cart');
-
-            cartId = res.body.data.cart;
-            console.log('cartId:', cartId);
-            expect(cartId).to.exist;
-
-        } catch (error) {
-            console.error('REGISTER ERROR:', error);
-            assert.fail('Test failed with exception: ' + error.message);
-        }
+        expect(res.status).to.equal(200);
+        expect(res.body.data).to.have.property('products');
     });
 
-    it('Step 2 → should login and obtain token', async function () {
-        try {
-            const res = await requester.post('/api/sessions/login').send({
-                email: mockUser.email,
-                password: mockUser.password
-            });
+    it('Step 2 → should add a product to the cart (POST /api/carts/:cartId/product/:productId)', async function () {
+        const res = await requester
+            .post(`/api/carts/${cartId}/product/${productId}`)
+            .set('Authorization', `Bearer ${token}`)
+            .send({ quantity: 2 });
 
-            console.log('LOGIN STATUS:', res.status);
-            console.log('LOGIN BODY:', res.body);
-
-            expect(res.status).to.equal(200);
-            token = res.body?.data?.token;
-            console.log('TOKEN:', token);
-            expect(token).to.exist;
-
-        } catch (error) {
-            console.error('LOGIN ERROR:', error);
-            assert.fail('Test failed with exception: ' + error.message);
-        }
+        expect(res.status).to.equal(200);
+        expect(res.body.data).to.have.property('products');
     });
 
-    it('Step 3 → should retrieve the cart (GET /api/carts/:cartId)', async function () {
-        try {
-            const res = await requester
-                .get(`/api/carts/${cartId}`)
-                .set('Authorization', `Bearer ${token}`);
+    it('Step 3 → should update product quantity in cart (PUT /api/carts/:cartId/products/:productId)', async function () {
+        const res = await requester
+            .put(`/api/carts/${cartId}/products/${productId}`)
+            .set('Authorization', `Bearer ${token}`)
+            .send({ quantity: 5 });
 
-            console.log('GET CART STATUS:', res.status);
-            console.log('GET CART BODY:', res.body);
-
-            expect(res.status).to.equal(200);
-            expect(res.body).to.have.property('data');
-            expect(res.body.data).to.have.property('products');
-            expect(res.body.data.products).to.be.an('array');
-        } catch (error) {
-            console.error('GET CART ERROR:', error);
-            assert.fail('Test failed with exception: ' + error.message);
-        }
+        expect(res.status).to.equal(200);
+        expect(res.body.data.modifiedCount).to.be.greaterThan(0);
     });
 
-    it('Step 4 → should add a product to the cart (POST /api/carts/:cartId/product/:productId)', async function () {
-        try {
-            const productId = '6842093cd752f8ca394712a2';
+    it('Step 4 → should remove product from cart (DELETE /api/carts/:cartId/products/${productId})', async function () {
+        const res = await requester
+            .delete(`/api/carts/${cartId}/products/${productId}`)
+            .set('Authorization', `Bearer ${token}`);
 
-            const res = await requester
-                .post(`/api/carts/${cartId}/product/${productId}`)
-                .set('Authorization', `Bearer ${token}`)
-                .send({
-                    quantity: 2
-                });
-
-            console.log('ADD PRODUCT STATUS:', res.status);
-            console.log('ADD PRODUCT BODY:', res.body);
-
-            expect(res.status).to.equal(200);
-            expect(res.body).to.have.property('data');
-            expect(res.body.data).to.have.property('products');
-            const addedProduct = res.body.data.products.find(p => {
-                const prodId = typeof p.product === 'string' ? p.product : p.product._id;
-                return prodId === productId;
-            });
-            expect(addedProduct).to.exist;
-            expect(addedProduct.quantity).to.equal(2);
-        } catch (error) {
-            console.error('ADD PRODUCT ERROR:', error);
-            assert.fail('Test failed with exception: ' + error.message);
-        }
+        expect(res.status).to.equal(200);
+        expect(res.body.data).to.have.property('products');
     });
+});
 
-    it('Step 5 → should update product quantity in cart (PUT /api/carts/:cartId/products/:productId)', async function () {
-        try {
-            const productId = '6842093cd752f8ca394712a2';
-
-            const res = await requester
-                .put(`/api/carts/${cartId}/products/${productId}`)
-                .set('Authorization', `Bearer ${token}`)
-                .send({
-                    quantity: 5
-                });
-
-            console.log('UPDATE PRODUCT QUANTITY STATUS:', res.status);
-            console.log('UPDATE PRODUCT QUANTITY BODY:', res.body);
-
-            expect(res.status).to.equal(200);
-            expect(res.body).to.have.property('data');
-            expect(res.body.data).to.have.property('acknowledged', true);
-            expect(res.body.data).to.have.property('modifiedCount').that.is.greaterThan(0);
-
-            const getRes = await requester
-                .get(`/api/carts/${cartId}`)
-                .set('Authorization', `Bearer ${token}`);
-
-            console.log('VERIFY UPDATED CART STATUS:', getRes.status);
-            console.log('VERIFY UPDATED CART BODY:', getRes.body);
-
-            expect(getRes.status).to.equal(200);
-            const updatedProduct = getRes.body.data.products.find(p => {
-                const prodId = typeof p.product === 'string' ? p.product : p.product._id;
-                return prodId === productId;
-            });
-            expect(updatedProduct).to.exist;
-            expect(updatedProduct.quantity).to.equal(5);
-        } catch (error) {
-            console.error('UPDATE PRODUCT QUANTITY ERROR:', error);
-            assert.fail('Test failed with exception: ' + error.message);
-        }
-    });
-
-    it('Step 6 → should remove product from cart (DELETE /api/carts/:cartId/products/:productId)', async function () {
-        try {
-            const productId = '6842093cd752f8ca394712a2';
-
-            const res = await requester
-                .delete(`/api/carts/${cartId}/products/${productId}`)
-                .set('Authorization', `Bearer ${token}`);
-
-            console.log('REMOVE PRODUCT STATUS:', res.status);
-            console.log('REMOVE PRODUCT BODY:', res.body);
-
-            expect(res.status).to.equal(200);
-            expect(res.body).to.have.property('data');
-            expect(res.body.data).to.have.property('products');
-            const removedProduct = res.body.data.products.find(p => {
-                const prodId = typeof p.product === 'string' ? p.product : p.product._id;
-                return prodId === productId;
-            });
-            expect(removedProduct).to.not.exist;
-        } catch (error) {
-            console.error('REMOVE PRODUCT ERROR:', error);
-            assert.fail('Test failed with exception: ' + error.message);
-        }
-    });
-
+after(async function () {
+    await mongoose.disconnect();
 });

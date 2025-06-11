@@ -19230,3 +19230,36 @@ warning: WARNING level log {"timestamp":"2025-05-14T14:26:16.777Z"}
 {"level":"info","message":"Worker 3676 successfully imported appServer.js","timestamp":"2025-06-03T01:00:52.656Z"}
 {"level":"info","message":"Worker PID 3676 running Express on port 3000","timestamp":"2025-06-03T01:00:52.657Z"}
 {"level":"warning","message":"Worker 15260 died. Restarting...","timestamp":"2025-06-03T01:00:55.813Z"}
+2025-06-10T21:56:38.733Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-10T21:57:13.036Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-10T21:57:46.990Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-10T21:58:25.475Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-10T21:59:45.424Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-10T22:22:57.117Z [[31merror[39m]: Error updating quantity: Cast to ObjectId failed for value "null" (type string) at path "product" for model "Cart"
+2025-06-10T22:22:58.366Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-10T22:44:16.989Z [[31merror[39m]: Error updating quantity: Cast to ObjectId failed for value "null" (type string) at path "product" for model "Cart"
+2025-06-10T22:44:18.237Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-10T22:57:43.728Z [[31merror[39m]: Error updating quantity: Cast to ObjectId failed for value "null" (type string) at path "product" for model "Cart"
+2025-06-10T22:57:44.990Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-10T23:36:20.281Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-10T23:41:49.727Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-11T00:02:12.492Z [[31merror[39m]: Error updating quantity: Cast to ObjectId failed for value "null" (type string) at path "product" for model "Cart"
+2025-06-11T00:02:13.996Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-11T00:10:43.212Z [[31merror[39m]: Error updating quantity: Cast to ObjectId failed for value "null" (type string) at path "product" for model "Cart"
+2025-06-11T00:10:44.849Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-11T00:30:28.889Z [[31merror[39m]: [POLICY ERROR] Expected an array, but received: function
+2025-06-11T00:30:31.272Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-11T00:44:49.996Z [[31merror[39m]: [POLICY ERROR] Expected an array, but received: function
+2025-06-11T00:44:52.604Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-11T14:05:24.510Z [[31merror[39m]: [POLICY ERROR] Expected an array, but received: function
+2025-06-11T14:05:26.874Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-11T14:14:41.204Z [[31merror[39m]: Error processing purchase: OrderService is not defined
+2025-06-11T14:45:30.485Z [[31merror[39m]: Error processing purchase: Business not found for product
+2025-06-11T14:48:49.739Z [[31merror[39m]: Error processing purchase: Business not found for product
+2025-06-11T14:56:27.950Z [[31merror[39m]: WhatsApp message failed to undefined: Required parameter "params['to']" missing.
+2025-06-11T15:01:23.953Z [[31merror[39m]: WhatsApp message failed to undefined: Required parameter "params['to']" missing.
+2025-06-11T15:05:53.576Z [[31merror[39m]: WhatsApp message failed to +541111111111: username is required
+2025-06-11T15:17:03.750Z [[31merror[39m]: WhatsApp message failed to whatsapp:+541111111111: username is required
+2025-06-11T16:33:12.701Z [[31merror[39m]: Failed to start server: logger.fatal is not a function
+2025-06-11T16:35:43.758Z [[31merror[39m]: Failed to connect to MongoDB: MongooseServerSelectionError: getaddrinfo ENOTFOUND mongo
+2025-06-11T16:35:43.760Z [[31merror[39m]: Failed to start server: MongoDB connection failed: getaddrinfo ENOTFOUND mongo

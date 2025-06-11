@@ -16,6 +16,14 @@ export const devLogger = winston.createLogger({
                     return `${timestamp} [${level}]: ${message}`;
                 })
             )
+        }),
+        new winston.transports.File({
+            filename: 'errors.log',
+            level: 'warn',
+            format: winston.format.combine(
+                winston.format.timestamp(),
+                winston.format.json()
+            )
         })
     ]
 });

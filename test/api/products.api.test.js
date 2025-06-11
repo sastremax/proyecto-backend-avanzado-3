@@ -3,34 +3,37 @@ import { expect } from 'chai'
 import supertest from 'supertest'
 import mongoose from 'mongoose'
 import config from '../../src/config/config.js'
-import { app } from '../../src/appServer.js'
+import { setSharedProductId } from '../utils/testData.js';
 
-const requester = supertest(app)
+let requester
+let token = null
+
+before(async function () {
+    const { default: app } = await import('../../src/appExpress.js')
+    requester = supertest(app)
+    console.log('Connecting to DB:', config.mongo_uri);
+    await mongoose.connect(config.mongo_uri)
+
+    const login = await requester.post('/api/sessions/login').send({
+        email: 'maxi@example.com',
+        password: '12345678'
+    })
+    console.log('LOGIN STATUS:', login.status)
+    console.log('LOGIN BODY:', login.body)
+    expect(login.status).to.equal(200)
+    token = login.body.data.token
+    console.log('TOKEN:', token)
+})
+
+after(async function () {
+    await mongoose.disconnect()
+})
 
 describe('API /api/products', function () {
     this.timeout(10000)
 
-    let token = null
     let createdProductId = null
     const uniqueCode = `TEST-${Date.now()}`
-
-    before(async function () {
-        await mongoose.connect(config.mongo_uri)
-
-        const login = await requester.post('/api/sessions/login').send({
-            email: 'maxi@example.com',
-            password: '12345678'
-        })
-        console.log('LOGIN STATUS:', login.status)
-        console.log('LOGIN BODY:', login.body)
-        expect(login.status).to.equal(200)
-        token = login.body.data.token
-        console.log('TOKEN:', token)
-    })
-
-    after(async function () {
-        await mongoose.disconnect()
-    })
 
     it('should create a new product', async function () {
         const productData = {
@@ -52,6 +55,7 @@ describe('API /api/products', function () {
         expect(res.status).to.be.oneOf([200, 201])
         expect(res.body.data).to.have.property('_id')
         createdProductId = res.body.data._id
+        setSharedProductId(createdProductId);
     })
 
     it('should retrieve the created product', async function () {

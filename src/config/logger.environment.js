@@ -1,4 +1,16 @@
-import { loggers } from './logger.js';
-import config from './config.js';
+import winston from 'winston';
 
-export const logger = config.mode === 'prod' ? loggers.prod : loggers.dev;
+export const logger = winston.createLogger({
+    level: 'debug',
+    format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.timestamp(),
+        winston.format.printf(({ timestamp, level, message }) => {
+            return `${timestamp} [${level}]: ${message}`;
+        })
+    ),
+    transports: [
+        new winston.transports.Console(),
+        new winston.transports.File({ filename: 'errors.log', level: 'error' })
+    ],
+});

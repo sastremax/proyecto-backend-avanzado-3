@@ -4,6 +4,7 @@ import TicketRepository from '../repositories/ticket.repository.js';
 import { calculateCartTotal, getUnavailableProducts } from 'cart-utils-maxi';
 import { sendWhatsAppMessage } from '../utils/twilio.js';
 import config from '../config/config.js';
+import OrderService from './order.service.js';
 
 class CartService {
     async createCart() {
@@ -64,13 +65,26 @@ class CartService {
         try {
             console.log('Entered purchaseCart with cartId:', cartId);
             console.log('User object:', user);
+
             const cart = await CartRepository.getById(cartId);
             if (!cart) return { error: 'not_found' };
+
+            if (!cart.products.length) throw new Error('Cart is empty');
 
             const unavailable = getUnavailableProducts(cart, cart.products.map(p => p.product));
             if (unavailable.length > 0) {
                 return { error: 'unavailable_products', data: unavailable };
             }
+
+            const firstProductId = cart.products[0]?.product?._id;
+            if (!firstProductId) throw new Error('Cart has no products');
+
+            const BusinessModel = (await import('../models/business.model.js')).default;
+            const business = await BusinessModel.findOne({ products: firstProductId });
+
+            if (!business) throw new Error('Business not found for product');
+
+            const elBusinessId = business._id;
 
             const totalAmount = calculateCartTotal(cart);
             const productsPurchased = [];
@@ -120,6 +134,7 @@ class CartService {
             };
         } catch (error) {
             console.error('Error purchaseCart:', error.message);
+            console.error('Full stack:', error.stack);
             throw error;
         }
     }

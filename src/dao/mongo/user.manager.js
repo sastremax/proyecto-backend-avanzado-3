@@ -2,7 +2,10 @@ import UserModel from '../../models/user.model.js';
 
 export class UserManager {
     async getByEmail(email) {
-        return await UserModel.findOne({ email });
+        console.log('getByEmail called with:', email);
+        const result = await UserModel.findOne({ email });
+        console.log('getByEmail result:', result);
+        return result;
     }
 
     async createUser(userData) {

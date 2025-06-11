@@ -21,7 +21,7 @@ export function handlePolicies(policies = []) {
             const decoded = jwt.verify(token, config.jwt_secret);
             req.user = decoded;
 
-            if (!policies.includes(decoded.role.toUpperCase())) {
+            if (!policies.includes(decoded.role.toLowerCase())) {
                 return res.forbidden('Access denied for your role');
             }
 

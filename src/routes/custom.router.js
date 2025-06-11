@@ -115,7 +115,7 @@ export default class CustomRouter {
                 return res.unauthorized('Unauthorized: authentication is required.');
             }
 
-            if (!policies.includes(user.role)) {
+            if (!policies.includes(user.role.toLowerCase())) {
                 req.logger?.warning(`[AUTH] Forbidden: user role "${user.role}" does not match required policies ${JSON.stringify(policies)}`);
                 return res.forbidden('Forbidden: you do not have permission to access this resource.');
             }

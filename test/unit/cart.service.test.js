@@ -25,6 +25,7 @@ describe('CartService', function () {
             stock: 10,
             category: 'test'
         }
+        console.log(`[DEBUG] addProductToCart - productId recibido: ${testProductId}`);
         const product = await ProductRepository.create(productData)
         testProductId = product._id.toString()
     })

@@ -3,12 +3,24 @@ import { expect } from 'chai'
 import supertest from 'supertest'
 import mongoose from 'mongoose'
 import config from '../../src/config/config.js'
-import { app } from '../../src/appServer.js'
 
-const requester = supertest(app)
+let requester
+let token = null
+
+before(async function () {
+    this.timeout(10000)
+
+    const { default: app } = await import('../../src/appExpress.js')
+    requester = supertest(app)
+
+    await mongoose.connect(config.mongo_uri)
+})
+
+after(async function () {
+    await mongoose.disconnect()
+})
 
 describe('User Auth Flow - register → login → current', function () {
-    let token = null
 
     const mockUser = {
         first_name: 'Maxi',
@@ -17,11 +29,6 @@ describe('User Auth Flow - register → login → current', function () {
         email: `test${Date.now()}@example.com`,
         password: '12345678'
     }
-
-    before(async function () {
-        this.timeout(10000)
-        await mongoose.connect(config.mongo_uri)
-    })
 
     it('should register a new user', async function () {
         const res = await requester.post('/api/sessions/register').send(mockUser)
@@ -58,10 +65,6 @@ describe('User Auth Flow - register → login → current', function () {
         expect(res.status).to.equal(200)
         expect(res._body).to.have.property('data')
         expect(res._body.data).to.have.property('email', mockUser.email)
-    })
-
-    after(async function () {
-        await mongoose.disconnect()
     })
 
 })

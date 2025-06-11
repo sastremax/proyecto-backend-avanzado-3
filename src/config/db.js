@@ -8,12 +8,12 @@ export const connectToDB = async () => {
         logger.info('[connectToDB] Skipping MongoDB connection in test mode');
         return;
     }
-    
+
     try {
         await mongoose.connect(config.mongo_uri);
         logger.info('Connected to MongoDB');
     } catch (error) {
-        logger.fatal(`Failed to connect to MongoDB: ${error}`);
+        logger.error(`Failed to connect to MongoDB: ${error}`);
         throw new Error(`MongoDB connection failed: ${error.message}`);
     }
 }

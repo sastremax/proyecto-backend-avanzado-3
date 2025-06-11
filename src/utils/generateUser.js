@@ -1,5 +1,5 @@
 import { fakerES as faker } from '@faker-js/faker';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
 const hashPassword = (password) => bcrypt.hashSync(password, 10);
 

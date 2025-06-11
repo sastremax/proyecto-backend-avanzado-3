@@ -4,14 +4,12 @@
 	"description": "",
 	"main": "src/app.js",
 	"scripts": {
-		"start": "nodemon src/app.js prod",
-		"dev": "set NODE_ENV=dev && node src/app.js",
-		"prod": "node src/app.js prod",
-		"test": "cross-env NODE_ENV=test mocha test/**/*.test.js --timeout 10000",
-		"test:api": "cross-env NODE_ENV=test mocha test/api/**/*.test.js --timeout 5000",
+		"start": "node src/app.js prod",
+		"dev": "cross-env NODE_ENV=dev node src/app.js",
+		"prod": "cross-env NODE_ENV=prod node src/app.js",
+		"test": "cross-env NODE_ENV=test mocha \"test/**/*.test.js\" --timeout 10000",
 		"test:unit": "cross-env NODE_ENV=test mocha test/unit/**/*.test.js --timeout 5000",
-		"test:carts": "cross-env NODE_ENV=test mocha test/api/carts.api.test.js --timeout 5000",
-		"test:tickets": "cross-env NODE_ENV=test mocha test/api/tickets.api.test.js --timeout 5000"
+		"test:api": "cross-env NODE_ENV=test mocha \"test/api/**/*.test.js\" --timeout 5000"
 	},
 	"keywords": [],
 	"author": "",
@@ -21,13 +19,13 @@
 		"@faker-js/faker": "^9.7.0",
 		"@nestjs/mongoose": "^11.0.3",
 		"bcrypt": "^6.0.0",
-		"bcryptjs": "^3.0.2",
 		"cart-utils-maxi": "^1.0.0",
 		"commander": "^13.1.0",
 		"compression": "^1.8.0",
 		"cookie-parser": "^1.4.7",
 		"dotenv": "^16.4.7",
-		"express": "^4.21.2",
+		"express": "^4.18.2",
+		"express-session": "^1.18.1",
 		"jsonwebtoken": "^9.0.2",
 		"mongoose": "^8.15.1",
 		"mongoose-paginate-v2": "^1.9.0",
@@ -40,7 +38,7 @@
 		"swagger-jsdoc": "^6.2.8",
 		"swagger-ui-express": "^5.0.1",
 		"twilio": "^5.6.0",
-		"winston": "^3.17.0"
+		"winston": "^3.8.2"
 	},
 	"devDependencies": {
 		"chai": "^5.2.0",
