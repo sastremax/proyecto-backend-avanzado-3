@@ -1,5 +1,7 @@
-export let sharedProductId = null;
+export const sharedData = {
+    sharedProductId: null
+};
 
 export const setSharedProductId = (id) => {
-    sharedProductId = id;
+    sharedData.sharedProductId = id;
 };

@@ -3,9 +3,6 @@ import { expect } from 'chai'
 import mongoose from 'mongoose'
 import config from '../../src/config/config.js'
 import OrderRepository from '../../src/repositories/order.repository.js'
-import UserModel from '../../src/models/user.model.js'
-import BusinessModel from '../../src/models/business.model.js'
-import ProductModel from '../../src/models/product.model.js'
 
 describe('OrderRepository', function () {
     let testOrderId = null

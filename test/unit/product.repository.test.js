@@ -42,14 +42,14 @@ describe('ProductRepository', function () {
 
     it('should update the product title', async function () {
         const newTitle = 'Updated Unit Test Product'
-        const result = await ProductRepository.update(testProductId, { title: newTitle })
+        await ProductRepository.update(testProductId, { title: newTitle })
 
         const updatedProduct = await ProductRepository.getById(testProductId)
         expect(updatedProduct).to.have.property('title', newTitle)
     })
 
     it('should delete the product successfully', async function () {
-        const result = await ProductRepository.delete(testProductId)
+        await ProductRepository.delete(testProductId)
 
         const deletedProduct = await ProductRepository.getById(testProductId)
         expect(deletedProduct).to.be.null
