@@ -1,4 +1,37 @@
 paths:
+  /api/sessions/register:
+    post:
+      summary: Registrar un nuevo usuario
+      tags:
+        - Autenticación
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: Fran
+                last_name:
+                  type: string
+                  example: Sastre
+                email:
+                  type: string
+                  example: fsastre@example.com
+                password:
+                  type: string
+                  example: 12345678
+                age:
+                  type: integer
+                  example: 18
+      responses:
+        '201':
+          description: Usuario registrado correctamente
+        '400':
+          description: Error en los datos enviados
+
   /api/sessions/login:
     post:
       summary: Iniciar sesión de usuario
@@ -13,10 +46,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: sastrebocalonxxx@gmail.com
+                  example: sastrebocalonmaximiliano@example.com
                 password:
                   type: string
-                  example: adminmaxi2027
+                  example: 12345678
               required:
                 - email
                 - password
@@ -63,7 +96,7 @@ paths:
                 data:
                   first_name: Maxi
                   last_name: Sastre
-                  email: sastrebocalonxxx@gmail.com
+                  email: sastrebocalonmaximiliano@example.com
                   role: admin
         "401":
           description: No autorizado
@@ -72,3 +105,66 @@ paths:
               example:
                 status: error
                 error: "No autorizado: se requiere autenticación."
+
+  /api/sessions/logout:
+    get:
+      summary: Cerrar sesión del usuario
+      tags:
+        - Autenticación
+      responses:
+        '200':
+          description: Sesión cerrada correctamente
+        '401':
+          description: No autorizado
+
+  /api/sessions/forgot-password:
+    post:
+      summary: Solicitar recuperación de contraseña
+      tags:
+        - Autenticación
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: sastrebocalonmaximiliano@example.com
+      responses:
+        '200':
+          description: Email enviado para restablecer contraseña
+        '404':
+          description: Usuario no encontrado
+
+  /api/sessions/reset-password:
+    post:
+      summary: Restablecer contraseña
+      tags:
+        - Autenticación
+      parameters:
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+          description: Token JWT recibido por email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: usuario@example.com
+                password:
+                  type: string
+                  example: NuevaClave123
+      responses:
+        '200':
+          description: Contraseña actualizada correctamente
+        '400':
+          description: Token inválido o error en la actualización

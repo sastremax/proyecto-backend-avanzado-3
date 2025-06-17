@@ -28,6 +28,9 @@ export const sendRecoveryEmail = async (to, token) => {
         `
     };
 
-    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions).catch(err => {
+        console.error('[Mailer Error]', err);
+        throw err;
+    });
 
 };

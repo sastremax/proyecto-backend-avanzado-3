@@ -145,8 +145,8 @@ export const validateResetToken = (req, res) => {
 };
 
 export const resetPassword = async (req, res) => {
-
-    const { token, password } = req.body;
+    const token = req.query.token;
+    const { password } = req.body;
 
     try {
         const decoded = UserService.verifyResetToken(token);

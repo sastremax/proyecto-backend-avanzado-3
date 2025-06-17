@@ -70,7 +70,7 @@ export const forgotPassword = async (req, res) => {
             return res.badRequest('Email is required.');
         }
 
-        const user = await userService.getByEmail(email);
+        const user = await userService.getUserByEmail(email);
 
         if (!user) {
             req.logger.warning(`Forgot password: user not found for email ${email}`);

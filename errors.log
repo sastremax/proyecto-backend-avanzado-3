@@ -19263,3 +19263,6 @@ warning: WARNING level log {"timestamp":"2025-05-14T14:26:16.777Z"}
 2025-06-11T16:33:12.701Z [[31merror[39m]: Failed to start server: logger.fatal is not a function
 2025-06-11T16:35:43.758Z [[31merror[39m]: Failed to connect to MongoDB: MongooseServerSelectionError: getaddrinfo ENOTFOUND mongo
 2025-06-11T16:35:43.760Z [[31merror[39m]: Failed to start server: MongoDB connection failed: getaddrinfo ENOTFOUND mongo
+2025-06-17T15:20:17.311Z [[31merror[39m]: Forgot password error: userService.getByEmail is not a function
+2025-06-17T15:22:12.064Z [[31merror[39m]: Forgot password error: userService.getByEmail is not a function
+2025-06-17T15:32:54.824Z [[31merror[39m]: Forgot password error: userService.getByEmail is not a function
