@@ -71,11 +71,11 @@ npx artillery run artillery/products.yml
 
 ### Crear imagen
 
-docker build -t sastrebocalonmaxi/backend3:1.1 .
+docker build -t sastrebocalonmaxi/backend3:1.2 .
 
 ### Ejecutar contenedor
 
-docker run -p 8080:8080 sastrebocalonmaxi/backend3:1.1
+docker run -p 8080:8080 sastrebocalonmaxi/backend3:1.2
 
 ### Verificar
 
