@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "src/app.js",
 	"scripts": {
-		"start": "node src/app.js prod",
+		"start": "node src/app.js",
 		"dev": "cross-env NODE_ENV=dev node src/app.js",
 		"prod": "cross-env NODE_ENV=prod node src/app.js",
 		"test": "cross-env NODE_ENV=test mocha \"test/**/*.test.js\" --timeout 10000",
