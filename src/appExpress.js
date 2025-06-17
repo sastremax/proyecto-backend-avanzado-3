@@ -44,7 +44,7 @@ app.use('/api/sessions', new SessionsRouter().getRouter());
 app.use('/api/products', new ProductsRouter().getRouter());
 app.use('/api/carts', new CartsRouter().getRouter());
 app.use('/api/tickets', new TicketsRouter().getRouter());
-app.use('/base', new BaseRouter().getRouter());
+app.use('/api', new BaseRouter().getRouter());
 app.use('/api/business', new BusinessRouter().getRouter());
 app.use('/api/orders', new OrdersRouter().getRouter());
 app.use('/apidocs', swaggerUi.serve, swaggerUi.setup(specs));
