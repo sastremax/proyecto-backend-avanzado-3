@@ -73,13 +73,17 @@ npx artillery run artillery/products.yml
 
 docker build -t sastrebocalonmaxi/backend3:1.2 .
 
+### Imagen publicada
+
+https://hub.docker.com/r/sastrebocalonmaxi/backend3/tags
+
 ### Ejecutar contenedor
 
-docker run -p 8080:8080 sastrebocalonmaxi/backend3:1.2
+docker run -p 3000:3000 sastrebocalonmaxi/backend3:1.2
 
 ### Verificar
 
-GET http://localhost:8080/api/ping
+GET http://localhost:3000/api/ping
 
 
 ## Docker Compose
